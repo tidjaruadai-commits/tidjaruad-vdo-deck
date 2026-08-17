@@ -144,7 +144,8 @@ button{font-family:inherit;color:inherit;border:0;background:none;cursor:pointer
 .s-cover .co-brand span{font-size:33px;font-weight:800;color:#fff}
 
 /* --- showreel wall --- */
-.s-wall{padding:48px 64px;display:flex;flex-direction:column}
+/* ล่าง 90px = เว้นที่ให้แถบควบคุมลอย (สูง 58 + ขอบ 26) ไม่ให้ทับคลิป */
+.s-wall{padding:48px 64px 90px;display:flex;flex-direction:column}
 .s-wall .wh{display:flex;align-items:baseline;gap:26px;margin-bottom:24px;flex:none}
 .s-wall .wh h2{font-size:52px;font-weight:800;color:var(--navy)}
 .s-wall .wgrid{
@@ -155,7 +156,7 @@ button{font-family:inherit;color:inherit;border:0;background:none;cursor:pointer
 .s-wall .wgrid .clip{border-radius:14px;width:var(--cw);height:var(--ch)}
 
 /* --- brand slide --- */
-.s-brand{padding:52px 72px 56px;display:flex;flex-direction:column}
+.s-brand{padding:52px 72px 90px;display:flex;flex-direction:column}
 .bs-head{display:flex;align-items:center;gap:26px;flex:none}
 .bs-logo{
   width:104px;height:104px;border-radius:18px;background:#fff;padding:12px;flex:none;
@@ -188,7 +189,14 @@ button{font-family:inherit;color:inherit;border:0;background:none;cursor:pointer
 
 /* --- channel slide: ผลงานจริงบนช่องลูกค้า --- */
 .s-channel{padding:44px 72px 48px;display:flex;flex-direction:column}
-.ch-head{display:flex;align-items:flex-end;gap:48px;flex:none}
+.ch-head{display:flex;align-items:flex-end;gap:30px;flex:none}
+.ch-avatar{
+  width:132px;height:132px;border-radius:50%;flex:none;overflow:hidden;background:var(--gray);
+  display:grid;place-items:center;border:3px solid #fff;
+  box-shadow:0 8px 24px rgba(27,29,69,.20), 0 0 0 2px var(--line);
+}
+.ch-avatar img{width:100%;height:100%;object-fit:cover}
+.ch-avatar span{font-size:56px;font-weight:800;color:var(--navy)}
 .ch-id{flex:1;min-width:0}
 .ch-id h2{font-size:52px;font-weight:800;color:var(--navy);line-height:1.1;margin-top:8px}
 .ch-id .ch-handle{font-size:27px;color:var(--red);font-weight:600;margin-top:4px}
@@ -288,16 +296,17 @@ button{font-family:inherit;color:inherit;border:0;background:none;cursor:pointer
 .s-contact .qr .ph{color:var(--text-muted);font-size:23px;text-align:center;font-weight:300;line-height:1.5}
 
 /* ================= chrome ================= */
+/* แถบควบคุมลอยอยู่เหนือสไลด์ -> ต้องเล็กและซ่อนตัวเองเมื่อไม่มีคนแตะ ไม่งั้นบังคลิป */
 #bar{
-  position:absolute;right:36px;bottom:32px;display:flex;gap:12px;align-items:center;
-  opacity:0;visibility:hidden;transition:opacity .3s ease;z-index:20;
+  position:absolute;right:30px;bottom:26px;display:flex;gap:10px;align-items:center;
+  opacity:0;visibility:hidden;transition:opacity .35s ease;z-index:20;
 }
 #bar.on{opacity:1;visibility:visible}
 .bbtn{
-  min-width:74px;height:74px;padding:0 26px;border-radius:999px;color:var(--text-mid);
-  background:rgba(255,253,248,.92);border:1px solid var(--line);
+  min-width:58px;height:58px;padding:0 18px;border-radius:999px;color:var(--text-mid);
+  background:rgba(255,253,248,.94);border:1px solid var(--line);
   backdrop-filter:blur(10px);box-shadow:var(--shadow);
-  font-size:27px;font-weight:500;display:flex;align-items:center;gap:12px;justify-content:center;
+  font-size:21px;font-weight:500;display:flex;align-items:center;gap:9px;justify-content:center;
   transition:background .15s ease,border-color .15s ease,color .15s ease;
 }
 .bbtn:hover{color:var(--red);border-color:var(--red)}
@@ -309,13 +318,13 @@ button{font-family:inherit;color:inherit;border:0;background:none;cursor:pointer
 
 /* พื้นพิลล์ของตัวเอง เพราะต้องอ่านออกทั้งบนสไลด์ขาวและบนหน้าปกพื้นเข้ม */
 #hint{
-  position:absolute;left:36px;bottom:38px;font-size:20px;color:var(--text-mid);
-  font-weight:300;z-index:20;opacity:0;transition:opacity .3s ease;
-  padding:14px 24px;border-radius:999px;
-  background:rgba(255,253,248,.92);border:1px solid var(--line);
+  position:absolute;left:30px;bottom:26px;font-size:17px;color:var(--text-muted);
+  font-weight:300;z-index:20;opacity:0;visibility:hidden;transition:opacity .35s ease;
+  padding:11px 20px;border-radius:999px;
+  background:rgba(255,253,248,.94);border:1px solid var(--line);
   backdrop-filter:blur(10px);box-shadow:var(--shadow);
 }
-#hint.on{opacity:1}
+#hint.on{opacity:1;visibility:visible}
 
 </style>
 </head>
@@ -431,7 +440,7 @@ button{font-family:inherit;color:inherit;border:0;background:none;cursor:pointer
 
 <div class="slide s-wall" data-dur="15000">
   <div class="wh"><h2>ผลงานบางส่วน</h2><span class="eyebrow">TIKTOK &middot; REELS &middot; UGC</span></div>
-  <div class="wgrid" style="--cw:243px;--ch:432px;--cols:6">
+  <div class="wgrid" style="--cw:231px;--ch:411px;--cols:6">
       <div class="clip"><video src="assets/video/wall/m127-groove55-01.mp4" preload="metadata" loop playsinline data-silent="1" muted></video></div>
       <div class="clip"><video src="assets/video/wall/m127-groove55-02.mp4" preload="metadata" loop playsinline data-silent="1" muted></video></div>
       <div class="clip"><video src="assets/video/wall/m121-tria-01.mp4" preload="metadata" loop playsinline data-silent="1" muted></video></div>
@@ -453,7 +462,7 @@ button{font-family:inherit;color:inherit;border:0;background:none;cursor:pointer
     <div class="bs-id"><h2>TRIA</h2><div class="cat">สุขภาพ / เวลเนส</div></div>
     
   </div>
-  <div class="bs-clips" style="--cw:469px;--ch:834px;--cols:3">
+  <div class="bs-clips" style="--cw:450px;--ch:800px;--cols:3">
       <div class="clip"><video src="assets/video/m121-tria/01.mp4" preload="metadata" loop playsinline></video></div>
       <div class="clip"><video src="assets/video/m121-tria/02.mp4" preload="metadata" loop playsinline></video></div>
       <div class="clip"><video src="assets/video/m121-tria/03.mp4" preload="metadata" loop playsinline></video></div>
@@ -466,7 +475,7 @@ button{font-family:inherit;color:inherit;border:0;background:none;cursor:pointer
     <div class="bs-id"><h2>Terra Groove55</h2><div class="cat">ร้านอาหาร</div></div>
     
   </div>
-  <div class="bs-clips" style="--cw:469px;--ch:834px;--cols:3">
+  <div class="bs-clips" style="--cw:450px;--ch:800px;--cols:3">
       <div class="clip"><video src="assets/video/m127-groove55/01.mp4" preload="metadata" loop playsinline></video></div>
       <div class="clip"><video src="assets/video/m127-groove55/02.mp4" preload="metadata" loop playsinline></video></div>
       <div class="clip"><video src="assets/video/m127-groove55/03.mp4" preload="metadata" loop playsinline></video></div>
@@ -493,7 +502,7 @@ button{font-family:inherit;color:inherit;border:0;background:none;cursor:pointer
     <div class="bs-id"><h2>Kozue Omakaze</h2><div class="cat">ร้านอาหารญี่ปุ่น</div></div>
     
   </div>
-  <div class="bs-clips" style="--cw:469px;--ch:834px;--cols:3">
+  <div class="bs-clips" style="--cw:450px;--ch:800px;--cols:3">
       <div class="clip"><video src="assets/video/m104-kozue/01.mp4" preload="metadata" loop playsinline></video></div>
       <div class="clip"><video src="assets/video/m104-kozue/02.mp4" preload="metadata" loop playsinline></video></div>
       <div class="clip"><video src="assets/video/m104-kozue/03.mp4" preload="metadata" loop playsinline></video></div>
@@ -522,6 +531,7 @@ button{font-family:inherit;color:inherit;border:0;background:none;cursor:pointer
 
 <div class="slide s-channel" data-dur="14000" data-channel="m077-smartclinic">
   <div class="ch-head">
+    <div class="ch-avatar"><span>ห</span></div>
     <div class="ch-id">
       <div class="eyebrow">ผลงานบนช่องจริง &middot; TikTok</div>
       <h2>หมอมาศ Anti Aging</h2>
@@ -559,6 +569,7 @@ button{font-family:inherit;color:inherit;border:0;background:none;cursor:pointer
 
 <div class="slide s-channel" data-dur="14000" data-channel="m100-barcode">
   <div class="ch-head">
+    <div class="ch-avatar"><span>ซ</span></div>
     <div class="ch-id">
       <div class="eyebrow">ผลงานบนช่องจริง &middot; TikTok</div>
       <h2>ซินแสบาร์โค้ดชีวิต</h2>
@@ -825,6 +836,9 @@ button{font-family:inherit;color:inherit;border:0;background:none;cursor:pointer
   var slides = [].slice.call(document.querySelectorAll('#deck .slide'));
 
   var idx = -1;
+  var inDeck = false;         // อยู่ในหน้าสไลด์อยู่ไหม (คุมการโผล่ของแถบควบคุม)
+  var chromeTimer = null;
+  var CHROME_MS = 3000;       // ไม่แตะอะไรกี่มิลลิวินาทีแล้วซ่อนแถบควบคุม
   var mode = 'home';          // 'home' | 'manual' | 'auto'
   var muted = true;
   var timer = null;
@@ -939,27 +953,42 @@ button{font-family:inherit;color:inherit;border:0;background:none;cursor:pointer
   function prev() { show(prevIndex(idx)); }
 
   /* ---------- modes ---------- */
+  /* ---------- แถบควบคุมลอยทับสไลด์ -> โผล่เมื่อมีคนแตะ แล้วซ่อนเอง
+     ที่บูธจะได้เห็นคลิปเต็มจอ ไม่มีอะไรบัง                        */
+  function hideChrome() {
+    bar.classList.remove('on');
+    hint.classList.remove('on');
+  }
+  function showChrome() {
+    clearTimeout(chromeTimer);
+    if (!inDeck) return;
+    bar.classList.add('on');
+    hint.classList.add('on');
+    chromeTimer = setTimeout(hideChrome, CHROME_MS);
+  }
+
   function goHome() {
     clearTimeout(timer);
+    clearTimeout(chromeTimer);
     killProg();
     stopAll();
     mode = 'home';
+    inDeck = false;
     if (idx >= 0) { slides[idx].classList.remove('on'); idx = -1; }
     deck.classList.remove('on');
-    bar.classList.remove('on');
-    hint.classList.remove('on');
+    hideChrome();
     home.classList.add('on');
     bumpIdle();
   }
 
   function enterDeck(i, m) {
     mode = m;
+    inDeck = true;
     home.classList.remove('on');
     deck.classList.add('on');
-    bar.classList.add('on');
-    hint.classList.add('on');
     btnAuto.classList.toggle('hl', mode === 'auto');
     show(i);
+    showChrome();
     bumpIdle();
   }
 
@@ -989,8 +1018,8 @@ button{font-family:inherit;color:inherit;border:0;background:none;cursor:pointer
     if (mode === 'auto') return;
     idleTimer = setTimeout(startAuto, CFG.idleReturnMs || 60000);
   }
-  ['pointerdown', 'keydown', 'wheel'].forEach(function (e) {
-    addEventListener(e, bumpIdle, { passive: true });
+  ['pointerdown', 'keydown', 'wheel', 'pointermove'].forEach(function (e) {
+    addEventListener(e, function () { bumpIdle(); showChrome(); }, { passive: true });
   });
 
   /* ---------- sound ---------- */
