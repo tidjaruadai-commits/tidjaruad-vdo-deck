@@ -188,8 +188,8 @@ button{font-family:inherit;color:inherit;border:0;background:none;cursor:pointer
 .clip.empty span{font-size:21px;color:var(--text-muted);font-weight:300;text-align:center;padding:0 16px;line-height:1.5}
 
 /* --- channel slide: ผลงานจริงบนช่องลูกค้า --- */
-.s-channel{padding:44px 72px 48px;display:flex;flex-direction:column}
-.ch-head{display:flex;align-items:flex-end;gap:30px;flex:none}
+.s-channel{padding:40px 72px 90px;display:flex;flex-direction:column}
+.ch-head{display:flex;align-items:center;gap:26px;flex:none}
 .ch-avatar{
   width:132px;height:132px;border-radius:50%;flex:none;overflow:hidden;background:var(--gray);
   display:grid;place-items:center;border:3px solid #fff;
@@ -201,17 +201,32 @@ button{font-family:inherit;color:inherit;border:0;background:none;cursor:pointer
 .ch-id h2{font-size:52px;font-weight:800;color:var(--navy);line-height:1.1;margin-top:8px}
 .ch-id .ch-handle{font-size:27px;color:var(--red);font-weight:600;margin-top:4px}
 .ch-id .ch-tag{font-size:23px;color:var(--text-muted);font-weight:300;margin-top:6px}
+/* ตัวสไลด์แบ่ง 2 คอลัมน์: ซ้าย = ภาพหน้าช่องจริงเต็มความสูง (พระเอก) ขวา = ตัวเลข + คลิปเด่น */
+.ch-body{flex:1;min-height:0;display:flex;gap:36px;margin-top:22px;align-items:stretch}
+.ch-shot{
+  flex:none;height:100%;border-radius:26px;overflow:hidden;background:var(--navy-deep);
+  border:1px solid var(--line);box-shadow:0 20px 50px rgba(27,29,69,.26), 0 0 0 6px #fff;
+  display:grid;place-items:center;
+}
+.ch-shot img{height:100%;width:auto;max-width:420px;object-fit:cover;display:block}
+.ch-shot-empty{
+  width:356px;background:var(--gray);border:2px dashed #C3CDDD;box-shadow:none;
+}
+.ch-shot-empty span{font-size:21px;color:var(--text-muted);font-weight:300;text-align:center;padding:0 22px;line-height:1.7}
+.ch-shot-empty code{font-size:17px;color:var(--red);word-break:break-all}
+
+.ch-right{flex:1;min-width:0;display:flex;flex-direction:column}
 .ch-stats{display:flex;gap:16px;flex:none}
 .ch-stat{
-  min-width:210px;padding:20px 26px;border-radius:16px;text-align:center;background:#fff;
+  flex:1;padding:18px 22px;border-radius:16px;text-align:center;background:#fff;
   border:1px solid var(--line);box-shadow:var(--shadow);position:relative;overflow:hidden;
 }
 .ch-stat::before{content:'';position:absolute;top:0;left:0;width:100%;height:4px;background:var(--accent)}
-.ch-stat b{display:block;font-size:46px;font-weight:800;color:var(--red);line-height:1.05}
-.ch-stat span{display:block;font-size:20px;color:var(--text-muted);font-weight:300;margin-top:4px}
+.ch-stat b{display:block;font-size:44px;font-weight:800;color:var(--red);line-height:1.05}
+.ch-stat span{display:block;font-size:19px;color:var(--text-muted);font-weight:300;margin-top:4px}
 
 .ch-posts{
-  flex:1;min-height:0;display:flex;gap:28px;margin-top:28px;justify-content:center;align-items:center;
+  flex:1;min-height:0;display:flex;gap:24px;margin-top:22px;justify-content:center;align-items:center;
 }
 .ch-posts .ch-post{width:var(--cw);height:var(--ch);flex:none}
 .ch-post .ch-noclip{
@@ -538,9 +553,12 @@ button{font-family:inherit;color:inherit;border:0;background:none;cursor:pointer
       <div class="ch-handle">@dr.mas.co</div>
       <div class="ch-tag">&quot;Your Body is The Best Doctor&quot; — เวชศาสตร์ชะลอวัยและป้องกัน</div>
     </div>
-    <div class="ch-stats"><div class="ch-stat"><b>70.9K</b><span>ผู้ติดตาม</span></div><div class="ch-stat"><b>508.7K</b><span>ยอดถูกใจรวม</span></div><div class="ch-stat"><b>811K</b><span>ยอดดูคลิปสูงสุด</span></div></div>
   </div>
-  <div class="ch-posts" style="--cw:369px;--ch:656px;--cols:3">
+  <div class="ch-body">
+    <div class="ch-shot ch-shot-empty"><span>รอภาพหน้าช่อง<br><code>assets/screens/dr-mas-profile.png</code></span></div>
+    <div class="ch-right">
+      <div class="ch-stats"><div class="ch-stat"><b>70.9K</b><span>ผู้ติดตาม</span></div><div class="ch-stat"><b>508.7K</b><span>ยอดถูกใจรวม</span></div><div class="ch-stat"><b>811K</b><span>ยอดดูคลิปสูงสุด</span></div></div>
+      <div class="ch-posts" style="--cw:339px;--ch:604px;--cols:3">
       <div class="clip ch-post"><video src="assets/video/m077-smartclinic/ch-sleep.mp4" preload="metadata" loop playsinline></video><div class="ch-views"><b>811K</b><i>ยอดดู</i></div>
         <div class="ch-meta"><b>&quot;การนอนดึก&quot; ส่งผลอย่างไร</b><div class="ch-eng"><span>&#9825; 24.9K</span><span>&#128172; 237</span><span>&#128278; 3,964</span><span>&#10150; 20.9K</span></div></div>
       </div>
@@ -550,6 +568,8 @@ button{font-family:inherit;color:inherit;border:0;background:none;cursor:pointer
       <div class="clip ch-post"><video src="assets/video/m077-smartclinic/01.mp4" preload="metadata" loop playsinline></video>
         <div class="ch-meta"><b>อาหารแช่เย็นนาน อาจทำให้เป็นมะเร็งโดยไม่รู้ตัว</b><div class="ch-eng"><span>&#9825; 12.1K</span><span>&#128172; 146</span><span>&#128278; 1,379</span><span>&#10150; 5,957</span></div></div>
       </div>
+      </div>
+    </div>
   </div>
 </div>
 
@@ -576,9 +596,12 @@ button{font-family:inherit;color:inherit;border:0;background:none;cursor:pointer
       <div class="ch-handle">@zinzaebarcode</div>
       <div class="ch-tag">สอนโหงวเฮ้ง / ฮวงจุ้ย / ลายเซ็น สำหรับเจ้าของกิจการและองค์กร</div>
     </div>
-    <div class="ch-stats"><div class="ch-stat"><b>105.3K</b><span>ผู้ติดตาม</span></div><div class="ch-stat"><b>745.4K</b><span>ยอดถูกใจรวม</span></div><div class="ch-stat"><b>8.3M</b><span>ยอดดูรวม 3 คลิปปักหมุด</span></div></div>
   </div>
-  <div class="ch-posts" style="--cw:369px;--ch:656px;--cols:3">
+  <div class="ch-body">
+    <div class="ch-shot ch-shot-empty"><span>รอภาพหน้าช่อง<br><code>assets/screens/zinzaebarcode-profile.png</code></span></div>
+    <div class="ch-right">
+      <div class="ch-stats"><div class="ch-stat"><b>105.3K</b><span>ผู้ติดตาม</span></div><div class="ch-stat"><b>745.4K</b><span>ยอดถูกใจรวม</span></div><div class="ch-stat"><b>8.3M</b><span>ยอดดูรวม 3 คลิปปักหมุด</span></div></div>
+      <div class="ch-posts" style="--cw:339px;--ch:604px;--cols:3">
       <div class="clip ch-post"><div class="ch-noclip"><span>ไม่มีไฟล์คลิปต้นฉบับ</span></div><div class="ch-views"><b>4M</b><i>ยอดดู</i></div>
         <div class="ch-meta"><b>โหงวเฮ้งแบบไหนไม่ควรเอามาทำผัว</b><div class="ch-eng"><span>&#9825; 94.2K</span><span>&#128172; 1,173</span><span>&#128278; 9,746</span><span>&#10150; 24.5K</span></div></div>
       </div>
@@ -588,6 +611,8 @@ button{font-family:inherit;color:inherit;border:0;background:none;cursor:pointer
       <div class="clip ch-post"><video src="assets/video/m100-barcode/ch-house.mp4" preload="metadata" loop playsinline></video><div class="ch-views"><b>2M</b><i>ยอดดู</i></div>
         <div class="ch-meta"><b>บ้านนี้ใครใหญ่ ดูได้จากฝั่งที่นอน</b><div class="ch-eng"><span>&#9825; 31.7K</span><span>&#128172; 571</span><span>&#128278; 3,625</span><span>&#10150; 18.2K</span></div></div>
       </div>
+      </div>
+    </div>
   </div>
 </div>
 
