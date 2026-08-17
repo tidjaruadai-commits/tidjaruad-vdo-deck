@@ -255,6 +255,12 @@ button{font-family:inherit;color:inherit;border:0;background:none;cursor:pointer
 .chip.chip-ch{color:var(--red);border-color:rgba(255,51,71,.45);background:rgba(255,51,71,.07);font-weight:600}
 .chip.chip-ch:hover{background:rgba(255,51,71,.14);border-color:var(--red)}
 
+/* --- ไอคอนชุดแบรนด์ (SVG sprite ฝังในหน้า) --- */
+.ico{display:block;flex:none}
+.ico-item{width:76px;height:76px;margin-bottom:16px}
+.ico-step{width:64px;height:64px;margin:0 auto}
+.ico-pack{width:62px;height:62px;margin-bottom:14px}
+
 /* --- message slide --- */
 .s-msg{padding:96px 120px;display:flex;flex-direction:column;justify-content:center}
 .s-msg h2{font-size:86px;font-weight:800;line-height:1.08;margin:18px 0 48px;color:var(--navy)}
@@ -353,6 +359,69 @@ button{font-family:inherit;color:inherit;border:0;background:none;cursor:pointer
 </style>
 </head>
 <body>
+<!-- ชุดไอคอนทางการของติดจรวด
+     ที่มา: Tidjaruad Branded Asset\tidjaruad-brand-assets\08-brand-icon-set.svg
+     ใส่ prefix tjr- ให้ทุกคลาส กันชนกับ CSS ของเด็ค (ของเดิมใช้ .line .navy .red ซึ่งกว้างเกินไป) -->
+<svg xmlns="http://www.w3.org/2000/svg" style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true">
+  <defs>
+    <style>
+      .tjr-navy{stroke:#1B1D45}
+      .tjr-red{stroke:#FF3347}
+      .tjr-blue{stroke:#4F8CFF}
+      .tjr-line{fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-width:7}
+      .tjr-thin{fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-width:5}
+      .tjr-fill-red{fill:#FF3347}
+    </style>
+
+    <symbol id="icon-tiktok-ads" viewBox="0 0 120 120">
+      <rect class="tjr-line tjr-navy" x="24" y="18" width="56" height="84" rx="14"/>
+      <path class="tjr-line tjr-navy" d="M58 42v31a15 15 0 1 1-12-14"/>
+      <path class="tjr-line tjr-blue" d="M58 42c10 13 18 17 30 17"/>
+      <path class="tjr-thin tjr-red" d="M85 24h18v18"/>
+      <path class="tjr-thin tjr-red" d="M101 26 82 45"/>
+    </symbol>
+
+    <symbol id="icon-strategy-planning" viewBox="0 0 120 120">
+      <path class="tjr-line tjr-navy" d="M23 92V28a10 10 0 0 1 10-10h54l10 10v64a10 10 0 0 1-10 10H33a10 10 0 0 1-10-10Z"/>
+      <path class="tjr-thin tjr-blue" d="M42 44h31M42 59h22M42 74h15"/>
+      <circle class="tjr-thin tjr-red" cx="79" cy="74" r="16"/>
+      <path class="tjr-thin tjr-red" d="M79 65v9l8 5"/>
+    </symbol>
+
+    <symbol id="icon-content-creative" viewBox="0 0 120 120">
+      <rect class="tjr-line tjr-navy" x="20" y="26" width="80" height="60" rx="14"/>
+      <path class="tjr-thin tjr-blue" d="M38 72l15-18 12 13 10-9 13 14"/>
+      <circle class="tjr-fill-red" cx="42" cy="45" r="6"/>
+      <path class="tjr-thin tjr-red" d="M90 18v15M82 26h16"/>
+      <path class="tjr-thin tjr-navy" d="M47 100h26M60 86v14"/>
+    </symbol>
+
+    <symbol id="icon-ads-optimization" viewBox="0 0 120 120">
+      <circle class="tjr-line tjr-navy" cx="60" cy="60" r="38"/>
+      <circle class="tjr-thin tjr-blue" cx="60" cy="60" r="22"/>
+      <circle class="tjr-fill-red" cx="60" cy="60" r="8"/>
+      <path class="tjr-thin tjr-red" d="M75 45 96 24"/>
+      <path class="tjr-thin tjr-red" d="M95 24h-16M96 24v16"/>
+      <path class="tjr-thin tjr-navy" d="M60 18v13M60 89v13M18 60h13M89 60h13"/>
+    </symbol>
+
+    <symbol id="icon-performance-report" viewBox="0 0 120 120">
+      <rect class="tjr-line tjr-navy" x="22" y="18" width="76" height="84" rx="12"/>
+      <path class="tjr-thin tjr-blue" d="M40 78V64M58 78V50M76 78V38"/>
+      <path class="tjr-thin tjr-red" d="M36 48c12 3 22-1 31-12l12 8 9-16"/>
+      <path class="tjr-thin tjr-navy" d="M39 90h42"/>
+    </symbol>
+
+    <symbol id="icon-sales-growth" viewBox="0 0 120 120">
+      <path class="tjr-line tjr-navy" d="M22 92h76"/>
+      <path class="tjr-thin tjr-blue" d="M34 80V64M53 80V52M72 80V42"/>
+      <path class="tjr-thin tjr-red" d="M29 47c16 8 31 5 44-10l18 12"/>
+      <path class="tjr-thin tjr-red" d="M90 31v18H72"/>
+      <path class="tjr-thin tjr-navy" d="M91 49 73 37"/>
+    </symbol>
+  </defs>
+</svg>
+
 <div id="wrap">
   <div class="stage" id="stage">
 
@@ -536,7 +605,7 @@ button{font-family:inherit;color:inherit;border:0;background:none;cursor:pointer
 <div class="slide s-msg" data-dur="8000" data-msg="services">
   <div class="eyebrow">เราทำอะไร</div>
   <h2>ผลิตคลิปให้แบรนด์<br><span>2 แบบ</span></h2>
-  <div class="items"><div class="item"><h3>คลิปสั้นสำหรับยิงแอด</h3><p>TikTok / Reels เน้น hook 3 วินาทีแรก ผลิตเป็นชุดต่อเดือน เอาไปยิงแอดต่อได้ทันที</p></div><div class="item"><h3>UGC / รีวิวครีเอเตอร์</h3><p>คลิปคนจริงรีวิวสินค้า สไตล์ธรรมชาติ เลือกครีเอเตอร์ให้ตรงกลุ่มลูกค้าของแบรนด์</p></div></div>
+  <div class="items"><div class="item"><svg class="ico ico-item" aria-hidden="true"><use href="#icon-content-creative"/></svg><h3>คลิปสั้นสำหรับยิงแอด</h3><p>TikTok / Reels เน้น hook 3 วินาทีแรก ผลิตเป็นชุดต่อเดือน เอาไปยิงแอดต่อได้ทันที</p></div><div class="item"><svg class="ico ico-item" aria-hidden="true"><use href="#icon-tiktok-ads"/></svg><h3>UGC / รีวิวครีเอเตอร์</h3><p>คลิปคนจริงรีวิวสินค้า สไตล์ธรรมชาติ เลือกครีเอเตอร์ให้ตรงกลุ่มลูกค้าของแบรนด์</p></div></div>
 </div>
 
 <div class="slide s-brand" data-dur="12000" data-brand="m077-smartclinic">
@@ -656,7 +725,7 @@ button{font-family:inherit;color:inherit;border:0;background:none;cursor:pointer
 <div class="slide s-msg" data-dur="8000" data-msg="diff">
   <div class="eyebrow">ทำไมต้องเรา</div>
   <h2>เราเป็นเอเจนซี่ยิงแอด<br><span>ที่ผลิตคลิปเอง</span></h2>
-  <div class="items"><div class="item"><h3>ทำคลิปจากดาต้าจริง ไม่ใช่เดา</h3><p>เรารู้ว่า hook แบบไหน CTR ดี เพราะเรายิงแอดให้ลูกค้าทุกวัน เอาผลจริงมาออกแบบคลิปตัวถัดไป</p></div><div class="item"><h3>วัดผลได้ ไม่ใช่แค่ส่งไฟล์จบ</h3><p>คลิปทุกตัวถูกเอาไปทดสอบจริง แล้วคัดตัวที่ทำผลได้ดีที่สุดมาสเกลต่อ</p></div></div>
+  <div class="items"><div class="item"><svg class="ico ico-item" aria-hidden="true"><use href="#icon-ads-optimization"/></svg><h3>ทำคลิปจากดาต้าจริง ไม่ใช่เดา</h3><p>เรารู้ว่า hook แบบไหน CTR ดี เพราะเรายิงแอดให้ลูกค้าทุกวัน เอาผลจริงมาออกแบบคลิปตัวถัดไป</p></div><div class="item"><svg class="ico ico-item" aria-hidden="true"><use href="#icon-performance-report"/></svg><h3>วัดผลได้ ไม่ใช่แค่ส่งไฟล์จบ</h3><p>คลิปทุกตัวถูกเอาไปทดสอบจริง แล้วคัดตัวที่ทำผลได้ดีที่สุดมาสเกลต่อ</p></div></div>
 </div>
 
 <div class="slide s-brand" data-dur="12000" data-brand="m066-bpk9">
@@ -718,7 +787,7 @@ button{font-family:inherit;color:inherit;border:0;background:none;cursor:pointer
 <div class="slide s-msg" data-dur="8000" data-msg="process">
   <div class="eyebrow">ขั้นตอนงาน</div>
   <h2>ตั้งแต่บรีฟ<br><span>ถึงคลิปที่ชนะ</span></h2>
-  <div class="steps"><div class="step"><i>1</i><b>รับบรีฟ</b></div><div class="step"><i>2</i><b>วาง Hook / สคริปต์</b></div><div class="step"><i>3</i><b>ถ่ายทำ</b></div><div class="step"><i>4</i><b>ตัดต่อ</b></div><div class="step"><i>5</i><b>ยิงทดสอบ</b></div><div class="step"><i>6</i><b>คัดตัวชนะไปสเกล</b></div></div>
+  <div class="steps"><div class="step"><svg class="ico ico-step" aria-hidden="true"><use href="#icon-strategy-planning"/></svg><b>รับบรีฟ</b></div><div class="step"><svg class="ico ico-step" aria-hidden="true"><use href="#icon-content-creative"/></svg><b>วาง Hook / สคริปต์</b></div><div class="step"><svg class="ico ico-step" aria-hidden="true"><use href="#icon-tiktok-ads"/></svg><b>ถ่ายทำ</b></div><div class="step"><svg class="ico ico-step" aria-hidden="true"><use href="#icon-content-creative"/></svg><b>ตัดต่อ</b></div><div class="step"><svg class="ico ico-step" aria-hidden="true"><use href="#icon-ads-optimization"/></svg><b>ยิงทดสอบ</b></div><div class="step"><svg class="ico ico-step" aria-hidden="true"><use href="#icon-sales-growth"/></svg><b>คัดตัวชนะไปสเกล</b></div></div>
 </div>
 
 <div class="slide s-brand" data-dur="12000" data-autoskip="1" data-brand="m108-shooshoke">
@@ -780,7 +849,7 @@ button{font-family:inherit;color:inherit;border:0;background:none;cursor:pointer
 <div class="slide s-msg" data-dur="8000" data-msg="services">
   <div class="eyebrow">เราทำอะไร</div>
   <h2>ผลิตคลิปให้แบรนด์<br><span>2 แบบ</span></h2>
-  <div class="items"><div class="item"><h3>คลิปสั้นสำหรับยิงแอด</h3><p>TikTok / Reels เน้น hook 3 วินาทีแรก ผลิตเป็นชุดต่อเดือน เอาไปยิงแอดต่อได้ทันที</p></div><div class="item"><h3>UGC / รีวิวครีเอเตอร์</h3><p>คลิปคนจริงรีวิวสินค้า สไตล์ธรรมชาติ เลือกครีเอเตอร์ให้ตรงกลุ่มลูกค้าของแบรนด์</p></div></div>
+  <div class="items"><div class="item"><svg class="ico ico-item" aria-hidden="true"><use href="#icon-content-creative"/></svg><h3>คลิปสั้นสำหรับยิงแอด</h3><p>TikTok / Reels เน้น hook 3 วินาทีแรก ผลิตเป็นชุดต่อเดือน เอาไปยิงแอดต่อได้ทันที</p></div><div class="item"><svg class="ico ico-item" aria-hidden="true"><use href="#icon-tiktok-ads"/></svg><h3>UGC / รีวิวครีเอเตอร์</h3><p>คลิปคนจริงรีวิวสินค้า สไตล์ธรรมชาติ เลือกครีเอเตอร์ให้ตรงกลุ่มลูกค้าของแบรนด์</p></div></div>
 </div>
 
 <div class="slide s-brand" data-dur="12000" data-autoskip="1" data-brand="pn-autopart">
@@ -802,18 +871,21 @@ button{font-family:inherit;color:inherit;border:0;background:none;cursor:pointer
   <h2>เลือกเฉพาะที่ธุรกิจคุณต้องการได้</h2>
   <div class="pk">
     <div class="p hot">
+      <svg class="ico ico-pack" aria-hidden="true"><use href="#icon-content-creative"/></svg>
       <div class="nm">01 · CONTENT</div>
       <div class="pr">2,000.-</div>
       <div class="un">/ คลิป (เริ่มต้น)</div>
       <ul><li>Short-form 15–60 วิ</li><li>Ad-Optimized Hook</li><li>Editing + Subtitle</li></ul>
     </div>
     <div class="p">
+      <svg class="ico ico-pack" aria-hidden="true"><use href="#icon-tiktok-ads"/></svg>
       <div class="nm">02 · INFLUENCE</div>
       <div class="pr">20%</div>
       <div class="un">ของงบ KOL</div>
       <ul><li>คัดครีเอเตอร์ให้ตรงกลุ่ม</li><li>บรีฟและประสานงาน</li><li>รายงานผล</li></ul>
     </div>
     <div class="p">
+      <svg class="ico ico-pack" aria-hidden="true"><use href="#icon-sales-growth"/></svg>
       <div class="nm">03 · LIVE</div>
       <div class="pr">1,500.-</div>
       <div class="un">/ ชั่วโมง (เริ่มต้น)</div>
