@@ -139,6 +139,7 @@ button{font-family:inherit;color:inherit;border:0;background:none;cursor:pointer
 .s-cover h1{font-size:128px;font-weight:800;line-height:1.03;color:#fff;letter-spacing:-.01em}
 .s-cover h1 em{font-style:normal;color:var(--red)}
 .s-cover p{font-size:35px;color:rgba(255,255,255,.72);margin-top:26px;font-weight:300}
+.s-cover .co-logo{height:96px;width:auto;margin:0 auto 40px;display:block;filter:drop-shadow(0 6px 20px rgba(0,0,0,.4))}
 .s-cover .co-brand{display:flex;align-items:center;justify-content:center;gap:14px;margin-bottom:32px}
 .s-cover .co-brand .dot{width:15px;height:15px;border-radius:50%;background:var(--red)}
 .s-cover .co-brand span{font-size:33px;font-weight:800;color:#fff}
@@ -206,9 +207,12 @@ button{font-family:inherit;color:inherit;border:0;background:none;cursor:pointer
 .ch-shot{
   flex:none;height:100%;border-radius:26px;overflow:hidden;background:var(--navy-deep);
   border:1px solid var(--line);box-shadow:0 20px 50px rgba(27,29,69,.26), 0 0 0 6px #fff;
-  display:grid;place-items:center;
+  position:relative;display:grid;place-items:center;
 }
-.ch-shot img{height:100%;width:auto;max-width:420px;object-fit:cover;display:block}
+/* วางภาพแบบ absolute เต็มกรอบ + object-fit:contain = ได้กล่องเท่ากรอบเป๊ะเสมอ
+   เห็นหน้าช่องเต็มหน้าไม่โดนครอป และไม่ล้นไม่ว่าภาพจะสัดส่วนไหน (max-height:100% เอาไม่อยู่ใน grid item) */
+.ch-shot{width:352px}
+.ch-shot img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;display:block}
 .ch-shot-empty{
   width:356px;background:var(--gray);border:2px dashed #C3CDDD;box-shadow:none;
 }
@@ -277,7 +281,7 @@ button{font-family:inherit;color:inherit;border:0;background:none;cursor:pointer
 }
 
 /* --- packages --- */
-.s-pack{padding:76px 90px;display:flex;flex-direction:column}
+.s-pack{padding:66px 90px 90px;display:flex;flex-direction:column}
 .s-pack h2{font-size:64px;font-weight:800;margin:14px 0 40px;color:var(--navy)}
 .s-pack .pk{flex:1;min-height:0;display:grid;grid-template-columns:repeat(3,1fr);gap:30px}
 .s-pack .p{
@@ -299,9 +303,14 @@ button{font-family:inherit;color:inherit;border:0;background:none;cursor:pointer
 .s-contact{display:grid;grid-template-columns:1fr auto;align-items:center;gap:90px;padding:0 130px}
 .s-contact h2{font-size:92px;font-weight:800;line-height:1.08;margin:18px 0 34px;color:var(--navy)}
 .s-contact h2 span{color:var(--red)}
-.s-contact .lines{display:flex;flex-direction:column;gap:18px}
-.s-contact .lines div{font-size:33px;font-weight:400;color:var(--text-mid)}
-.s-contact .lines div b{color:var(--red);font-weight:700}
+.s-contact .ct-logo{height:74px;width:auto;margin-bottom:26px}
+.s-contact .lines{display:grid;grid-template-columns:auto auto;gap:14px 28px;justify-content:start;align-items:baseline}
+.s-contact .lines div{display:contents}
+.s-contact .lines div span{font-size:25px;color:var(--text-muted);font-weight:300}
+.s-contact .lines div b{font-size:33px;color:var(--red);font-weight:700}
+.s-contact .ct-co{margin-top:30px;padding-top:22px;border-top:2px solid var(--line)}
+.s-contact .ct-co b{display:block;font-size:30px;font-weight:700;color:var(--navy)}
+.s-contact .ct-co span{display:block;font-size:22px;color:var(--text-muted);font-weight:300;margin-top:4px}
 .s-contact .note{font-size:25px;color:var(--text-muted);font-weight:300;margin-top:30px;max-width:700px;line-height:1.5}
 .s-contact .qr{
   width:400px;height:400px;border-radius:24px;background:#fff;display:grid;place-items:center;padding:22px;
@@ -363,27 +372,27 @@ button{font-family:inherit;color:inherit;border:0;background:none;cursor:pointer
       <div class="hm-lbl">ผลงานแยกตามแบรนด์ &mdash; กดเพื่อดู</div>
       <div class="hm-grid" style="--cw:181px;--ch:322px;--cols:9">
       <button class="card" data-goto="2">
-        <div class="thumb"><video src="assets/video/m121-tria/01.mp4" preload="metadata" muted playsinline></video></div>
+        <div class="thumb"><video src="assets/video/m121-tria/01.mp4" preload="metadata" muted playsinline></video></div><img class="logo" src="assets/logos/TRIA.png" alt="">
         <div class="body"><b>TRIA</b><i>สุขภาพ / เวลเนส</i></div>
       </button>
       <button class="card" data-goto="3">
-        <div class="thumb"><video src="assets/video/m127-groove55/01.mp4" preload="metadata" muted playsinline></video></div>
+        <div class="thumb"><video src="assets/video/m127-groove55/01.mp4" preload="metadata" muted playsinline></video></div><img class="logo" src="assets/logos/Terra.jpg" alt="">
         <div class="body"><b>Terra Groove55</b><i>ร้านอาหาร</i></div>
       </button>
       <button class="card" data-goto="4">
-        <div class="thumb"><video src="assets/video/m145-morbow/01.mp4" preload="metadata" muted playsinline></video></div>
+        <div class="thumb"><video src="assets/video/m145-morbow/01.mp4" preload="metadata" muted playsinline></video></div><img class="logo" src="assets/logos/%E0%B8%AB%E0%B8%A1%E0%B8%AD%E0%B9%82%E0%B8%9A%E0%B8%A7%E0%B9%8C.jpg" alt="">
         <div class="body"><b>หมอโบว์</b><i>คลินิก</i></div>
       </button>
       <button class="card" data-goto="5">
-        <div class="thumb"><video src="assets/video/m104-kozue/01.mp4" preload="metadata" muted playsinline></video></div>
+        <div class="thumb"><video src="assets/video/m104-kozue/01.mp4" preload="metadata" muted playsinline></video></div><img class="logo" src="assets/logos/KOZUE.jpg" alt="">
         <div class="body"><b>Kozue Omakaze</b><i>ร้านอาหารญี่ปุ่น</i></div>
       </button>
       <button class="card" data-goto="7">
-        <div class="thumb"><video src="assets/video/m077-smartclinic/01.mp4" preload="metadata" muted playsinline></video></div>
+        <div class="thumb"><video src="assets/video/m077-smartclinic/01.mp4" preload="metadata" muted playsinline></video></div><img class="logo" src="assets/logos/S'Mart%20Clinic.jpg" alt="">
         <div class="body"><b>Smart Clinic</b><i>คลินิก</i></div>
       </button>
       <button class="card" data-goto="9">
-        <div class="thumb"><video src="assets/video/m100-barcode/01.mp4" preload="metadata" muted playsinline></video></div>
+        <div class="thumb"><video src="assets/video/m100-barcode/01.mp4" preload="metadata" muted playsinline></video></div><img class="logo" src="assets/logos/%E0%B8%AA%E0%B8%96%E0%B8%B2%E0%B8%9A%E0%B8%B1%E0%B8%99%E0%B8%9A%E0%B8%B2%E0%B8%A3%E0%B9%8C%E0%B9%82%E0%B8%84%E0%B9%89%E0%B8%94%E0%B8%8A%E0%B8%B5%E0%B8%A7%E0%B8%B4%E0%B8%95.jpg" alt="">
         <div class="body"><b>สถาบันบาร์โค้ดชีวิต</b><i>คอร์ส / ที่ปรึกษา</i></div>
       </button>
       <button class="card" data-goto="11">
@@ -407,19 +416,19 @@ button{font-family:inherit;color:inherit;border:0;background:none;cursor:pointer
         <div class="body"><b>Florenza Clinic</b><i>คลินิกความงาม</i></div>
       </button>
       <button class="card" data-goto="17">
-        <div class="thumb"><span class="initial">J</span></div>
+        <div class="thumb"><span class="initial">J</span></div><img class="logo" src="assets/logos/Jigo.jpg" alt="">
         <div class="body"><b>Jigo Smoothie</b><i>อาหาร / เครื่องดื่ม</i></div>
       </button>
       <button class="card" data-goto="19">
-        <div class="thumb"><span class="initial">S</span></div>
+        <div class="thumb"><span class="initial">S</span></div><img class="logo" src="assets/logos/Shooshoke.jpg" alt="">
         <div class="body"><b>ShooShoke</b><i></i></div>
       </button>
       <button class="card" data-goto="20">
-        <div class="thumb"><span class="initial">ห</span></div>
+        <div class="thumb"><span class="initial">ห</span></div><img class="logo" src="assets/logos/%E0%B8%AB%E0%B8%A1%E0%B8%AD%E0%B9%80%E0%B8%96%E0%B8%B5%E0%B8%A2%E0%B8%A3.jpg" alt="">
         <div class="body"><b>หมอเถียร</b><i>แพทย์แผนจีน</i></div>
       </button>
       <button class="card" data-goto="21">
-        <div class="thumb"><span class="initial">S</span></div>
+        <div class="thumb"><span class="initial">S</span></div><img class="logo" src="assets/logos/Saim%20auto%20car.jpg" alt="">
         <div class="body"><b>Siam Auto Car</b><i>ยานยนต์</i></div>
       </button>
       <button class="card" data-goto="22">
@@ -427,7 +436,7 @@ button{font-family:inherit;color:inherit;border:0;background:none;cursor:pointer
         <div class="body"><b>Sharisma</b><i>อาหารเสริม / เวลเนส</i></div>
       </button>
       <button class="card" data-goto="24">
-        <div class="thumb"><span class="initial">P</span></div>
+        <div class="thumb"><span class="initial">P</span></div><img class="logo" src="assets/logos/PN%20auto%20part.jpg" alt="">
         <div class="body"><b>PN Auto Part</b><i>อะไหล่ยนต์</i></div>
       </button>
       </div>
@@ -447,7 +456,7 @@ button{font-family:inherit;color:inherit;border:0;background:none;cursor:pointer
   
   <div class="veil"></div>
   <div class="mid">
-    <div class="co-brand"><i class="dot"></i><span>ติดจรวด</span></div>
+    <img class="co-logo" src="assets/brand/logo-white.png" alt="ติดจรวด">
     <h1>คลิปที่ขายได้<br><em>ไม่ใช่แค่คลิปที่สวย</em></h1>
     <p>ผลิตคลิปสั้น &amp; UGC โดยทีมที่ยิงแอดจริงทุกวัน</p>
   </div>
@@ -473,7 +482,7 @@ button{font-family:inherit;color:inherit;border:0;background:none;cursor:pointer
 
 <div class="slide s-brand" data-dur="12000" data-brand="m121-tria">
   <div class="bs-head">
-    <div class="bs-logo"><span class="initial">T</span></div>
+    <div class="bs-logo"><img src="assets/logos/TRIA.png" alt="TRIA"></div>
     <div class="bs-id"><h2>TRIA</h2><div class="cat">สุขภาพ / เวลเนส</div></div>
     
   </div>
@@ -486,7 +495,7 @@ button{font-family:inherit;color:inherit;border:0;background:none;cursor:pointer
 
 <div class="slide s-brand" data-dur="12000" data-brand="m127-groove55">
   <div class="bs-head">
-    <div class="bs-logo"><span class="initial">T</span></div>
+    <div class="bs-logo"><img src="assets/logos/Terra.jpg" alt="Terra Groove55"></div>
     <div class="bs-id"><h2>Terra Groove55</h2><div class="cat">ร้านอาหาร</div></div>
     
   </div>
@@ -499,7 +508,7 @@ button{font-family:inherit;color:inherit;border:0;background:none;cursor:pointer
 
 <div class="slide s-brand" data-dur="12000" data-brand="m145-morbow">
   <div class="bs-head">
-    <div class="bs-logo"><span class="initial">ห</span></div>
+    <div class="bs-logo"><img src="assets/logos/%E0%B8%AB%E0%B8%A1%E0%B8%AD%E0%B9%82%E0%B8%9A%E0%B8%A7%E0%B9%8C.jpg" alt="หมอโบว์"></div>
     <div class="bs-id"><h2>หมอโบว์</h2><div class="cat">คลินิก</div></div>
     
   </div>
@@ -513,7 +522,7 @@ button{font-family:inherit;color:inherit;border:0;background:none;cursor:pointer
 
 <div class="slide s-brand" data-dur="12000" data-brand="m104-kozue">
   <div class="bs-head">
-    <div class="bs-logo"><span class="initial">K</span></div>
+    <div class="bs-logo"><img src="assets/logos/KOZUE.jpg" alt="Kozue Omakaze"></div>
     <div class="bs-id"><h2>Kozue Omakaze</h2><div class="cat">ร้านอาหารญี่ปุ่น</div></div>
     
   </div>
@@ -532,7 +541,7 @@ button{font-family:inherit;color:inherit;border:0;background:none;cursor:pointer
 
 <div class="slide s-brand" data-dur="12000" data-brand="m077-smartclinic">
   <div class="bs-head">
-    <div class="bs-logo"><span class="initial">S</span></div>
+    <div class="bs-logo"><img src="assets/logos/S'Mart%20Clinic.jpg" alt="Smart Clinic"></div>
     <div class="bs-id"><h2>Smart Clinic</h2><div class="cat">คลินิก</div></div>
     <div class="bs-metric"><b>70.9K</b><span>ผู้ติดตาม TikTok หมอมาศ</span></div>
   </div>
@@ -546,7 +555,7 @@ button{font-family:inherit;color:inherit;border:0;background:none;cursor:pointer
 
 <div class="slide s-channel" data-dur="14000" data-channel="m077-smartclinic">
   <div class="ch-head">
-    <div class="ch-avatar"><span>ห</span></div>
+    
     <div class="ch-id">
       <div class="eyebrow">ผลงานบนช่องจริง &middot; TikTok</div>
       <h2>หมอมาศ Anti Aging</h2>
@@ -555,7 +564,7 @@ button{font-family:inherit;color:inherit;border:0;background:none;cursor:pointer
     </div>
   </div>
   <div class="ch-body">
-    <div class="ch-shot ch-shot-empty"><span>รอภาพหน้าช่อง<br><code>assets/screens/dr-mas-profile.png</code></span></div>
+    <div class="ch-shot"><img src="assets/screens/dr-mas-profile.jpg" alt="หน้าช่อง หมอมาศ Anti Aging"></div>
     <div class="ch-right">
       <div class="ch-stats"><div class="ch-stat"><b>70.9K</b><span>ผู้ติดตาม</span></div><div class="ch-stat"><b>508.7K</b><span>ยอดถูกใจรวม</span></div><div class="ch-stat"><b>811K</b><span>ยอดดูคลิปสูงสุด</span></div></div>
       <div class="ch-posts" style="--cw:339px;--ch:604px;--cols:3">
@@ -575,7 +584,7 @@ button{font-family:inherit;color:inherit;border:0;background:none;cursor:pointer
 
 <div class="slide s-brand" data-dur="12000" data-brand="m100-barcode">
   <div class="bs-head">
-    <div class="bs-logo"><span class="initial">ส</span></div>
+    <div class="bs-logo"><img src="assets/logos/%E0%B8%AA%E0%B8%96%E0%B8%B2%E0%B8%9A%E0%B8%B1%E0%B8%99%E0%B8%9A%E0%B8%B2%E0%B8%A3%E0%B9%8C%E0%B9%82%E0%B8%84%E0%B9%89%E0%B8%94%E0%B8%8A%E0%B8%B5%E0%B8%A7%E0%B8%B4%E0%B8%95.jpg" alt="สถาบันบาร์โค้ดชีวิต"></div>
     <div class="bs-id"><h2>สถาบันบาร์โค้ดชีวิต</h2><div class="cat">คอร์ส / ที่ปรึกษา</div></div>
     <div class="bs-metric"><b>105.3K</b><span>ผู้ติดตาม TikTok</span></div>
   </div>
@@ -589,7 +598,7 @@ button{font-family:inherit;color:inherit;border:0;background:none;cursor:pointer
 
 <div class="slide s-channel" data-dur="14000" data-channel="m100-barcode">
   <div class="ch-head">
-    <div class="ch-avatar"><span>ซ</span></div>
+    
     <div class="ch-id">
       <div class="eyebrow">ผลงานบนช่องจริง &middot; TikTok</div>
       <h2>ซินแสบาร์โค้ดชีวิต</h2>
@@ -598,7 +607,7 @@ button{font-family:inherit;color:inherit;border:0;background:none;cursor:pointer
     </div>
   </div>
   <div class="ch-body">
-    <div class="ch-shot ch-shot-empty"><span>รอภาพหน้าช่อง<br><code>assets/screens/zinzaebarcode-profile.png</code></span></div>
+    <div class="ch-shot"><img src="assets/screens/zinzaebarcode-profile.jpg" alt="หน้าช่อง ซินแสบาร์โค้ดชีวิต"></div>
     <div class="ch-right">
       <div class="ch-stats"><div class="ch-stat"><b>105.3K</b><span>ผู้ติดตาม</span></div><div class="ch-stat"><b>745.4K</b><span>ยอดถูกใจรวม</span></div><div class="ch-stat"><b>8.3M</b><span>ยอดดูรวม 3 คลิปปักหมุด</span></div></div>
       <div class="ch-posts" style="--cw:339px;--ch:604px;--cols:3">
@@ -694,7 +703,7 @@ button{font-family:inherit;color:inherit;border:0;background:none;cursor:pointer
 
 <div class="slide s-brand" data-dur="12000" data-brand="m093-jigo">
   <div class="bs-head">
-    <div class="bs-logo"><span class="initial">J</span></div>
+    <div class="bs-logo"><img src="assets/logos/Jigo.jpg" alt="Jigo Smoothie"></div>
     <div class="bs-id"><h2>Jigo Smoothie</h2><div class="cat">อาหาร / เครื่องดื่ม</div></div>
     
   </div>
@@ -714,7 +723,7 @@ button{font-family:inherit;color:inherit;border:0;background:none;cursor:pointer
 
 <div class="slide s-brand" data-dur="12000" data-autoskip="1" data-brand="m108-shooshoke">
   <div class="bs-head">
-    <div class="bs-logo"><span class="initial">S</span></div>
+    <div class="bs-logo"><img src="assets/logos/Shooshoke.jpg" alt="ShooShoke"></div>
     <div class="bs-id"><h2>ShooShoke</h2><div class="cat"></div></div>
     
   </div>
@@ -728,7 +737,7 @@ button{font-family:inherit;color:inherit;border:0;background:none;cursor:pointer
 
 <div class="slide s-brand" data-dur="12000" data-autoskip="1" data-brand="m123-mortian">
   <div class="bs-head">
-    <div class="bs-logo"><span class="initial">ห</span></div>
+    <div class="bs-logo"><img src="assets/logos/%E0%B8%AB%E0%B8%A1%E0%B8%AD%E0%B9%80%E0%B8%96%E0%B8%B5%E0%B8%A2%E0%B8%A3.jpg" alt="หมอเถียร"></div>
     <div class="bs-id"><h2>หมอเถียร</h2><div class="cat">แพทย์แผนจีน</div></div>
     
   </div>
@@ -742,7 +751,7 @@ button{font-family:inherit;color:inherit;border:0;background:none;cursor:pointer
 
 <div class="slide s-brand" data-dur="12000" data-autoskip="1" data-brand="m140-siamauto">
   <div class="bs-head">
-    <div class="bs-logo"><span class="initial">S</span></div>
+    <div class="bs-logo"><img src="assets/logos/Saim%20auto%20car.jpg" alt="Siam Auto Car"></div>
     <div class="bs-id"><h2>Siam Auto Car</h2><div class="cat">ยานยนต์</div></div>
     
   </div>
@@ -776,7 +785,7 @@ button{font-family:inherit;color:inherit;border:0;background:none;cursor:pointer
 
 <div class="slide s-brand" data-dur="12000" data-autoskip="1" data-brand="pn-autopart">
   <div class="bs-head">
-    <div class="bs-logo"><span class="initial">P</span></div>
+    <div class="bs-logo"><img src="assets/logos/PN%20auto%20part.jpg" alt="PN Auto Part"></div>
     <div class="bs-id"><h2>PN Auto Part</h2><div class="cat">อะไหล่ยนต์</div></div>
     
   </div>
@@ -789,42 +798,41 @@ button{font-family:inherit;color:inherit;border:0;background:none;cursor:pointer
 </div>
 
 <div class="slide s-pack" data-dur="10000" data-key="packages">
-  <div class="eyebrow">แพ็กเกจ</div>
-  <h2>เลือกได้ตามจำนวนคลิปต่อเดือน</h2>
+  <div class="eyebrow">ค่าบริการ · ราคาเริ่มต้น</div>
+  <h2>เลือกเฉพาะที่ธุรกิจคุณต้องการได้</h2>
   <div class="pk">
-    <div class="p">
-      <div class="nm">STARTER</div>
-      <div class="pr">รอใส่ราคา</div>
-      <div class="un">เริ่มต้นที่ / เดือน</div>
-      <ul><li>คลิปสั้น 4 ตัว / เดือน</li><li>ปรับแก้ 1 รอบต่อคลิป</li><li>ส่งไฟล์พร้อมยิงแอด</li></ul>
-    </div>
     <div class="p hot">
-      <div class="nm">GROWTH</div>
-      <div class="pr">รอใส่ราคา</div>
-      <div class="un">เริ่มต้นที่ / เดือน</div>
-      <ul><li>คลิปสั้น 8 ตัว / เดือน</li><li>UGC ครีเอเตอร์ 2 ตัว</li><li>วาง Hook จากดาต้าการยิงแอด</li></ul>
+      <div class="nm">01 · CONTENT</div>
+      <div class="pr">2,000.-</div>
+      <div class="un">/ คลิป (เริ่มต้น)</div>
+      <ul><li>Short-form 15–60 วิ</li><li>Ad-Optimized Hook</li><li>Editing + Subtitle</li></ul>
     </div>
     <div class="p">
-      <div class="nm">SCALE</div>
-      <div class="pr">รอใส่ราคา</div>
-      <div class="un">เริ่มต้นที่ / เดือน</div>
-      <ul><li>คลิปสั้น 16 ตัว / เดือน</li><li>UGC ครีเอเตอร์ 4 ตัว</li><li>ทดสอบและคัดตัวชนะรายสัปดาห์</li></ul>
+      <div class="nm">02 · INFLUENCE</div>
+      <div class="pr">20%</div>
+      <div class="un">ของงบ KOL</div>
+      <ul><li>คัดครีเอเตอร์ให้ตรงกลุ่ม</li><li>บรีฟและประสานงาน</li><li>รายงานผล</li></ul>
+    </div>
+    <div class="p">
+      <div class="nm">03 · LIVE</div>
+      <div class="pr">1,500.-</div>
+      <div class="un">/ ชั่วโมง (เริ่มต้น)</div>
+      <ul><li>Live Sales มือโปร</li><li>Engagement สด</li><li>GMV Report</li></ul>
     </div>
   </div>
-  <div class="note">ราคายังไม่รวม VAT · ค่าครีเอเตอร์และค่าโปรดักชันนอกสถานที่คิดแยกตามงาน</div>
+  <div class="note">ราคาเริ่มต้น ยังไม่รวม VAT · ค่าครีเอเตอร์และค่าโปรดักชันนอกสถานที่คิดแยกตามงาน</div>
 </div>
 
 <div class="slide s-contact" data-dur="10000" data-key="contact">
   <div>
-    <div class="eyebrow">คุยกับเราที่บูธได้เลย</div>
-    <h2>อยากได้คลิปที่ขายได้<br><span>เริ่มที่นี่</span></h2>
-    <div class="lines">
-      <div>LINE &nbsp;<b>รอใส่ LINE ID</b></div>
-      <div>โทร &nbsp;<b>รอใส่เบอร์</b></div>
-    </div>
-    <div class="note">สแกน QR เพื่อแอดไลน์ รับประเมินคลิปปัจจุบันของแบรนด์คุณฟรี</div>
+    <img class="ct-logo" src="assets/brand/logo-color.png" alt="ติดจรวด">
+    <div class="eyebrow">เริ่มต้นแบบไม่มีความเสี่ยง</div>
+    <h2>รับ Audit คลิปฟรี<br><span>มูลค่า 3,000 บาท</span></h2>
+    <div class="lines"><div><span>Line / TikTok</span><b>@tidjaruad</b></div><div><span>โทรศัพท์</span><b>062-294-5324</b></div><div><span>เว็บไซต์</span><b>www.tidjaruad.co.th</b></div><div><span>อีเมล</span><b>service@tidjaruad.co.th</b></div></div>
+    <div class="ct-co"><b>บริษัท ติดจรวด จำกัด</b><span>Performance Marketing Agency · Friendly Growth Partner</span></div>
+    <div class="note">วิเคราะห์คลิปปัจจุบัน หาจุดรั่ว + โอกาสโต · ตอบกลับภายใน 2 ชั่วโมง · ไม่มีข้อผูกมัด</div>
   </div>
-  <div class="qr"><div class="ph">รอใส่รูป QR<br>(assets/qr.png)</div></div>
+  <div class="qr"><div class="ph">รอใส่รูป QR<br><code>assets/qr.png</code></div></div>
 </div>
     </section>
 
