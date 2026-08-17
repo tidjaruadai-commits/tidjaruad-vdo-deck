@@ -186,6 +186,48 @@ button{font-family:inherit;color:inherit;border:0;background:none;cursor:pointer
 }
 .clip.empty span{font-size:21px;color:var(--text-muted);font-weight:300;text-align:center;padding:0 16px;line-height:1.5}
 
+/* --- channel slide: ผลงานจริงบนช่องลูกค้า --- */
+.s-channel{padding:44px 72px 48px;display:flex;flex-direction:column}
+.ch-head{display:flex;align-items:flex-end;gap:48px;flex:none}
+.ch-id{flex:1;min-width:0}
+.ch-id h2{font-size:52px;font-weight:800;color:var(--navy);line-height:1.1;margin-top:8px}
+.ch-id .ch-handle{font-size:27px;color:var(--red);font-weight:600;margin-top:4px}
+.ch-id .ch-tag{font-size:23px;color:var(--text-muted);font-weight:300;margin-top:6px}
+.ch-stats{display:flex;gap:16px;flex:none}
+.ch-stat{
+  min-width:210px;padding:20px 26px;border-radius:16px;text-align:center;background:#fff;
+  border:1px solid var(--line);box-shadow:var(--shadow);position:relative;overflow:hidden;
+}
+.ch-stat::before{content:'';position:absolute;top:0;left:0;width:100%;height:4px;background:var(--accent)}
+.ch-stat b{display:block;font-size:46px;font-weight:800;color:var(--red);line-height:1.05}
+.ch-stat span{display:block;font-size:20px;color:var(--text-muted);font-weight:300;margin-top:4px}
+
+.ch-posts{
+  flex:1;min-height:0;display:flex;gap:28px;margin-top:28px;justify-content:center;align-items:center;
+}
+.ch-posts .ch-post{width:var(--cw);height:var(--ch);flex:none}
+.ch-post .ch-noclip{
+  position:absolute;inset:0;display:grid;place-items:center;
+  background:linear-gradient(155deg,var(--navy),var(--navy-deep));
+}
+.ch-post .ch-noclip span{font-size:21px;color:rgba(255,255,255,.5);font-weight:300;text-align:center;padding:0 20px;line-height:1.5}
+.ch-views{
+  position:absolute;top:14px;left:14px;z-index:2;padding:10px 18px;border-radius:12px;
+  background:var(--red);color:#fff;text-align:center;box-shadow:0 6px 18px rgba(255,51,71,.45);
+}
+.ch-views b{display:block;font-size:34px;font-weight:800;line-height:1}
+.ch-views i{display:block;font-style:normal;font-size:16px;font-weight:400;opacity:.92;margin-top:2px}
+.ch-meta{
+  position:absolute;left:0;right:0;bottom:0;z-index:2;padding:70px 18px 18px;color:#fff;
+  background:linear-gradient(180deg,transparent,rgba(10,14,31,.95));
+}
+.ch-meta b{display:block;font-size:23px;font-weight:600;line-height:1.3}
+.ch-eng{display:flex;flex-wrap:wrap;gap:10px 16px;margin-top:10px}
+.ch-eng span{font-size:19px;font-weight:300;color:rgba(255,255,255,.86)}
+
+.chip.chip-ch{color:var(--red);border-color:rgba(255,51,71,.45);background:rgba(255,51,71,.07);font-weight:600}
+.chip.chip-ch:hover{background:rgba(255,51,71,.14);border-color:var(--red)}
+
 /* --- message slide --- */
 .s-msg{padding:96px 120px;display:flex;flex-direction:column;justify-content:center}
 .s-msg h2{font-size:86px;font-weight:800;line-height:1.08;margin:18px 0 48px;color:var(--navy)}
@@ -316,61 +358,63 @@ button{font-family:inherit;color:inherit;border:0;background:none;cursor:pointer
         <div class="thumb"><video src="assets/video/m077-smartclinic/01.mp4" preload="metadata" muted playsinline></video></div>
         <div class="body"><b>Smart Clinic</b><i>คลินิก</i></div>
       </button>
-      <button class="card" data-goto="8">
+      <button class="card" data-goto="9">
         <div class="thumb"><video src="assets/video/m100-barcode/01.mp4" preload="metadata" muted playsinline></video></div>
         <div class="body"><b>สถาบันบาร์โค้ดชีวิต</b><i>คอร์ส / ที่ปรึกษา</i></div>
       </button>
-      <button class="card" data-goto="9">
+      <button class="card" data-goto="11">
         <div class="thumb"><span class="initial">M</span></div>
         <div class="body"><b>MildGlucan</b><i>อาหารเสริม</i></div>
       </button>
-      <button class="card" data-goto="10">
+      <button class="card" data-goto="12">
         <div class="thumb"><span class="initial">L</span></div>
         <div class="body"><b>Lilsheep</b><i></i></div>
       </button>
-      <button class="card" data-goto="12">
+      <button class="card" data-goto="14">
         <div class="thumb"><span class="initial">B</span></div>
         <div class="body"><b>BPK9</b><i>โรงพยาบาล</i></div>
       </button>
-      <button class="card" data-goto="13">
+      <button class="card" data-goto="15">
         <div class="thumb"><span class="initial">P</span></div>
         <div class="body"><b>Positif</b><i></i></div>
       </button>
-      <button class="card" data-goto="14">
+      <button class="card" data-goto="16">
         <div class="thumb"><span class="initial">F</span></div>
         <div class="body"><b>Florenza Clinic</b><i>คลินิกความงาม</i></div>
       </button>
-      <button class="card" data-goto="15">
+      <button class="card" data-goto="17">
         <div class="thumb"><span class="initial">J</span></div>
         <div class="body"><b>Jigo Smoothie</b><i>อาหาร / เครื่องดื่ม</i></div>
       </button>
-      <button class="card" data-goto="17">
+      <button class="card" data-goto="19">
         <div class="thumb"><span class="initial">S</span></div>
         <div class="body"><b>ShooShoke</b><i></i></div>
       </button>
-      <button class="card" data-goto="18">
+      <button class="card" data-goto="20">
         <div class="thumb"><span class="initial">ห</span></div>
         <div class="body"><b>หมอเถียร</b><i>แพทย์แผนจีน</i></div>
       </button>
-      <button class="card" data-goto="19">
+      <button class="card" data-goto="21">
         <div class="thumb"><span class="initial">S</span></div>
         <div class="body"><b>Siam Auto Car</b><i>ยานยนต์</i></div>
       </button>
-      <button class="card" data-goto="20">
+      <button class="card" data-goto="22">
         <div class="thumb"><span class="initial">S</span></div>
         <div class="body"><b>Sharisma</b><i>อาหารเสริม / เวลเนส</i></div>
       </button>
-      <button class="card" data-goto="22">
+      <button class="card" data-goto="24">
         <div class="thumb"><span class="initial">P</span></div>
         <div class="body"><b>PN Auto Part</b><i>อะไหล่ยนต์</i></div>
       </button>
       </div>
       <div class="hm-chips">
+      <button class="chip chip-ch" data-goto="8">&#9654; ผลงานช่อง หมอมาศ Anti Aging</button>
+      <button class="chip chip-ch" data-goto="10">&#9654; ผลงานช่อง ซินแสบาร์โค้ดชีวิต</button>
       <button class="chip" data-goto="6">เราทำอะไร</button>
-      <button class="chip" data-goto="11">ทำไมต้องเรา</button>
-      <button class="chip" data-goto="16">ขั้นตอนงาน</button>
-      <button class="chip" data-goto="23">แพ็กเกจ</button>
-      <button class="chip" data-goto="24">ติดต่อ</button>
+      <button class="chip" data-goto="13">ทำไมต้องเรา</button>
+      <button class="chip" data-goto="18">ขั้นตอนงาน</button>
+      <button class="chip" data-goto="25">แพ็กเกจ</button>
+      <button class="chip" data-goto="26">ติดต่อ</button>
       </div>
     </section>
 
@@ -466,7 +510,7 @@ button{font-family:inherit;color:inherit;border:0;background:none;cursor:pointer
   <div class="bs-head">
     <div class="bs-logo"><span class="initial">S</span></div>
     <div class="bs-id"><h2>Smart Clinic</h2><div class="cat">คลินิก</div></div>
-    
+    <div class="bs-metric"><b>70.9K</b><span>ผู้ติดตาม TikTok หมอมาศ</span></div>
   </div>
   <div class="bs-clips" style="--cw:424px;--ch:754px;--cols:4">
       <div class="clip"><video src="assets/video/m077-smartclinic/01.mp4" preload="metadata" loop playsinline></video></div>
@@ -476,17 +520,63 @@ button{font-family:inherit;color:inherit;border:0;background:none;cursor:pointer
   </div>
 </div>
 
+<div class="slide s-channel" data-dur="14000" data-channel="m077-smartclinic">
+  <div class="ch-head">
+    <div class="ch-id">
+      <div class="eyebrow">ผลงานบนช่องจริง &middot; TikTok</div>
+      <h2>หมอมาศ Anti Aging</h2>
+      <div class="ch-handle">@dr.mas.co</div>
+      <div class="ch-tag">&quot;Your Body is The Best Doctor&quot; — เวชศาสตร์ชะลอวัยและป้องกัน</div>
+    </div>
+    <div class="ch-stats"><div class="ch-stat"><b>70.9K</b><span>ผู้ติดตาม</span></div><div class="ch-stat"><b>508.7K</b><span>ยอดถูกใจรวม</span></div><div class="ch-stat"><b>811K</b><span>ยอดดูคลิปสูงสุด</span></div></div>
+  </div>
+  <div class="ch-posts" style="--cw:369px;--ch:656px;--cols:3">
+      <div class="clip ch-post"><video src="assets/video/m077-smartclinic/ch-sleep.mp4" preload="metadata" loop playsinline></video><div class="ch-views"><b>811K</b><i>ยอดดู</i></div>
+        <div class="ch-meta"><b>&quot;การนอนดึก&quot; ส่งผลอย่างไร</b><div class="ch-eng"><span>&#9825; 24.9K</span><span>&#128172; 237</span><span>&#128278; 3,964</span><span>&#10150; 20.9K</span></div></div>
+      </div>
+      <div class="clip ch-post"><div class="ch-noclip"><span>ไม่มีไฟล์คลิปต้นฉบับ</span></div><div class="ch-views"><b>176.2K</b><i>ยอดดู</i></div>
+        <div class="ch-meta"><b>อายุ 53 ปี หน้าเด็กขนาดนี้ ดูแลตัวเองยังไง</b><div class="ch-eng"><span>&#9825; 5,590</span><span>&#128172; 114</span><span>&#128278; 540</span><span>&#10150; 696</span></div></div>
+      </div>
+      <div class="clip ch-post"><video src="assets/video/m077-smartclinic/01.mp4" preload="metadata" loop playsinline></video>
+        <div class="ch-meta"><b>อาหารแช่เย็นนาน อาจทำให้เป็นมะเร็งโดยไม่รู้ตัว</b><div class="ch-eng"><span>&#9825; 12.1K</span><span>&#128172; 146</span><span>&#128278; 1,379</span><span>&#10150; 5,957</span></div></div>
+      </div>
+  </div>
+</div>
+
 <div class="slide s-brand" data-dur="12000" data-brand="m100-barcode">
   <div class="bs-head">
     <div class="bs-logo"><span class="initial">ส</span></div>
     <div class="bs-id"><h2>สถาบันบาร์โค้ดชีวิต</h2><div class="cat">คอร์ส / ที่ปรึกษา</div></div>
-    
+    <div class="bs-metric"><b>105.3K</b><span>ผู้ติดตาม TikTok</span></div>
   </div>
   <div class="bs-clips" style="--cw:424px;--ch:754px;--cols:4">
       <div class="clip"><video src="assets/video/m100-barcode/01.mp4" preload="metadata" loop playsinline></video></div>
       <div class="clip"><video src="assets/video/m100-barcode/02.mp4" preload="metadata" loop playsinline></video></div>
       <div class="clip"><video src="assets/video/m100-barcode/03.mp4" preload="metadata" loop playsinline></video></div>
       <div class="clip"><video src="assets/video/m100-barcode/04.mp4" preload="metadata" loop playsinline></video></div>
+  </div>
+</div>
+
+<div class="slide s-channel" data-dur="14000" data-channel="m100-barcode">
+  <div class="ch-head">
+    <div class="ch-id">
+      <div class="eyebrow">ผลงานบนช่องจริง &middot; TikTok</div>
+      <h2>ซินแสบาร์โค้ดชีวิต</h2>
+      <div class="ch-handle">@zinzaebarcode</div>
+      <div class="ch-tag">สอนโหงวเฮ้ง / ฮวงจุ้ย / ลายเซ็น สำหรับเจ้าของกิจการและองค์กร</div>
+    </div>
+    <div class="ch-stats"><div class="ch-stat"><b>105.3K</b><span>ผู้ติดตาม</span></div><div class="ch-stat"><b>745.4K</b><span>ยอดถูกใจรวม</span></div><div class="ch-stat"><b>8.3M</b><span>ยอดดูรวม 3 คลิปปักหมุด</span></div></div>
+  </div>
+  <div class="ch-posts" style="--cw:369px;--ch:656px;--cols:3">
+      <div class="clip ch-post"><div class="ch-noclip"><span>ไม่มีไฟล์คลิปต้นฉบับ</span></div><div class="ch-views"><b>4M</b><i>ยอดดู</i></div>
+        <div class="ch-meta"><b>โหงวเฮ้งแบบไหนไม่ควรเอามาทำผัว</b><div class="ch-eng"><span>&#9825; 94.2K</span><span>&#128172; 1,173</span><span>&#128278; 9,746</span><span>&#10150; 24.5K</span></div></div>
+      </div>
+      <div class="clip ch-post"><video src="assets/video/m100-barcode/03.mp4" preload="metadata" loop playsinline></video><div class="ch-views"><b>2.3M</b><i>ยอดดู</i></div>
+        <div class="ch-meta"><b>คนรวยหรือคนจน ดูง่าย ๆ ที่จมูก</b><div class="ch-eng"><span>&#9825; 45K</span><span>&#128172; 474</span><span>&#128278; 4,410</span><span>&#10150; 10K</span></div></div>
+      </div>
+      <div class="clip ch-post"><video src="assets/video/m100-barcode/ch-house.mp4" preload="metadata" loop playsinline></video><div class="ch-views"><b>2M</b><i>ยอดดู</i></div>
+        <div class="ch-meta"><b>บ้านนี้ใครใหญ่ ดูได้จากฝั่งที่นอน</b><div class="ch-eng"><span>&#9825; 31.7K</span><span>&#128172; 571</span><span>&#128278; 3,625</span><span>&#10150; 18.2K</span></div></div>
+      </div>
   </div>
 </div>
 
