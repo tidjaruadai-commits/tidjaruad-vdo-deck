@@ -922,7 +922,7 @@ button{font-family:inherit;color:inherit;border:0;background:none;cursor:pointer
   </div>
 </div>
 
-<script>window.__CFG__ = {"coverMs":6000,"wallMs":15000,"textSlideMs":8000,"packagesMs":10000,"contactMs":10000,"maxVideoMs":45000,"idleReturnMs":60000,"messageEvery":4,"maxLoopBrands":12};</script>
+<script>window.__CFG__ = {"coverMs":6000,"wallMs":15000,"textSlideMs":8000,"packagesMs":10000,"contactMs":10000,"maxVideoMs":15000,"idleReturnMs":60000,"messageEvery":4,"maxLoopBrands":12};</script>
 <script>
 (function () {
   'use strict';
@@ -993,8 +993,13 @@ button{font-family:inherit;color:inherit;border:0;background:none;cursor:pointer
     vids(s).forEach(function (v) {
       if (isFinite(v.duration) && v.duration > longest) longest = v.duration;
     });
-    if (longest > 0) base = Math.max(base, Math.round(longest * 1000) + 600);
-    return Math.min(base, CFG.maxVideoMs || 45000);
+    if (longest > 0) {
+      // maxVideoMs เป็นเพดานของ "เวลาที่ยืดตามความยาวคลิป" เท่านั้น
+      // ไม่เอาไปกดทับ data-dur ที่ตั้งมาเอง (ไม่งั้นตั้ง wallMs สูงกว่าเพดานแล้วจะถูกหั่นเงียบ ๆ)
+      var byClip = Math.min(Math.round(longest * 1000) + 600, CFG.maxVideoMs || 45000);
+      base = Math.max(base, byClip);
+    }
+    return base;
   }
 
   function runProg(ms) {
