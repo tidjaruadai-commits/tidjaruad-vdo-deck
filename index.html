@@ -116,6 +116,14 @@ button{font-family:inherit;color:inherit;border:0;background:none;cursor:pointer
 .card .body b{display:block;font-size:20px;font-weight:600;line-height:1.25;color:#fff}
 .card .body i{display:block;font-style:normal;font-size:17px;color:#FF8A96;margin-top:4px;font-weight:400}
 
+/* การ์ดที่ยังไม่มีคลิป แต่มีโลโก้ -> พื้นสว่าง โลโก้เต็มกรอบ ตัวหนังสือกลับเป็นสีเข้ม */
+.card.card-logo{background:#fff}
+.thumb-logo{background:var(--white);padding:26px 22px 62px}
+.thumb-logo img{width:100%;height:100%;object-fit:contain}
+.card.card-logo .body{background:linear-gradient(180deg,transparent 0%,rgba(255,253,248,.92) 42%,var(--white) 100%);padding-top:40px}
+.card.card-logo .body b{color:var(--navy)}
+.card.card-logo .body i{color:var(--red)}
+
 .hm-chips{display:flex;gap:14px;margin-top:26px;flex:none;flex-wrap:wrap}
 .chip{
   padding:16px 30px;border-radius:999px;font-size:23px;font-weight:500;color:var(--text-mid);
@@ -440,83 +448,83 @@ button{font-family:inherit;color:inherit;border:0;background:none;cursor:pointer
       <div class="hm-rule"></div>
       <div class="hm-lbl">ผลงานแยกตามแบรนด์ &mdash; กดเพื่อดู</div>
       <div class="hm-grid" style="--cw:181px;--ch:322px;--cols:9">
-      <button class="card" data-goto="2">
+      <button class="card" data-goto="8">
         <div class="thumb"><video src="assets/video/m121-tria/01.mp4" preload="metadata" muted playsinline></video></div><img class="logo" src="assets/logos/TRIA.png" alt="">
         <div class="body"><b>TRIA</b><i>สุขภาพ / เวลเนส</i></div>
       </button>
-      <button class="card" data-goto="3">
+      <button class="card" data-goto="11">
         <div class="thumb"><video src="assets/video/m127-groove55/01.mp4" preload="metadata" muted playsinline></video></div><img class="logo" src="assets/logos/Terra.jpg" alt="">
         <div class="body"><b>Terra Groove55</b><i>ร้านอาหาร</i></div>
       </button>
-      <button class="card" data-goto="4">
+      <button class="card" data-goto="9">
         <div class="thumb"><video src="assets/video/m145-morbow/01.mp4" preload="metadata" muted playsinline></video></div><img class="logo" src="assets/logos/%E0%B8%AB%E0%B8%A1%E0%B8%AD%E0%B9%82%E0%B8%9A%E0%B8%A7%E0%B9%8C.jpg" alt="">
         <div class="body"><b>หมอโบว์</b><i>คลินิก</i></div>
       </button>
-      <button class="card" data-goto="5">
+      <button class="card" data-goto="10">
         <div class="thumb"><video src="assets/video/m104-kozue/01.mp4" preload="metadata" muted playsinline></video></div><img class="logo" src="assets/logos/KOZUE.jpg" alt="">
         <div class="body"><b>Kozue Omakaze</b><i>ร้านอาหารญี่ปุ่น</i></div>
       </button>
-      <button class="card" data-goto="7">
+      <button class="card" data-goto="3">
         <div class="thumb"><video src="assets/video/m077-smartclinic/01.mp4" preload="metadata" muted playsinline></video></div><img class="logo" src="assets/logos/S'Mart%20Clinic.jpg" alt="">
         <div class="body"><b>Smart Clinic</b><i>คลินิก</i></div>
       </button>
-      <button class="card" data-goto="9">
+      <button class="card" data-goto="5">
         <div class="thumb"><video src="assets/video/m100-barcode/01.mp4" preload="metadata" muted playsinline></video></div><img class="logo" src="assets/logos/%E0%B8%AA%E0%B8%96%E0%B8%B2%E0%B8%9A%E0%B8%B1%E0%B8%99%E0%B8%9A%E0%B8%B2%E0%B8%A3%E0%B9%8C%E0%B9%82%E0%B8%84%E0%B9%89%E0%B8%94%E0%B8%8A%E0%B8%B5%E0%B8%A7%E0%B8%B4%E0%B8%95.jpg" alt="">
         <div class="body"><b>สถาบันบาร์โค้ดชีวิต</b><i>คอร์ส / ที่ปรึกษา</i></div>
       </button>
-      <button class="card" data-goto="11">
+      <button class="card" data-goto="15">
         <div class="thumb"><span class="initial">M</span></div>
         <div class="body"><b>MildGlucan</b><i>อาหารเสริม</i></div>
       </button>
-      <button class="card" data-goto="12">
+      <button class="card" data-goto="16">
         <div class="thumb"><span class="initial">L</span></div>
-        <div class="body"><b>Lilsheep</b><i></i></div>
+        <div class="body"><b>Lilsheep</b><i>โปรตีน / อาหารเสริม</i></div>
       </button>
-      <button class="card" data-goto="14">
+      <button class="card" data-goto="17">
         <div class="thumb"><span class="initial">B</span></div>
         <div class="body"><b>BPK9</b><i>โรงพยาบาล</i></div>
       </button>
-      <button class="card" data-goto="15">
+      <button class="card" data-goto="18">
         <div class="thumb"><span class="initial">P</span></div>
-        <div class="body"><b>Positif</b><i></i></div>
+        <div class="body"><b>Positif</b><i>อาหารเสริมความงาม</i></div>
       </button>
-      <button class="card" data-goto="16">
+      <button class="card" data-goto="19">
         <div class="thumb"><span class="initial">F</span></div>
         <div class="body"><b>Florenza Clinic</b><i>คลินิกความงาม</i></div>
       </button>
-      <button class="card" data-goto="17">
-        <div class="thumb"><span class="initial">J</span></div><img class="logo" src="assets/logos/Jigo.jpg" alt="">
+      <button class="card card-logo" data-goto="20">
+        <div class="thumb thumb-logo"><img src="assets/logos/Jigo.jpg" alt="Jigo Smoothie"></div>
         <div class="body"><b>Jigo Smoothie</b><i>อาหาร / เครื่องดื่ม</i></div>
       </button>
-      <button class="card" data-goto="19">
-        <div class="thumb"><span class="initial">S</span></div><img class="logo" src="assets/logos/Shooshoke.jpg" alt="">
-        <div class="body"><b>ShooShoke</b><i></i></div>
+      <button class="card card-logo" data-goto="21">
+        <div class="thumb thumb-logo"><img src="assets/logos/Shooshoke.jpg" alt="ShooShoke"></div>
+        <div class="body"><b>ShooShoke</b><i>เกษตรอินทรีย์</i></div>
       </button>
-      <button class="card" data-goto="20">
-        <div class="thumb"><span class="initial">ห</span></div><img class="logo" src="assets/logos/%E0%B8%AB%E0%B8%A1%E0%B8%AD%E0%B9%80%E0%B8%96%E0%B8%B5%E0%B8%A2%E0%B8%A3.jpg" alt="">
+      <button class="card card-logo" data-goto="22">
+        <div class="thumb thumb-logo"><img src="assets/logos/%E0%B8%AB%E0%B8%A1%E0%B8%AD%E0%B9%80%E0%B8%96%E0%B8%B5%E0%B8%A2%E0%B8%A3.jpg" alt="หมอเถียร"></div>
         <div class="body"><b>หมอเถียร</b><i>แพทย์แผนจีน</i></div>
       </button>
-      <button class="card" data-goto="21">
-        <div class="thumb"><span class="initial">S</span></div><img class="logo" src="assets/logos/Saim%20auto%20car.jpg" alt="">
+      <button class="card card-logo" data-goto="23">
+        <div class="thumb thumb-logo"><img src="assets/logos/Saim%20auto%20car.jpg" alt="Siam Auto Car"></div>
         <div class="body"><b>Siam Auto Car</b><i>ยานยนต์</i></div>
       </button>
-      <button class="card" data-goto="22">
+      <button class="card" data-goto="24">
         <div class="thumb"><span class="initial">S</span></div>
         <div class="body"><b>Sharisma</b><i>อาหารเสริม / เวลเนส</i></div>
       </button>
-      <button class="card" data-goto="24">
-        <div class="thumb"><span class="initial">P</span></div><img class="logo" src="assets/logos/PN%20auto%20part.jpg" alt="">
+      <button class="card card-logo" data-goto="25">
+        <div class="thumb thumb-logo"><img src="assets/logos/PN%20auto%20part.jpg" alt="PN Auto Part"></div>
         <div class="body"><b>PN Auto Part</b><i>อะไหล่ยนต์</i></div>
       </button>
       </div>
       <div class="hm-chips">
-      <button class="chip chip-ch" data-goto="8">&#9654; ผลงานช่อง หมอมาศ Anti Aging</button>
-      <button class="chip chip-ch" data-goto="10">&#9654; ผลงานช่อง ซินแสบาร์โค้ดชีวิต</button>
-      <button class="chip" data-goto="6">เราทำอะไร</button>
-      <button class="chip" data-goto="13">ทำไมต้องเรา</button>
-      <button class="chip" data-goto="18">ขั้นตอนงาน</button>
-      <button class="chip" data-goto="25">แพ็กเกจ</button>
-      <button class="chip" data-goto="26">ติดต่อ</button>
+      <button class="chip chip-ch" data-goto="4">&#9654; ผลงานช่อง หมอมาศ Anti Aging</button>
+      <button class="chip chip-ch" data-goto="6">&#9654; ผลงานช่อง ซินแสบาร์โค้ดชีวิต</button>
+      <button class="chip" data-goto="2">เราทำอะไร</button>
+      <button class="chip" data-goto="12">ทำไมต้องเรา</button>
+      <button class="chip" data-goto="7">ขั้นตอนงาน</button>
+      <button class="chip" data-goto="13">แพ็กเกจ</button>
+      <button class="chip" data-goto="14">ติดต่อ</button>
       </div>
     </section>
 
@@ -546,59 +554,6 @@ button{font-family:inherit;color:inherit;border:0;background:none;cursor:pointer
       <div class="clip"><video src="assets/video/wall/m077-smartclinic-02.mp4" preload="metadata" loop playsinline data-silent="1" muted></video></div>
       <div class="clip"><video src="assets/video/wall/m100-barcode-01.mp4" preload="metadata" loop playsinline data-silent="1" muted></video></div>
       <div class="clip"><video src="assets/video/wall/m100-barcode-02.mp4" preload="metadata" loop playsinline data-silent="1" muted></video></div>
-  </div>
-</div>
-
-<div class="slide s-brand" data-dur="12000" data-brand="m121-tria">
-  <div class="bs-head">
-    <div class="bs-logo"><img src="assets/logos/TRIA.png" alt="TRIA"></div>
-    <div class="bs-id"><h2>TRIA</h2><div class="cat">สุขภาพ / เวลเนส</div></div>
-    
-  </div>
-  <div class="bs-clips" style="--cw:450px;--ch:800px;--cols:3">
-      <div class="clip"><video src="assets/video/m121-tria/01.mp4" preload="metadata" loop playsinline></video></div>
-      <div class="clip"><video src="assets/video/m121-tria/02.mp4" preload="metadata" loop playsinline></video></div>
-      <div class="clip"><video src="assets/video/m121-tria/03.mp4" preload="metadata" loop playsinline></video></div>
-  </div>
-</div>
-
-<div class="slide s-brand" data-dur="12000" data-brand="m127-groove55">
-  <div class="bs-head">
-    <div class="bs-logo"><img src="assets/logos/Terra.jpg" alt="Terra Groove55"></div>
-    <div class="bs-id"><h2>Terra Groove55</h2><div class="cat">ร้านอาหาร</div></div>
-    
-  </div>
-  <div class="bs-clips" style="--cw:450px;--ch:800px;--cols:3">
-      <div class="clip"><video src="assets/video/m127-groove55/01.mp4" preload="metadata" loop playsinline></video></div>
-      <div class="clip"><video src="assets/video/m127-groove55/02.mp4" preload="metadata" loop playsinline></video></div>
-      <div class="clip"><video src="assets/video/m127-groove55/03.mp4" preload="metadata" loop playsinline></video></div>
-  </div>
-</div>
-
-<div class="slide s-brand" data-dur="12000" data-brand="m145-morbow">
-  <div class="bs-head">
-    <div class="bs-logo"><img src="assets/logos/%E0%B8%AB%E0%B8%A1%E0%B8%AD%E0%B9%82%E0%B8%9A%E0%B8%A7%E0%B9%8C.jpg" alt="หมอโบว์"></div>
-    <div class="bs-id"><h2>หมอโบว์</h2><div class="cat">คลินิก</div></div>
-    
-  </div>
-  <div class="bs-clips" style="--cw:424px;--ch:754px;--cols:4">
-      <div class="clip"><video src="assets/video/m145-morbow/01.mp4" preload="metadata" loop playsinline></video></div>
-      <div class="clip"><video src="assets/video/m145-morbow/02.mp4" preload="metadata" loop playsinline></video></div>
-      <div class="clip"><video src="assets/video/m145-morbow/03.mp4" preload="metadata" loop playsinline></video></div>
-      <div class="clip"><video src="assets/video/m145-morbow/04.mp4" preload="metadata" loop playsinline></video></div>
-  </div>
-</div>
-
-<div class="slide s-brand" data-dur="12000" data-brand="m104-kozue">
-  <div class="bs-head">
-    <div class="bs-logo"><img src="assets/logos/KOZUE.jpg" alt="Kozue Omakaze"></div>
-    <div class="bs-id"><h2>Kozue Omakaze</h2><div class="cat">ร้านอาหารญี่ปุ่น</div></div>
-    
-  </div>
-  <div class="bs-clips" style="--cw:450px;--ch:800px;--cols:3">
-      <div class="clip"><video src="assets/video/m104-kozue/01.mp4" preload="metadata" loop playsinline></video></div>
-      <div class="clip"><video src="assets/video/m104-kozue/02.mp4" preload="metadata" loop playsinline></video></div>
-      <div class="clip"><video src="assets/video/m104-kozue/03.mp4" preload="metadata" loop playsinline></video></div>
   </div>
 </div>
 
@@ -694,7 +649,113 @@ button{font-family:inherit;color:inherit;border:0;background:none;cursor:pointer
   </div>
 </div>
 
-<div class="slide s-brand" data-dur="12000" data-brand="m030-mildglucan">
+<div class="slide s-msg" data-dur="8000" data-msg="process">
+  <div class="eyebrow">ขั้นตอนงาน</div>
+  <h2>ตั้งแต่บรีฟ<br><span>ถึงคลิปที่ชนะ</span></h2>
+  <div class="steps"><div class="step"><svg class="ico ico-step" aria-hidden="true"><use href="#icon-strategy-planning"/></svg><b>รับบรีฟ</b></div><div class="step"><svg class="ico ico-step" aria-hidden="true"><use href="#icon-content-creative"/></svg><b>วาง Hook / สคริปต์</b></div><div class="step"><svg class="ico ico-step" aria-hidden="true"><use href="#icon-tiktok-ads"/></svg><b>ถ่ายทำ</b></div><div class="step"><svg class="ico ico-step" aria-hidden="true"><use href="#icon-content-creative"/></svg><b>ตัดต่อ</b></div><div class="step"><svg class="ico ico-step" aria-hidden="true"><use href="#icon-ads-optimization"/></svg><b>ยิงทดสอบ</b></div><div class="step"><svg class="ico ico-step" aria-hidden="true"><use href="#icon-sales-growth"/></svg><b>คัดตัวชนะไปสเกล</b></div></div>
+</div>
+
+<div class="slide s-brand" data-dur="12000" data-brand="m121-tria">
+  <div class="bs-head">
+    <div class="bs-logo"><img src="assets/logos/TRIA.png" alt="TRIA"></div>
+    <div class="bs-id"><h2>TRIA</h2><div class="cat">สุขภาพ / เวลเนส</div></div>
+    
+  </div>
+  <div class="bs-clips" style="--cw:450px;--ch:800px;--cols:3">
+      <div class="clip"><video src="assets/video/m121-tria/01.mp4" preload="metadata" loop playsinline></video></div>
+      <div class="clip"><video src="assets/video/m121-tria/02.mp4" preload="metadata" loop playsinline></video></div>
+      <div class="clip"><video src="assets/video/m121-tria/03.mp4" preload="metadata" loop playsinline></video></div>
+  </div>
+</div>
+
+<div class="slide s-brand" data-dur="12000" data-brand="m145-morbow">
+  <div class="bs-head">
+    <div class="bs-logo"><img src="assets/logos/%E0%B8%AB%E0%B8%A1%E0%B8%AD%E0%B9%82%E0%B8%9A%E0%B8%A7%E0%B9%8C.jpg" alt="หมอโบว์"></div>
+    <div class="bs-id"><h2>หมอโบว์</h2><div class="cat">คลินิก</div></div>
+    
+  </div>
+  <div class="bs-clips" style="--cw:424px;--ch:754px;--cols:4">
+      <div class="clip"><video src="assets/video/m145-morbow/01.mp4" preload="metadata" loop playsinline></video></div>
+      <div class="clip"><video src="assets/video/m145-morbow/02.mp4" preload="metadata" loop playsinline></video></div>
+      <div class="clip"><video src="assets/video/m145-morbow/03.mp4" preload="metadata" loop playsinline></video></div>
+      <div class="clip"><video src="assets/video/m145-morbow/04.mp4" preload="metadata" loop playsinline></video></div>
+  </div>
+</div>
+
+<div class="slide s-brand" data-dur="12000" data-brand="m104-kozue">
+  <div class="bs-head">
+    <div class="bs-logo"><img src="assets/logos/KOZUE.jpg" alt="Kozue Omakaze"></div>
+    <div class="bs-id"><h2>Kozue Omakaze</h2><div class="cat">ร้านอาหารญี่ปุ่น</div></div>
+    
+  </div>
+  <div class="bs-clips" style="--cw:450px;--ch:800px;--cols:3">
+      <div class="clip"><video src="assets/video/m104-kozue/01.mp4" preload="metadata" loop playsinline></video></div>
+      <div class="clip"><video src="assets/video/m104-kozue/02.mp4" preload="metadata" loop playsinline></video></div>
+      <div class="clip"><video src="assets/video/m104-kozue/03.mp4" preload="metadata" loop playsinline></video></div>
+  </div>
+</div>
+
+<div class="slide s-brand" data-dur="12000" data-brand="m127-groove55">
+  <div class="bs-head">
+    <div class="bs-logo"><img src="assets/logos/Terra.jpg" alt="Terra Groove55"></div>
+    <div class="bs-id"><h2>Terra Groove55</h2><div class="cat">ร้านอาหาร</div></div>
+    
+  </div>
+  <div class="bs-clips" style="--cw:450px;--ch:800px;--cols:3">
+      <div class="clip"><video src="assets/video/m127-groove55/01.mp4" preload="metadata" loop playsinline></video></div>
+      <div class="clip"><video src="assets/video/m127-groove55/02.mp4" preload="metadata" loop playsinline></video></div>
+      <div class="clip"><video src="assets/video/m127-groove55/03.mp4" preload="metadata" loop playsinline></video></div>
+  </div>
+</div>
+
+<div class="slide s-msg" data-dur="8000" data-msg="diff">
+  <div class="eyebrow">ทำไมต้องเรา</div>
+  <h2>เราเป็นเอเจนซี่ยิงแอด<br><span>ที่ผลิตคลิปเอง</span></h2>
+  <div class="items"><div class="item"><svg class="ico ico-item" aria-hidden="true"><use href="#icon-ads-optimization"/></svg><h3>ทำคลิปจากดาต้าจริง ไม่ใช่เดา</h3><p>เรารู้ว่า hook แบบไหน CTR ดี เพราะเรายิงแอดให้ลูกค้าทุกวัน เอาผลจริงมาออกแบบคลิปตัวถัดไป</p></div><div class="item"><svg class="ico ico-item" aria-hidden="true"><use href="#icon-performance-report"/></svg><h3>วัดผลได้ ไม่ใช่แค่ส่งไฟล์จบ</h3><p>คลิปทุกตัวถูกเอาไปทดสอบจริง แล้วคัดตัวที่ทำผลได้ดีที่สุดมาสเกลต่อ</p></div></div>
+</div>
+
+<div class="slide s-pack" data-dur="10000" data-key="packages">
+  <div class="eyebrow">ค่าบริการ · ราคาเริ่มต้น</div>
+  <h2>เลือกเฉพาะที่ธุรกิจคุณต้องการได้</h2>
+  <div class="pk">
+    <div class="p hot">
+      <svg class="ico ico-pack" aria-hidden="true"><use href="#icon-content-creative"/></svg>
+      <div class="nm">01 · CONTENT</div>
+      <div class="pr">2,000.-</div>
+      <div class="un">/ คลิป (เริ่มต้น)</div>
+      <ul><li>Short-form 15–60 วิ</li><li>Ad-Optimized Hook</li><li>Editing + Subtitle</li></ul>
+    </div>
+    <div class="p">
+      <svg class="ico ico-pack" aria-hidden="true"><use href="#icon-tiktok-ads"/></svg>
+      <div class="nm">02 · INFLUENCE</div>
+      <div class="pr">20%</div>
+      <div class="un">ของงบ KOL</div>
+      <ul><li>คัดครีเอเตอร์ให้ตรงกลุ่ม</li><li>บรีฟและประสานงาน</li><li>รายงานผล</li></ul>
+    </div>
+    <div class="p">
+      <svg class="ico ico-pack" aria-hidden="true"><use href="#icon-sales-growth"/></svg>
+      <div class="nm">03 · LIVE</div>
+      <div class="pr">1,500.-</div>
+      <div class="un">/ ชั่วโมง (เริ่มต้น)</div>
+      <ul><li>Live Sales มือโปร</li><li>Engagement สด</li><li>GMV Report</li></ul>
+    </div>
+  </div>
+  <div class="note">ราคาเริ่มต้น ยังไม่รวม VAT · ค่าครีเอเตอร์และค่าโปรดักชันนอกสถานที่คิดแยกตามงาน</div>
+</div>
+
+<div class="slide s-contact" data-dur="10000" data-key="contact">
+  <div>
+    <img class="ct-logo" src="assets/brand/logo-color.png" alt="ติดจรวด">
+    <div class="eyebrow">เริ่มต้นแบบไม่มีความเสี่ยง</div>
+    <h2>รับ Audit คลิปฟรี<br><span>มูลค่า 3,000 บาท</span></h2>
+    <div class="lines"><div><span>Line / TikTok</span><b>@tidjaruad</b></div><div><span>โทรศัพท์</span><b>062-294-5324</b></div><div><span>เว็บไซต์</span><b>www.tidjaruad.co.th</b></div><div><span>อีเมล</span><b>service@tidjaruad.co.th</b></div></div>
+    <div class="ct-co"><b>บริษัท ติดจรวด จำกัด</b><span>Performance Marketing Agency · Friendly Growth Partner</span></div>
+    <div class="note">วิเคราะห์คลิปปัจจุบัน หาจุดรั่ว + โอกาสโต · ตอบกลับภายใน 2 ชั่วโมง · ไม่มีข้อผูกมัด</div>
+  </div>
+  <div class="qr"><div class="ph">รอใส่รูป QR<br><code>assets/qr.png</code></div></div>
+</div>
+
+<div class="slide s-brand" data-dur="12000" data-autoskip="1" data-brand="m030-mildglucan">
   <div class="bs-head">
     <div class="bs-logo"><span class="initial">M</span></div>
     <div class="bs-id"><h2>MildGlucan</h2><div class="cat">อาหารเสริม</div></div>
@@ -708,10 +769,10 @@ button{font-family:inherit;color:inherit;border:0;background:none;cursor:pointer
   </div>
 </div>
 
-<div class="slide s-brand" data-dur="12000" data-brand="m039-lilsheep">
+<div class="slide s-brand" data-dur="12000" data-autoskip="1" data-brand="m039-lilsheep">
   <div class="bs-head">
     <div class="bs-logo"><span class="initial">L</span></div>
-    <div class="bs-id"><h2>Lilsheep</h2><div class="cat"></div></div>
+    <div class="bs-id"><h2>Lilsheep</h2><div class="cat">โปรตีน / อาหารเสริม</div></div>
     
   </div>
   <div class="bs-clips" style="--cw:424px;--ch:754px;--cols:4">
@@ -722,13 +783,7 @@ button{font-family:inherit;color:inherit;border:0;background:none;cursor:pointer
   </div>
 </div>
 
-<div class="slide s-msg" data-dur="8000" data-msg="diff">
-  <div class="eyebrow">ทำไมต้องเรา</div>
-  <h2>เราเป็นเอเจนซี่ยิงแอด<br><span>ที่ผลิตคลิปเอง</span></h2>
-  <div class="items"><div class="item"><svg class="ico ico-item" aria-hidden="true"><use href="#icon-ads-optimization"/></svg><h3>ทำคลิปจากดาต้าจริง ไม่ใช่เดา</h3><p>เรารู้ว่า hook แบบไหน CTR ดี เพราะเรายิงแอดให้ลูกค้าทุกวัน เอาผลจริงมาออกแบบคลิปตัวถัดไป</p></div><div class="item"><svg class="ico ico-item" aria-hidden="true"><use href="#icon-performance-report"/></svg><h3>วัดผลได้ ไม่ใช่แค่ส่งไฟล์จบ</h3><p>คลิปทุกตัวถูกเอาไปทดสอบจริง แล้วคัดตัวที่ทำผลได้ดีที่สุดมาสเกลต่อ</p></div></div>
-</div>
-
-<div class="slide s-brand" data-dur="12000" data-brand="m066-bpk9">
+<div class="slide s-brand" data-dur="12000" data-autoskip="1" data-brand="m066-bpk9">
   <div class="bs-head">
     <div class="bs-logo"><span class="initial">B</span></div>
     <div class="bs-id"><h2>BPK9</h2><div class="cat">โรงพยาบาล</div></div>
@@ -742,10 +797,10 @@ button{font-family:inherit;color:inherit;border:0;background:none;cursor:pointer
   </div>
 </div>
 
-<div class="slide s-brand" data-dur="12000" data-brand="m073-positif">
+<div class="slide s-brand" data-dur="12000" data-autoskip="1" data-brand="m073-positif">
   <div class="bs-head">
     <div class="bs-logo"><span class="initial">P</span></div>
-    <div class="bs-id"><h2>Positif</h2><div class="cat"></div></div>
+    <div class="bs-id"><h2>Positif</h2><div class="cat">อาหารเสริมความงาม</div></div>
     
   </div>
   <div class="bs-clips" style="--cw:424px;--ch:754px;--cols:4">
@@ -756,7 +811,7 @@ button{font-family:inherit;color:inherit;border:0;background:none;cursor:pointer
   </div>
 </div>
 
-<div class="slide s-brand" data-dur="12000" data-brand="m084-florenza">
+<div class="slide s-brand" data-dur="12000" data-autoskip="1" data-brand="m084-florenza">
   <div class="bs-head">
     <div class="bs-logo"><span class="initial">F</span></div>
     <div class="bs-id"><h2>Florenza Clinic</h2><div class="cat">คลินิกความงาม</div></div>
@@ -770,7 +825,7 @@ button{font-family:inherit;color:inherit;border:0;background:none;cursor:pointer
   </div>
 </div>
 
-<div class="slide s-brand" data-dur="12000" data-brand="m093-jigo">
+<div class="slide s-brand" data-dur="12000" data-autoskip="1" data-brand="m093-jigo">
   <div class="bs-head">
     <div class="bs-logo"><img src="assets/logos/Jigo.jpg" alt="Jigo Smoothie"></div>
     <div class="bs-id"><h2>Jigo Smoothie</h2><div class="cat">อาหาร / เครื่องดื่ม</div></div>
@@ -784,16 +839,10 @@ button{font-family:inherit;color:inherit;border:0;background:none;cursor:pointer
   </div>
 </div>
 
-<div class="slide s-msg" data-dur="8000" data-msg="process">
-  <div class="eyebrow">ขั้นตอนงาน</div>
-  <h2>ตั้งแต่บรีฟ<br><span>ถึงคลิปที่ชนะ</span></h2>
-  <div class="steps"><div class="step"><svg class="ico ico-step" aria-hidden="true"><use href="#icon-strategy-planning"/></svg><b>รับบรีฟ</b></div><div class="step"><svg class="ico ico-step" aria-hidden="true"><use href="#icon-content-creative"/></svg><b>วาง Hook / สคริปต์</b></div><div class="step"><svg class="ico ico-step" aria-hidden="true"><use href="#icon-tiktok-ads"/></svg><b>ถ่ายทำ</b></div><div class="step"><svg class="ico ico-step" aria-hidden="true"><use href="#icon-content-creative"/></svg><b>ตัดต่อ</b></div><div class="step"><svg class="ico ico-step" aria-hidden="true"><use href="#icon-ads-optimization"/></svg><b>ยิงทดสอบ</b></div><div class="step"><svg class="ico ico-step" aria-hidden="true"><use href="#icon-sales-growth"/></svg><b>คัดตัวชนะไปสเกล</b></div></div>
-</div>
-
 <div class="slide s-brand" data-dur="12000" data-autoskip="1" data-brand="m108-shooshoke">
   <div class="bs-head">
     <div class="bs-logo"><img src="assets/logos/Shooshoke.jpg" alt="ShooShoke"></div>
-    <div class="bs-id"><h2>ShooShoke</h2><div class="cat"></div></div>
+    <div class="bs-id"><h2>ShooShoke</h2><div class="cat">เกษตรอินทรีย์</div></div>
     
   </div>
   <div class="bs-clips" style="--cw:424px;--ch:754px;--cols:4">
@@ -846,12 +895,6 @@ button{font-family:inherit;color:inherit;border:0;background:none;cursor:pointer
   </div>
 </div>
 
-<div class="slide s-msg" data-dur="8000" data-msg="services">
-  <div class="eyebrow">เราทำอะไร</div>
-  <h2>ผลิตคลิปให้แบรนด์<br><span>2 แบบ</span></h2>
-  <div class="items"><div class="item"><svg class="ico ico-item" aria-hidden="true"><use href="#icon-content-creative"/></svg><h3>คลิปสั้นสำหรับยิงแอด</h3><p>TikTok / Reels เน้น hook 3 วินาทีแรก ผลิตเป็นชุดต่อเดือน เอาไปยิงแอดต่อได้ทันที</p></div><div class="item"><svg class="ico ico-item" aria-hidden="true"><use href="#icon-tiktok-ads"/></svg><h3>UGC / รีวิวครีเอเตอร์</h3><p>คลิปคนจริงรีวิวสินค้า สไตล์ธรรมชาติ เลือกครีเอเตอร์ให้ตรงกลุ่มลูกค้าของแบรนด์</p></div></div>
-</div>
-
 <div class="slide s-brand" data-dur="12000" data-autoskip="1" data-brand="pn-autopart">
   <div class="bs-head">
     <div class="bs-logo"><img src="assets/logos/PN%20auto%20part.jpg" alt="PN Auto Part"></div>
@@ -864,47 +907,6 @@ button{font-family:inherit;color:inherit;border:0;background:none;cursor:pointer
       <div class="clip empty"><span>รอไฟล์คลิป</span></div>
       <div class="clip empty"><span>รอไฟล์คลิป</span></div>
   </div>
-</div>
-
-<div class="slide s-pack" data-dur="10000" data-key="packages">
-  <div class="eyebrow">ค่าบริการ · ราคาเริ่มต้น</div>
-  <h2>เลือกเฉพาะที่ธุรกิจคุณต้องการได้</h2>
-  <div class="pk">
-    <div class="p hot">
-      <svg class="ico ico-pack" aria-hidden="true"><use href="#icon-content-creative"/></svg>
-      <div class="nm">01 · CONTENT</div>
-      <div class="pr">2,000.-</div>
-      <div class="un">/ คลิป (เริ่มต้น)</div>
-      <ul><li>Short-form 15–60 วิ</li><li>Ad-Optimized Hook</li><li>Editing + Subtitle</li></ul>
-    </div>
-    <div class="p">
-      <svg class="ico ico-pack" aria-hidden="true"><use href="#icon-tiktok-ads"/></svg>
-      <div class="nm">02 · INFLUENCE</div>
-      <div class="pr">20%</div>
-      <div class="un">ของงบ KOL</div>
-      <ul><li>คัดครีเอเตอร์ให้ตรงกลุ่ม</li><li>บรีฟและประสานงาน</li><li>รายงานผล</li></ul>
-    </div>
-    <div class="p">
-      <svg class="ico ico-pack" aria-hidden="true"><use href="#icon-sales-growth"/></svg>
-      <div class="nm">03 · LIVE</div>
-      <div class="pr">1,500.-</div>
-      <div class="un">/ ชั่วโมง (เริ่มต้น)</div>
-      <ul><li>Live Sales มือโปร</li><li>Engagement สด</li><li>GMV Report</li></ul>
-    </div>
-  </div>
-  <div class="note">ราคาเริ่มต้น ยังไม่รวม VAT · ค่าครีเอเตอร์และค่าโปรดักชันนอกสถานที่คิดแยกตามงาน</div>
-</div>
-
-<div class="slide s-contact" data-dur="10000" data-key="contact">
-  <div>
-    <img class="ct-logo" src="assets/brand/logo-color.png" alt="ติดจรวด">
-    <div class="eyebrow">เริ่มต้นแบบไม่มีความเสี่ยง</div>
-    <h2>รับ Audit คลิปฟรี<br><span>มูลค่า 3,000 บาท</span></h2>
-    <div class="lines"><div><span>Line / TikTok</span><b>@tidjaruad</b></div><div><span>โทรศัพท์</span><b>062-294-5324</b></div><div><span>เว็บไซต์</span><b>www.tidjaruad.co.th</b></div><div><span>อีเมล</span><b>service@tidjaruad.co.th</b></div></div>
-    <div class="ct-co"><b>บริษัท ติดจรวด จำกัด</b><span>Performance Marketing Agency · Friendly Growth Partner</span></div>
-    <div class="note">วิเคราะห์คลิปปัจจุบัน หาจุดรั่ว + โอกาสโต · ตอบกลับภายใน 2 ชั่วโมง · ไม่มีข้อผูกมัด</div>
-  </div>
-  <div class="qr"><div class="ph">รอใส่รูป QR<br><code>assets/qr.png</code></div></div>
 </div>
     </section>
 
