@@ -1,0 +1,970 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex">
+<title>ติดจรวด — คลิปที่ขายได้</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700;800&display=swap');
+
+/* พาเลทเดียวกับ Sale Deck 2026 */
+:root{
+  --navy:#1B1D45;
+  --navy-deep:#0A0E1F;
+  --red:#FF3347;
+  --blue:#4F8CFF;
+  --white:#FFFDF8;
+  --gray:#EEF2F7;
+  --text:#1B1D45;
+  --text-mid:#3D4070;
+  --text-muted:#7E82B0;
+  --line:rgba(27,29,69,.12);
+  --shadow:0 2px 14px rgba(27,29,69,.08);
+  --shadow-lg:0 14px 40px rgba(27,29,69,.14);
+  --accent:linear-gradient(90deg,var(--red),var(--blue));
+  --s:1;
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%;overflow:hidden;background:#050916}
+body{
+  font-family:'Kanit','Leelawadee UI',Tahoma,sans-serif;
+  color:var(--text);
+  -webkit-font-smoothing:antialiased;
+  cursor:default;
+}
+img{display:block;max-width:100%}
+button{font-family:inherit;color:inherit;border:0;background:none;cursor:pointer}
+
+/* กรอบเวทีชุดเดียวกับ Sale Deck 2026: การ์ดลอยกลางจอ ขอบมน มีเงา พื้นรอบ navy เข้ม */
+#wrap{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;overflow:hidden;background:var(--navy-deep)}
+
+.stage{
+  width:1920px;height:1080px;flex:none;position:relative;overflow:hidden;
+  transform:scale(var(--s));transform-origin:center center;
+  background:var(--white);
+  border-radius:18px;
+  box-shadow:0 26px 70px rgba(0,0,0,.42), 0 0 0 1px rgba(255,255,255,.08);
+}
+
+/* ---------- screens ---------- */
+.screen{position:absolute;inset:0;opacity:0;visibility:hidden;transition:opacity .4s ease}
+.screen.on{opacity:1;visibility:visible}
+
+/* ================= HOME / สารบัญ ================= */
+#home{display:flex;flex-direction:column;padding:52px 72px 40px;background:var(--white)}
+
+.hm-top{display:flex;align-items:flex-end;gap:44px}
+.hm-brand{display:flex;align-items:center;gap:16px;flex:none;padding-bottom:8px}
+.hm-brand .dot{width:14px;height:14px;border-radius:50%;background:var(--red)}
+.hm-brand span{font-size:30px;font-weight:800;color:var(--navy);letter-spacing:.01em}
+.hm-title{flex:1}
+.hm-title h1{font-size:62px;font-weight:800;line-height:1.05;color:var(--navy)}
+.hm-title h1 em{font-style:normal;color:var(--red)}
+.hm-title p{font-size:25px;color:var(--text-muted);margin-top:8px;font-weight:300}
+
+.hm-play{
+  flex:none;display:flex;align-items:center;gap:16px;
+  padding:22px 44px;border-radius:999px;
+  background:var(--red);color:#fff;
+  font-size:31px;font-weight:700;
+  box-shadow:0 14px 34px rgba(255,51,71,.32);
+  transition:transform .15s ease, box-shadow .15s ease, background .15s ease;
+}
+.hm-play:hover{transform:translateY(-3px);background:#F51E34;box-shadow:0 20px 44px rgba(255,51,71,.42)}
+.hm-play:active{transform:translateY(0)}
+.hm-play .tri{width:0;height:0;border-left:23px solid #fff;border-top:14px solid transparent;border-bottom:14px solid transparent}
+
+.hm-rule{height:4px;background:var(--accent);border-radius:2px;margin:30px 0 26px;width:200px}
+
+.hm-lbl{font-size:22px;color:var(--red);font-weight:600;letter-spacing:.08em;text-transform:uppercase;margin-bottom:18px}
+
+/* การ์ดสารบัญ = กรอบ 9:16 ล้วน ชื่อแบรนด์ทับบนภาพ (ขนาดคำนวณตอน build) */
+.hm-grid{
+  flex:1;min-height:0;overflow-y:auto;overflow-x:hidden;
+  display:grid;grid-template-columns:repeat(var(--cols,6),var(--cw,281px));gap:18px;
+  justify-content:center;align-content:start;padding:4px 12px 4px 4px;
+  scrollbar-width:thin;scrollbar-color:#C9D2E0 transparent;
+}
+.hm-grid::-webkit-scrollbar{width:10px}
+.hm-grid::-webkit-scrollbar-thumb{background:#C9D2E0;border-radius:8px}
+
+.card{
+  position:relative;width:var(--cw);height:var(--ch);
+  text-align:left;border-radius:14px;overflow:hidden;background:var(--navy-deep);
+  box-shadow:var(--shadow);outline:3px solid transparent;outline-offset:-3px;
+  transition:transform .16s ease, outline-color .16s ease, box-shadow .16s ease;
+}
+.card:hover{transform:translateY(-6px);outline-color:var(--red);box-shadow:var(--shadow-lg)}
+.card .thumb{
+  position:absolute;inset:0;overflow:hidden;
+  background:linear-gradient(155deg,var(--navy),var(--navy-deep));
+  display:grid;place-items:center;
+}
+.card .thumb img,.card .thumb video{width:100%;height:100%;object-fit:cover;display:block}
+.card .thumb .initial{font-size:64px;font-weight:800;color:rgba(255,255,255,.18)}
+.card .logo{
+  position:absolute;left:10px;top:10px;z-index:2;
+  width:46px;height:46px;border-radius:10px;background:#fff;padding:5px;object-fit:contain;
+  box-shadow:0 2px 8px rgba(0,0,0,.28);
+}
+.card .body{
+  position:absolute;left:0;right:0;bottom:0;z-index:2;padding:56px 14px 14px;
+  background:linear-gradient(180deg,transparent,rgba(10,14,31,.95));
+}
+.card .body b{display:block;font-size:20px;font-weight:600;line-height:1.25;color:#fff}
+.card .body i{display:block;font-style:normal;font-size:17px;color:#FF8A96;margin-top:4px;font-weight:400}
+
+.hm-chips{display:flex;gap:14px;margin-top:26px;flex:none;flex-wrap:wrap}
+.chip{
+  padding:16px 30px;border-radius:999px;font-size:23px;font-weight:500;color:var(--text-mid);
+  border:1px solid var(--line);background:#fff;box-shadow:var(--shadow);
+  transition:color .15s ease,border-color .15s ease,background .15s ease;
+}
+.chip:hover{color:var(--red);border-color:var(--red);background:rgba(255,51,71,.06)}
+
+/* ================= DECK ================= */
+.slide{position:absolute;inset:0;opacity:0;visibility:hidden;transition:opacity .4s ease;background:var(--white)}
+.slide.on{opacity:1;visibility:visible}
+
+.eyebrow{font-size:23px;letter-spacing:.16em;color:var(--red);font-weight:600;text-transform:uppercase}
+
+/* --- cover (สไลด์เดียวที่เป็นพื้นเข้ม เหมือนหน้าปกเด็คเดิม) --- */
+.s-cover{display:grid;place-items:center;overflow:hidden;background:var(--navy-deep)}
+.s-cover .bg{position:absolute;inset:0}
+.s-cover .bg video{width:100%;height:100%;object-fit:cover;opacity:.5}
+.s-cover .veil{position:absolute;inset:0;background:radial-gradient(92% 84% at 50% 50%, rgba(10,14,31,.42) 0%, rgba(10,14,31,.94) 76%)}
+.s-cover .mid{position:relative;text-align:center;padding:0 120px}
+.s-cover h1{font-size:128px;font-weight:800;line-height:1.03;color:#fff;letter-spacing:-.01em}
+.s-cover h1 em{font-style:normal;color:var(--red)}
+.s-cover p{font-size:35px;color:rgba(255,255,255,.72);margin-top:26px;font-weight:300}
+.s-cover .co-brand{display:flex;align-items:center;justify-content:center;gap:14px;margin-bottom:32px}
+.s-cover .co-brand .dot{width:15px;height:15px;border-radius:50%;background:var(--red)}
+.s-cover .co-brand span{font-size:33px;font-weight:800;color:#fff}
+
+/* --- showreel wall --- */
+.s-wall{padding:48px 64px;display:flex;flex-direction:column}
+.s-wall .wh{display:flex;align-items:baseline;gap:26px;margin-bottom:24px;flex:none}
+.s-wall .wh h2{font-size:52px;font-weight:800;color:var(--navy)}
+.s-wall .wgrid{
+  flex:1;min-height:0;display:grid;gap:18px;
+  grid-template-columns:repeat(var(--cols,6),var(--cw,247px));grid-auto-rows:var(--ch,440px);
+  justify-content:center;align-content:center;
+}
+.s-wall .wgrid .clip{border-radius:14px;width:var(--cw);height:var(--ch)}
+
+/* --- brand slide --- */
+.s-brand{padding:52px 72px 56px;display:flex;flex-direction:column}
+.bs-head{display:flex;align-items:center;gap:26px;flex:none}
+.bs-logo{
+  width:104px;height:104px;border-radius:18px;background:#fff;padding:12px;flex:none;
+  display:grid;place-items:center;overflow:hidden;border:1px solid var(--line);box-shadow:var(--shadow);
+}
+.bs-logo img{max-width:100%;max-height:100%;object-fit:contain}
+.bs-logo .initial{font-size:44px;font-weight:800;color:var(--navy)}
+.bs-id h2{font-size:56px;font-weight:800;line-height:1.1;color:var(--navy)}
+.bs-id .cat{font-size:25px;color:var(--red);font-weight:400;margin-top:4px}
+.bs-metric{margin-left:auto;text-align:right;flex:none;padding-left:40px;border-left:4px solid var(--red)}
+.bs-metric b{display:block;font-size:82px;font-weight:800;color:var(--red);line-height:1}
+.bs-metric span{display:block;font-size:23px;color:var(--text-muted);margin-top:6px;font-weight:300;max-width:420px}
+/* กรอบคลิปแนวตั้ง 9:16 เป๊ะ — ขนาดคำนวณตอน build ให้พอดีที่ว่างเสมอ */
+.bs-clips{flex:1;min-height:0;display:flex;gap:26px;margin-top:34px;justify-content:center;align-items:center}
+.bs-clips .clip{width:var(--cw);height:var(--ch);flex:none}
+
+/* --- clip tile (พื้นเข้มเสมอ ให้คลิปเด้งออกจากพื้นขาว) --- */
+.clip{position:relative;border-radius:18px;overflow:hidden;background:var(--navy-deep);box-shadow:var(--shadow-lg)}
+.clip video{width:100%;height:100%;object-fit:cover;display:block}
+.clip .cap{
+  position:absolute;left:0;right:0;bottom:0;padding:44px 18px 16px;color:#fff;
+  font-size:20px;font-weight:400;line-height:1.3;
+  background:linear-gradient(180deg,transparent,rgba(10,14,31,.94));
+}
+.clip.empty{
+  display:grid;place-items:center;background:var(--gray);box-shadow:none;
+  border:2px dashed #C3CDDD;
+}
+.clip.empty span{font-size:21px;color:var(--text-muted);font-weight:300;text-align:center;padding:0 16px;line-height:1.5}
+
+/* --- message slide --- */
+.s-msg{padding:96px 120px;display:flex;flex-direction:column;justify-content:center}
+.s-msg h2{font-size:86px;font-weight:800;line-height:1.08;margin:18px 0 48px;color:var(--navy)}
+.s-msg h2 span{color:var(--red)}
+.s-msg .items{display:grid;grid-template-columns:1fr 1fr;gap:40px}
+.s-msg .item{
+  padding:38px 42px;border-radius:18px;background:#fff;
+  border:1px solid var(--line);box-shadow:var(--shadow);position:relative;overflow:hidden;
+}
+.s-msg .item::before{content:'';position:absolute;top:0;left:0;width:100%;height:4px;background:var(--accent)}
+.s-msg .item h3{font-size:38px;font-weight:700;color:var(--red);margin-bottom:14px}
+.s-msg .item p{font-size:26px;line-height:1.55;color:var(--text-mid);font-weight:300}
+.s-msg .steps{display:flex;align-items:stretch;gap:14px}
+.s-msg .step{
+  flex:1;padding:34px 20px;border-radius:16px;text-align:center;background:#fff;
+  border:1px solid var(--line);box-shadow:var(--shadow);
+  display:flex;flex-direction:column;justify-content:center;gap:14px;
+}
+.s-msg .step b{font-size:28px;font-weight:600;line-height:1.3;color:var(--navy)}
+.s-msg .step i{
+  font-style:normal;font-size:22px;font-weight:800;color:#fff;
+  width:46px;height:46px;border-radius:50%;background:var(--red);
+  display:grid;place-items:center;margin:0 auto;
+}
+
+/* --- packages --- */
+.s-pack{padding:76px 90px;display:flex;flex-direction:column}
+.s-pack h2{font-size:64px;font-weight:800;margin:14px 0 40px;color:var(--navy)}
+.s-pack .pk{flex:1;min-height:0;display:grid;grid-template-columns:repeat(3,1fr);gap:30px}
+.s-pack .p{
+  padding:44px 40px;border-radius:20px;display:flex;flex-direction:column;background:#fff;
+  border:1px solid var(--line);box-shadow:var(--shadow);position:relative;overflow:hidden;
+}
+.s-pack .p::before{content:'';position:absolute;top:0;left:0;width:100%;height:4px;background:var(--gray)}
+.s-pack .p.hot{border-color:var(--red);box-shadow:var(--shadow-lg);transform:translateY(-10px)}
+.s-pack .p.hot::before{background:var(--accent)}
+.s-pack .p .nm{font-size:26px;letter-spacing:.16em;color:var(--red);font-weight:600}
+.s-pack .p .pr{font-size:56px;font-weight:800;margin:14px 0 2px;line-height:1.1;color:var(--navy)}
+.s-pack .p .un{font-size:21px;color:var(--text-muted);font-weight:300;margin-bottom:28px}
+.s-pack .p ul{list-style:none;display:flex;flex-direction:column;gap:16px}
+.s-pack .p li{font-size:25px;font-weight:300;line-height:1.4;color:var(--text-mid);padding-left:32px;position:relative}
+.s-pack .p li::before{content:'';position:absolute;left:0;top:12px;width:14px;height:14px;border-radius:50%;background:var(--red)}
+.s-pack .note{font-size:21px;color:var(--text-muted);font-weight:300;margin-top:26px;flex:none}
+
+/* --- contact --- */
+.s-contact{display:grid;grid-template-columns:1fr auto;align-items:center;gap:90px;padding:0 130px}
+.s-contact h2{font-size:92px;font-weight:800;line-height:1.08;margin:18px 0 34px;color:var(--navy)}
+.s-contact h2 span{color:var(--red)}
+.s-contact .lines{display:flex;flex-direction:column;gap:18px}
+.s-contact .lines div{font-size:33px;font-weight:400;color:var(--text-mid)}
+.s-contact .lines div b{color:var(--red);font-weight:700}
+.s-contact .note{font-size:25px;color:var(--text-muted);font-weight:300;margin-top:30px;max-width:700px;line-height:1.5}
+.s-contact .qr{
+  width:400px;height:400px;border-radius:24px;background:#fff;display:grid;place-items:center;padding:22px;
+  border:1px solid var(--line);box-shadow:var(--shadow-lg);
+}
+.s-contact .qr img{width:100%;height:100%;object-fit:contain}
+.s-contact .qr .ph{color:var(--text-muted);font-size:23px;text-align:center;font-weight:300;line-height:1.5}
+
+/* ================= chrome ================= */
+#bar{
+  position:absolute;right:36px;bottom:32px;display:flex;gap:12px;align-items:center;
+  opacity:0;visibility:hidden;transition:opacity .3s ease;z-index:20;
+}
+#bar.on{opacity:1;visibility:visible}
+.bbtn{
+  min-width:74px;height:74px;padding:0 26px;border-radius:999px;color:var(--text-mid);
+  background:rgba(255,253,248,.92);border:1px solid var(--line);
+  backdrop-filter:blur(10px);box-shadow:var(--shadow);
+  font-size:27px;font-weight:500;display:flex;align-items:center;gap:12px;justify-content:center;
+  transition:background .15s ease,border-color .15s ease,color .15s ease;
+}
+.bbtn:hover{color:var(--red);border-color:var(--red)}
+.bbtn.hl{background:var(--red);color:#fff;border-color:var(--red);font-weight:700}
+.bbtn.hl:hover{color:#fff}
+
+#prog{position:absolute;left:0;top:0;height:6px;width:0;background:var(--accent);z-index:21;transition:width .25s linear;opacity:0}
+#prog.on{opacity:1}
+
+/* พื้นพิลล์ของตัวเอง เพราะต้องอ่านออกทั้งบนสไลด์ขาวและบนหน้าปกพื้นเข้ม */
+#hint{
+  position:absolute;left:36px;bottom:38px;font-size:20px;color:var(--text-mid);
+  font-weight:300;z-index:20;opacity:0;transition:opacity .3s ease;
+  padding:14px 24px;border-radius:999px;
+  background:rgba(255,253,248,.92);border:1px solid var(--line);
+  backdrop-filter:blur(10px);box-shadow:var(--shadow);
+}
+#hint.on{opacity:1}
+
+</style>
+</head>
+<body>
+<div id="wrap">
+  <div class="stage" id="stage">
+
+    <div id="prog"></div>
+
+    <!-- class="on" ตั้งแต่แรก เพื่อให้เห็นสารบัญแม้ในตัวพรีวิวที่ไม่รัน JS -->
+    <section class="screen on" id="home">
+      <div class="hm-top">
+        <div class="hm-brand"><i class="dot"></i><span>ติดจรวด</span></div>
+        <div class="hm-title">
+          <h1>คลิปที่ขายได้ <em>ไม่ใช่แค่คลิปที่สวย</em></h1>
+          <p>ผลิตคลิปสั้น &amp; UGC โดยทีมที่ยิงแอดจริงทุกวัน</p>
+        </div>
+        <button class="hm-play" id="btnPlay"><i class="tri"></i>เล่นอัตโนมัติ</button>
+      </div>
+      <div class="hm-rule"></div>
+      <div class="hm-lbl">ผลงานแยกตามแบรนด์ &mdash; กดเพื่อดู</div>
+      <div class="hm-grid" style="--cw:181px;--ch:322px;--cols:9">
+      <button class="card" data-goto="2">
+        <div class="thumb"><video src="assets/video/m121-tria/01.mp4" preload="metadata" muted playsinline></video></div>
+        <div class="body"><b>TRIA</b><i>สุขภาพ / เวลเนส</i></div>
+      </button>
+      <button class="card" data-goto="3">
+        <div class="thumb"><video src="assets/video/m127-groove55/01.mp4" preload="metadata" muted playsinline></video></div>
+        <div class="body"><b>Terra Groove55</b><i>ร้านอาหาร</i></div>
+      </button>
+      <button class="card" data-goto="4">
+        <div class="thumb"><video src="assets/video/m145-morbow/01.mp4" preload="metadata" muted playsinline></video></div>
+        <div class="body"><b>หมอโบว์</b><i>คลินิก</i></div>
+      </button>
+      <button class="card" data-goto="5">
+        <div class="thumb"><video src="assets/video/m104-kozue/01.mp4" preload="metadata" muted playsinline></video></div>
+        <div class="body"><b>Kozue Omakaze</b><i>ร้านอาหารญี่ปุ่น</i></div>
+      </button>
+      <button class="card" data-goto="7">
+        <div class="thumb"><video src="assets/video/m077-smartclinic/01.mp4" preload="metadata" muted playsinline></video></div>
+        <div class="body"><b>Smart Clinic</b><i>คลินิก</i></div>
+      </button>
+      <button class="card" data-goto="8">
+        <div class="thumb"><video src="assets/video/m100-barcode/01.mp4" preload="metadata" muted playsinline></video></div>
+        <div class="body"><b>สถาบันบาร์โค้ดชีวิต</b><i>คอร์ส / ที่ปรึกษา</i></div>
+      </button>
+      <button class="card" data-goto="9">
+        <div class="thumb"><span class="initial">M</span></div>
+        <div class="body"><b>MildGlucan</b><i>อาหารเสริม</i></div>
+      </button>
+      <button class="card" data-goto="10">
+        <div class="thumb"><span class="initial">L</span></div>
+        <div class="body"><b>Lilsheep</b><i></i></div>
+      </button>
+      <button class="card" data-goto="12">
+        <div class="thumb"><span class="initial">B</span></div>
+        <div class="body"><b>BPK9</b><i>โรงพยาบาล</i></div>
+      </button>
+      <button class="card" data-goto="13">
+        <div class="thumb"><span class="initial">P</span></div>
+        <div class="body"><b>Positif</b><i></i></div>
+      </button>
+      <button class="card" data-goto="14">
+        <div class="thumb"><span class="initial">F</span></div>
+        <div class="body"><b>Florenza Clinic</b><i>คลินิกความงาม</i></div>
+      </button>
+      <button class="card" data-goto="15">
+        <div class="thumb"><span class="initial">J</span></div>
+        <div class="body"><b>Jigo Smoothie</b><i>อาหาร / เครื่องดื่ม</i></div>
+      </button>
+      <button class="card" data-goto="17">
+        <div class="thumb"><span class="initial">S</span></div>
+        <div class="body"><b>ShooShoke</b><i></i></div>
+      </button>
+      <button class="card" data-goto="18">
+        <div class="thumb"><span class="initial">ห</span></div>
+        <div class="body"><b>หมอเถียร</b><i>แพทย์แผนจีน</i></div>
+      </button>
+      <button class="card" data-goto="19">
+        <div class="thumb"><span class="initial">S</span></div>
+        <div class="body"><b>Siam Auto Car</b><i>ยานยนต์</i></div>
+      </button>
+      <button class="card" data-goto="20">
+        <div class="thumb"><span class="initial">S</span></div>
+        <div class="body"><b>Sharisma</b><i>อาหารเสริม / เวลเนส</i></div>
+      </button>
+      <button class="card" data-goto="22">
+        <div class="thumb"><span class="initial">P</span></div>
+        <div class="body"><b>PN Auto Part</b><i>อะไหล่ยนต์</i></div>
+      </button>
+      </div>
+      <div class="hm-chips">
+      <button class="chip" data-goto="6">เราทำอะไร</button>
+      <button class="chip" data-goto="11">ทำไมต้องเรา</button>
+      <button class="chip" data-goto="16">ขั้นตอนงาน</button>
+      <button class="chip" data-goto="23">แพ็กเกจ</button>
+      <button class="chip" data-goto="24">ติดต่อ</button>
+      </div>
+    </section>
+
+    <section class="screen" id="deck">
+<div class="slide s-cover" data-dur="6000">
+  
+  <div class="veil"></div>
+  <div class="mid">
+    <div class="co-brand"><i class="dot"></i><span>ติดจรวด</span></div>
+    <h1>คลิปที่ขายได้<br><em>ไม่ใช่แค่คลิปที่สวย</em></h1>
+    <p>ผลิตคลิปสั้น &amp; UGC โดยทีมที่ยิงแอดจริงทุกวัน</p>
+  </div>
+</div>
+
+<div class="slide s-wall" data-dur="15000">
+  <div class="wh"><h2>ผลงานบางส่วน</h2><span class="eyebrow">TIKTOK &middot; REELS &middot; UGC</span></div>
+  <div class="wgrid" style="--cw:243px;--ch:432px;--cols:6">
+      <div class="clip"><video src="assets/video/wall/m127-groove55-01.mp4" preload="metadata" loop playsinline data-silent="1" muted></video></div>
+      <div class="clip"><video src="assets/video/wall/m127-groove55-02.mp4" preload="metadata" loop playsinline data-silent="1" muted></video></div>
+      <div class="clip"><video src="assets/video/wall/m121-tria-01.mp4" preload="metadata" loop playsinline data-silent="1" muted></video></div>
+      <div class="clip"><video src="assets/video/wall/m121-tria-02.mp4" preload="metadata" loop playsinline data-silent="1" muted></video></div>
+      <div class="clip"><video src="assets/video/wall/m145-morbow-01.mp4" preload="metadata" loop playsinline data-silent="1" muted></video></div>
+      <div class="clip"><video src="assets/video/wall/m145-morbow-02.mp4" preload="metadata" loop playsinline data-silent="1" muted></video></div>
+      <div class="clip"><video src="assets/video/wall/m104-kozue-01.mp4" preload="metadata" loop playsinline data-silent="1" muted></video></div>
+      <div class="clip"><video src="assets/video/wall/m104-kozue-02.mp4" preload="metadata" loop playsinline data-silent="1" muted></video></div>
+      <div class="clip"><video src="assets/video/wall/m077-smartclinic-01.mp4" preload="metadata" loop playsinline data-silent="1" muted></video></div>
+      <div class="clip"><video src="assets/video/wall/m077-smartclinic-02.mp4" preload="metadata" loop playsinline data-silent="1" muted></video></div>
+      <div class="clip"><video src="assets/video/wall/m100-barcode-01.mp4" preload="metadata" loop playsinline data-silent="1" muted></video></div>
+      <div class="clip"><video src="assets/video/wall/m100-barcode-02.mp4" preload="metadata" loop playsinline data-silent="1" muted></video></div>
+  </div>
+</div>
+
+<div class="slide s-brand" data-dur="12000" data-brand="m121-tria">
+  <div class="bs-head">
+    <div class="bs-logo"><span class="initial">T</span></div>
+    <div class="bs-id"><h2>TRIA</h2><div class="cat">สุขภาพ / เวลเนส</div></div>
+    
+  </div>
+  <div class="bs-clips" style="--cw:469px;--ch:834px;--cols:3">
+      <div class="clip"><video src="assets/video/m121-tria/01.mp4" preload="metadata" loop playsinline></video></div>
+      <div class="clip"><video src="assets/video/m121-tria/02.mp4" preload="metadata" loop playsinline></video></div>
+      <div class="clip"><video src="assets/video/m121-tria/03.mp4" preload="metadata" loop playsinline></video></div>
+  </div>
+</div>
+
+<div class="slide s-brand" data-dur="12000" data-brand="m127-groove55">
+  <div class="bs-head">
+    <div class="bs-logo"><span class="initial">T</span></div>
+    <div class="bs-id"><h2>Terra Groove55</h2><div class="cat">ร้านอาหาร</div></div>
+    
+  </div>
+  <div class="bs-clips" style="--cw:469px;--ch:834px;--cols:3">
+      <div class="clip"><video src="assets/video/m127-groove55/01.mp4" preload="metadata" loop playsinline></video></div>
+      <div class="clip"><video src="assets/video/m127-groove55/02.mp4" preload="metadata" loop playsinline></video></div>
+      <div class="clip"><video src="assets/video/m127-groove55/03.mp4" preload="metadata" loop playsinline></video></div>
+  </div>
+</div>
+
+<div class="slide s-brand" data-dur="12000" data-brand="m145-morbow">
+  <div class="bs-head">
+    <div class="bs-logo"><span class="initial">ห</span></div>
+    <div class="bs-id"><h2>หมอโบว์</h2><div class="cat">คลินิก</div></div>
+    
+  </div>
+  <div class="bs-clips" style="--cw:424px;--ch:754px;--cols:4">
+      <div class="clip"><video src="assets/video/m145-morbow/01.mp4" preload="metadata" loop playsinline></video></div>
+      <div class="clip"><video src="assets/video/m145-morbow/02.mp4" preload="metadata" loop playsinline></video></div>
+      <div class="clip"><video src="assets/video/m145-morbow/03.mp4" preload="metadata" loop playsinline></video></div>
+      <div class="clip"><video src="assets/video/m145-morbow/04.mp4" preload="metadata" loop playsinline></video></div>
+  </div>
+</div>
+
+<div class="slide s-brand" data-dur="12000" data-brand="m104-kozue">
+  <div class="bs-head">
+    <div class="bs-logo"><span class="initial">K</span></div>
+    <div class="bs-id"><h2>Kozue Omakaze</h2><div class="cat">ร้านอาหารญี่ปุ่น</div></div>
+    
+  </div>
+  <div class="bs-clips" style="--cw:469px;--ch:834px;--cols:3">
+      <div class="clip"><video src="assets/video/m104-kozue/01.mp4" preload="metadata" loop playsinline></video></div>
+      <div class="clip"><video src="assets/video/m104-kozue/02.mp4" preload="metadata" loop playsinline></video></div>
+      <div class="clip"><video src="assets/video/m104-kozue/03.mp4" preload="metadata" loop playsinline></video></div>
+  </div>
+</div>
+
+<div class="slide s-msg" data-dur="8000" data-msg="services">
+  <div class="eyebrow">เราทำอะไร</div>
+  <h2>ผลิตคลิปให้แบรนด์<br><span>2 แบบ</span></h2>
+  <div class="items"><div class="item"><h3>คลิปสั้นสำหรับยิงแอด</h3><p>TikTok / Reels เน้น hook 3 วินาทีแรก ผลิตเป็นชุดต่อเดือน เอาไปยิงแอดต่อได้ทันที</p></div><div class="item"><h3>UGC / รีวิวครีเอเตอร์</h3><p>คลิปคนจริงรีวิวสินค้า สไตล์ธรรมชาติ เลือกครีเอเตอร์ให้ตรงกลุ่มลูกค้าของแบรนด์</p></div></div>
+</div>
+
+<div class="slide s-brand" data-dur="12000" data-brand="m077-smartclinic">
+  <div class="bs-head">
+    <div class="bs-logo"><span class="initial">S</span></div>
+    <div class="bs-id"><h2>Smart Clinic</h2><div class="cat">คลินิก</div></div>
+    
+  </div>
+  <div class="bs-clips" style="--cw:424px;--ch:754px;--cols:4">
+      <div class="clip"><video src="assets/video/m077-smartclinic/01.mp4" preload="metadata" loop playsinline></video></div>
+      <div class="clip"><video src="assets/video/m077-smartclinic/02.mp4" preload="metadata" loop playsinline></video></div>
+      <div class="clip"><video src="assets/video/m077-smartclinic/03.mp4" preload="metadata" loop playsinline></video></div>
+      <div class="clip"><video src="assets/video/m077-smartclinic/04.mp4" preload="metadata" loop playsinline></video></div>
+  </div>
+</div>
+
+<div class="slide s-brand" data-dur="12000" data-brand="m100-barcode">
+  <div class="bs-head">
+    <div class="bs-logo"><span class="initial">ส</span></div>
+    <div class="bs-id"><h2>สถาบันบาร์โค้ดชีวิต</h2><div class="cat">คอร์ส / ที่ปรึกษา</div></div>
+    
+  </div>
+  <div class="bs-clips" style="--cw:424px;--ch:754px;--cols:4">
+      <div class="clip"><video src="assets/video/m100-barcode/01.mp4" preload="metadata" loop playsinline></video></div>
+      <div class="clip"><video src="assets/video/m100-barcode/02.mp4" preload="metadata" loop playsinline></video></div>
+      <div class="clip"><video src="assets/video/m100-barcode/03.mp4" preload="metadata" loop playsinline></video></div>
+      <div class="clip"><video src="assets/video/m100-barcode/04.mp4" preload="metadata" loop playsinline></video></div>
+  </div>
+</div>
+
+<div class="slide s-brand" data-dur="12000" data-brand="m030-mildglucan">
+  <div class="bs-head">
+    <div class="bs-logo"><span class="initial">M</span></div>
+    <div class="bs-id"><h2>MildGlucan</h2><div class="cat">อาหารเสริม</div></div>
+    
+  </div>
+  <div class="bs-clips" style="--cw:424px;--ch:754px;--cols:4">
+      <div class="clip empty"><span>รอไฟล์คลิป</span></div>
+      <div class="clip empty"><span>รอไฟล์คลิป</span></div>
+      <div class="clip empty"><span>รอไฟล์คลิป</span></div>
+      <div class="clip empty"><span>รอไฟล์คลิป</span></div>
+  </div>
+</div>
+
+<div class="slide s-brand" data-dur="12000" data-brand="m039-lilsheep">
+  <div class="bs-head">
+    <div class="bs-logo"><span class="initial">L</span></div>
+    <div class="bs-id"><h2>Lilsheep</h2><div class="cat"></div></div>
+    
+  </div>
+  <div class="bs-clips" style="--cw:424px;--ch:754px;--cols:4">
+      <div class="clip empty"><span>รอไฟล์คลิป</span></div>
+      <div class="clip empty"><span>รอไฟล์คลิป</span></div>
+      <div class="clip empty"><span>รอไฟล์คลิป</span></div>
+      <div class="clip empty"><span>รอไฟล์คลิป</span></div>
+  </div>
+</div>
+
+<div class="slide s-msg" data-dur="8000" data-msg="diff">
+  <div class="eyebrow">ทำไมต้องเรา</div>
+  <h2>เราเป็นเอเจนซี่ยิงแอด<br><span>ที่ผลิตคลิปเอง</span></h2>
+  <div class="items"><div class="item"><h3>ทำคลิปจากดาต้าจริง ไม่ใช่เดา</h3><p>เรารู้ว่า hook แบบไหน CTR ดี เพราะเรายิงแอดให้ลูกค้าทุกวัน เอาผลจริงมาออกแบบคลิปตัวถัดไป</p></div><div class="item"><h3>วัดผลได้ ไม่ใช่แค่ส่งไฟล์จบ</h3><p>คลิปทุกตัวถูกเอาไปทดสอบจริง แล้วคัดตัวที่ทำผลได้ดีที่สุดมาสเกลต่อ</p></div></div>
+</div>
+
+<div class="slide s-brand" data-dur="12000" data-brand="m066-bpk9">
+  <div class="bs-head">
+    <div class="bs-logo"><span class="initial">B</span></div>
+    <div class="bs-id"><h2>BPK9</h2><div class="cat">โรงพยาบาล</div></div>
+    
+  </div>
+  <div class="bs-clips" style="--cw:424px;--ch:754px;--cols:4">
+      <div class="clip empty"><span>รอไฟล์คลิป</span></div>
+      <div class="clip empty"><span>รอไฟล์คลิป</span></div>
+      <div class="clip empty"><span>รอไฟล์คลิป</span></div>
+      <div class="clip empty"><span>รอไฟล์คลิป</span></div>
+  </div>
+</div>
+
+<div class="slide s-brand" data-dur="12000" data-brand="m073-positif">
+  <div class="bs-head">
+    <div class="bs-logo"><span class="initial">P</span></div>
+    <div class="bs-id"><h2>Positif</h2><div class="cat"></div></div>
+    
+  </div>
+  <div class="bs-clips" style="--cw:424px;--ch:754px;--cols:4">
+      <div class="clip empty"><span>รอไฟล์คลิป</span></div>
+      <div class="clip empty"><span>รอไฟล์คลิป</span></div>
+      <div class="clip empty"><span>รอไฟล์คลิป</span></div>
+      <div class="clip empty"><span>รอไฟล์คลิป</span></div>
+  </div>
+</div>
+
+<div class="slide s-brand" data-dur="12000" data-brand="m084-florenza">
+  <div class="bs-head">
+    <div class="bs-logo"><span class="initial">F</span></div>
+    <div class="bs-id"><h2>Florenza Clinic</h2><div class="cat">คลินิกความงาม</div></div>
+    
+  </div>
+  <div class="bs-clips" style="--cw:424px;--ch:754px;--cols:4">
+      <div class="clip empty"><span>รอไฟล์คลิป</span></div>
+      <div class="clip empty"><span>รอไฟล์คลิป</span></div>
+      <div class="clip empty"><span>รอไฟล์คลิป</span></div>
+      <div class="clip empty"><span>รอไฟล์คลิป</span></div>
+  </div>
+</div>
+
+<div class="slide s-brand" data-dur="12000" data-brand="m093-jigo">
+  <div class="bs-head">
+    <div class="bs-logo"><span class="initial">J</span></div>
+    <div class="bs-id"><h2>Jigo Smoothie</h2><div class="cat">อาหาร / เครื่องดื่ม</div></div>
+    
+  </div>
+  <div class="bs-clips" style="--cw:424px;--ch:754px;--cols:4">
+      <div class="clip empty"><span>รอไฟล์คลิป</span></div>
+      <div class="clip empty"><span>รอไฟล์คลิป</span></div>
+      <div class="clip empty"><span>รอไฟล์คลิป</span></div>
+      <div class="clip empty"><span>รอไฟล์คลิป</span></div>
+  </div>
+</div>
+
+<div class="slide s-msg" data-dur="8000" data-msg="process">
+  <div class="eyebrow">ขั้นตอนงาน</div>
+  <h2>ตั้งแต่บรีฟ<br><span>ถึงคลิปที่ชนะ</span></h2>
+  <div class="steps"><div class="step"><i>1</i><b>รับบรีฟ</b></div><div class="step"><i>2</i><b>วาง Hook / สคริปต์</b></div><div class="step"><i>3</i><b>ถ่ายทำ</b></div><div class="step"><i>4</i><b>ตัดต่อ</b></div><div class="step"><i>5</i><b>ยิงทดสอบ</b></div><div class="step"><i>6</i><b>คัดตัวชนะไปสเกล</b></div></div>
+</div>
+
+<div class="slide s-brand" data-dur="12000" data-autoskip="1" data-brand="m108-shooshoke">
+  <div class="bs-head">
+    <div class="bs-logo"><span class="initial">S</span></div>
+    <div class="bs-id"><h2>ShooShoke</h2><div class="cat"></div></div>
+    
+  </div>
+  <div class="bs-clips" style="--cw:424px;--ch:754px;--cols:4">
+      <div class="clip empty"><span>รอไฟล์คลิป</span></div>
+      <div class="clip empty"><span>รอไฟล์คลิป</span></div>
+      <div class="clip empty"><span>รอไฟล์คลิป</span></div>
+      <div class="clip empty"><span>รอไฟล์คลิป</span></div>
+  </div>
+</div>
+
+<div class="slide s-brand" data-dur="12000" data-autoskip="1" data-brand="m123-mortian">
+  <div class="bs-head">
+    <div class="bs-logo"><span class="initial">ห</span></div>
+    <div class="bs-id"><h2>หมอเถียร</h2><div class="cat">แพทย์แผนจีน</div></div>
+    
+  </div>
+  <div class="bs-clips" style="--cw:424px;--ch:754px;--cols:4">
+      <div class="clip empty"><span>รอไฟล์คลิป</span></div>
+      <div class="clip empty"><span>รอไฟล์คลิป</span></div>
+      <div class="clip empty"><span>รอไฟล์คลิป</span></div>
+      <div class="clip empty"><span>รอไฟล์คลิป</span></div>
+  </div>
+</div>
+
+<div class="slide s-brand" data-dur="12000" data-autoskip="1" data-brand="m140-siamauto">
+  <div class="bs-head">
+    <div class="bs-logo"><span class="initial">S</span></div>
+    <div class="bs-id"><h2>Siam Auto Car</h2><div class="cat">ยานยนต์</div></div>
+    
+  </div>
+  <div class="bs-clips" style="--cw:424px;--ch:754px;--cols:4">
+      <div class="clip empty"><span>รอไฟล์คลิป</span></div>
+      <div class="clip empty"><span>รอไฟล์คลิป</span></div>
+      <div class="clip empty"><span>รอไฟล์คลิป</span></div>
+      <div class="clip empty"><span>รอไฟล์คลิป</span></div>
+  </div>
+</div>
+
+<div class="slide s-brand" data-dur="12000" data-autoskip="1" data-brand="m146-sharisma">
+  <div class="bs-head">
+    <div class="bs-logo"><span class="initial">S</span></div>
+    <div class="bs-id"><h2>Sharisma</h2><div class="cat">อาหารเสริม / เวลเนส</div></div>
+    
+  </div>
+  <div class="bs-clips" style="--cw:424px;--ch:754px;--cols:4">
+      <div class="clip empty"><span>รอไฟล์คลิป</span></div>
+      <div class="clip empty"><span>รอไฟล์คลิป</span></div>
+      <div class="clip empty"><span>รอไฟล์คลิป</span></div>
+      <div class="clip empty"><span>รอไฟล์คลิป</span></div>
+  </div>
+</div>
+
+<div class="slide s-msg" data-dur="8000" data-msg="services">
+  <div class="eyebrow">เราทำอะไร</div>
+  <h2>ผลิตคลิปให้แบรนด์<br><span>2 แบบ</span></h2>
+  <div class="items"><div class="item"><h3>คลิปสั้นสำหรับยิงแอด</h3><p>TikTok / Reels เน้น hook 3 วินาทีแรก ผลิตเป็นชุดต่อเดือน เอาไปยิงแอดต่อได้ทันที</p></div><div class="item"><h3>UGC / รีวิวครีเอเตอร์</h3><p>คลิปคนจริงรีวิวสินค้า สไตล์ธรรมชาติ เลือกครีเอเตอร์ให้ตรงกลุ่มลูกค้าของแบรนด์</p></div></div>
+</div>
+
+<div class="slide s-brand" data-dur="12000" data-autoskip="1" data-brand="pn-autopart">
+  <div class="bs-head">
+    <div class="bs-logo"><span class="initial">P</span></div>
+    <div class="bs-id"><h2>PN Auto Part</h2><div class="cat">อะไหล่ยนต์</div></div>
+    
+  </div>
+  <div class="bs-clips" style="--cw:424px;--ch:754px;--cols:4">
+      <div class="clip empty"><span>รอไฟล์คลิป</span></div>
+      <div class="clip empty"><span>รอไฟล์คลิป</span></div>
+      <div class="clip empty"><span>รอไฟล์คลิป</span></div>
+      <div class="clip empty"><span>รอไฟล์คลิป</span></div>
+  </div>
+</div>
+
+<div class="slide s-pack" data-dur="10000" data-key="packages">
+  <div class="eyebrow">แพ็กเกจ</div>
+  <h2>เลือกได้ตามจำนวนคลิปต่อเดือน</h2>
+  <div class="pk">
+    <div class="p">
+      <div class="nm">STARTER</div>
+      <div class="pr">รอใส่ราคา</div>
+      <div class="un">เริ่มต้นที่ / เดือน</div>
+      <ul><li>คลิปสั้น 4 ตัว / เดือน</li><li>ปรับแก้ 1 รอบต่อคลิป</li><li>ส่งไฟล์พร้อมยิงแอด</li></ul>
+    </div>
+    <div class="p hot">
+      <div class="nm">GROWTH</div>
+      <div class="pr">รอใส่ราคา</div>
+      <div class="un">เริ่มต้นที่ / เดือน</div>
+      <ul><li>คลิปสั้น 8 ตัว / เดือน</li><li>UGC ครีเอเตอร์ 2 ตัว</li><li>วาง Hook จากดาต้าการยิงแอด</li></ul>
+    </div>
+    <div class="p">
+      <div class="nm">SCALE</div>
+      <div class="pr">รอใส่ราคา</div>
+      <div class="un">เริ่มต้นที่ / เดือน</div>
+      <ul><li>คลิปสั้น 16 ตัว / เดือน</li><li>UGC ครีเอเตอร์ 4 ตัว</li><li>ทดสอบและคัดตัวชนะรายสัปดาห์</li></ul>
+    </div>
+  </div>
+  <div class="note">ราคายังไม่รวม VAT · ค่าครีเอเตอร์และค่าโปรดักชันนอกสถานที่คิดแยกตามงาน</div>
+</div>
+
+<div class="slide s-contact" data-dur="10000" data-key="contact">
+  <div>
+    <div class="eyebrow">คุยกับเราที่บูธได้เลย</div>
+    <h2>อยากได้คลิปที่ขายได้<br><span>เริ่มที่นี่</span></h2>
+    <div class="lines">
+      <div>LINE &nbsp;<b>รอใส่ LINE ID</b></div>
+      <div>โทร &nbsp;<b>รอใส่เบอร์</b></div>
+    </div>
+    <div class="note">สแกน QR เพื่อแอดไลน์ รับประเมินคลิปปัจจุบันของแบรนด์คุณฟรี</div>
+  </div>
+  <div class="qr"><div class="ph">รอใส่รูป QR<br>(assets/qr.png)</div></div>
+</div>
+    </section>
+
+    <div id="hint">&#8592; &#8594; เลื่อนสไลด์ &middot; Esc สารบัญ &middot; Space เล่นอัตโนมัติ &middot; F เต็มจอ &middot; M เสียง</div>
+
+    <div id="bar">
+      <button class="bbtn" id="btnHome">&#9776; สารบัญ</button>
+      <button class="bbtn" id="btnPrev">&#8249;</button>
+      <button class="bbtn" id="btnNext">&#8250;</button>
+      <button class="bbtn" id="btnAuto">&#9654; อัตโนมัติ</button>
+      <button class="bbtn" id="btnSound"><span>&#128263;</span></button>
+      <button class="bbtn" id="btnFs">&#9974;</button>
+    </div>
+
+  </div>
+</div>
+
+<script>window.__CFG__ = {"coverMs":6000,"wallMs":15000,"textSlideMs":8000,"packagesMs":10000,"contactMs":10000,"maxVideoMs":45000,"idleReturnMs":60000,"messageEvery":4,"maxLoopBrands":12};</script>
+<script>
+(function () {
+  'use strict';
+
+  var CFG = window.__CFG__ || {};
+  var qs = new URLSearchParams(location.search);
+  var KIOSK = qs.get('auto') === '1' || qs.get('kiosk') === '1';
+
+  var home = document.getElementById('home');
+  var deck = document.getElementById('deck');
+  var bar = document.getElementById('bar');
+  var prog = document.getElementById('prog');
+  var hint = document.getElementById('hint');
+  var btnAuto = document.getElementById('btnAuto');
+  var btnSound = document.getElementById('btnSound');
+  var slides = [].slice.call(document.querySelectorAll('#deck .slide'));
+
+  var idx = -1;
+  var mode = 'home';          // 'home' | 'manual' | 'auto'
+  var muted = true;
+  var timer = null;
+  var idleTimer = null;
+  var fsAsked = false;
+
+  /* ---------- scale stage to fit any monitor ---------- */
+  // วัดจากกล่องครอบเหมือน fitStage() ของ Sale Deck 2026
+  // (min(w/1280, h/720) x 1280/1920 ให้ค่าเท่ากับ min(w/1920, h/1080) เป๊ะ)
+  function fit() {
+    var host = document.getElementById('wrap');
+    var w = (host && host.clientWidth) || innerWidth || document.documentElement.clientWidth || 1920;
+    var h = (host && host.clientHeight) || innerHeight || document.documentElement.clientHeight || 1080;
+    var s = Math.min(w / 1920, h / 1080);
+    if (!isFinite(s) || s <= 0) s = 1;   // กันจอ/เบราว์เซอร์ที่รายงานขนาดเป็น 0 แล้วจอดำ
+    document.documentElement.style.setProperty('--s', s);
+  }
+  addEventListener('resize', fit);
+  fit();
+
+  /* ---------- video helpers ---------- */
+  function vids(el) { return [].slice.call(el.querySelectorAll('video')); }
+
+  function stopAll() {
+    slides.forEach(function (s) {
+      vids(s).forEach(function (v) { v.pause(); });
+    });
+  }
+
+  function playCurrent() {
+    if (idx < 0) return [];
+    var vs = vids(slides[idx]);
+    vs.forEach(function (v) {
+      v.muted = muted || v.dataset.silent === '1';
+      try { v.currentTime = 0; } catch (e) {}
+      var p = v.play();
+      if (p && p.catch) p.catch(function () {});
+    });
+    return vs;
+  }
+
+  /* ---------- auto-play timing ---------- */
+  function slideMs() {
+    var s = slides[idx];
+    var base = parseInt(s.dataset.dur || '8000', 10);
+    var longest = 0;
+    vids(s).forEach(function (v) {
+      if (isFinite(v.duration) && v.duration > longest) longest = v.duration;
+    });
+    if (longest > 0) base = Math.max(base, Math.round(longest * 1000) + 600);
+    return Math.min(base, CFG.maxVideoMs || 45000);
+  }
+
+  function runProg(ms) {
+    prog.classList.add('on');
+    prog.style.transition = 'none';
+    prog.style.width = '0%';
+    void prog.offsetWidth;
+    prog.style.transition = 'width ' + ms + 'ms linear';
+    prog.style.width = '100%';
+  }
+  function killProg() {
+    prog.classList.remove('on');
+    prog.style.transition = 'none';
+    prog.style.width = '0%';
+  }
+
+  function arm() {
+    clearTimeout(timer);
+    if (mode !== 'auto' || idx < 0) { killProg(); return; }
+    var ms = slideMs();
+    runProg(ms);
+    timer = setTimeout(next, ms);
+  }
+
+  /* ---------- navigation ---------- */
+  function nextIndex(from) {
+    var i = from;
+    for (var n = 0; n < slides.length; n++) {
+      i = (i + 1) % slides.length;
+      if (mode === 'auto' && slides[i].dataset.autoskip === '1') continue;
+      return i;
+    }
+    return (from + 1) % slides.length;
+  }
+
+  function prevIndex(from) {
+    var i = from;
+    for (var n = 0; n < slides.length; n++) {
+      i = (i - 1 + slides.length) % slides.length;
+      if (mode === 'auto' && slides[i].dataset.autoskip === '1') continue;
+      return i;
+    }
+    return (from - 1 + slides.length) % slides.length;
+  }
+
+  function show(i) {
+    clearTimeout(timer);
+    stopAll();
+    if (idx >= 0) slides[idx].classList.remove('on');
+    idx = i;
+    slides[idx].classList.add('on');
+    var vs = playCurrent();
+    // metadata may arrive late -> re-arm so the slide waits for the full clip
+    vs.forEach(function (v) {
+      v.addEventListener('loadedmetadata', arm, { once: true });
+    });
+    arm();
+  }
+
+  function next() { show(nextIndex(idx)); }
+  function prev() { show(prevIndex(idx)); }
+
+  /* ---------- modes ---------- */
+  function goHome() {
+    clearTimeout(timer);
+    killProg();
+    stopAll();
+    mode = 'home';
+    if (idx >= 0) { slides[idx].classList.remove('on'); idx = -1; }
+    deck.classList.remove('on');
+    bar.classList.remove('on');
+    hint.classList.remove('on');
+    home.classList.add('on');
+    bumpIdle();
+  }
+
+  function enterDeck(i, m) {
+    mode = m;
+    home.classList.remove('on');
+    deck.classList.add('on');
+    bar.classList.add('on');
+    hint.classList.add('on');
+    btnAuto.classList.toggle('hl', mode === 'auto');
+    show(i);
+    bumpIdle();
+  }
+
+  function startAuto() { enterDeck(0, 'auto'); }
+
+  function toggleAuto() {
+    if (mode === 'auto') {
+      mode = 'manual';
+      clearTimeout(timer);
+      killProg();
+      btnAuto.classList.remove('hl');
+      bumpIdle();
+    } else if (mode === 'manual') {
+      mode = 'auto';
+      btnAuto.classList.add('hl');
+      arm();
+    } else {
+      startAuto();
+    }
+  }
+
+  /* ---------- idle -> back to auto play ----------
+     ที่บูธ: พนักงานกดโชว์งานให้ลูกค้าดู คุยจบแล้วเดินไป
+     ถ้าไม่มีตัวนี้ จอจะค้างสไลด์เดียวทั้งวัน                      */
+  function bumpIdle() {
+    clearTimeout(idleTimer);
+    if (mode === 'auto') return;
+    idleTimer = setTimeout(startAuto, CFG.idleReturnMs || 60000);
+  }
+  ['pointerdown', 'keydown', 'wheel'].forEach(function (e) {
+    addEventListener(e, bumpIdle, { passive: true });
+  });
+
+  /* ---------- sound ---------- */
+  function setMuted(m) {
+    muted = m;
+    btnSound.innerHTML = muted ? '<span>&#128263;</span>' : '<span>&#128266;</span>';
+    btnSound.setAttribute('aria-label', muted ? 'เปิดเสียง' : 'ปิดเสียง');
+    slides.forEach(function (s) {
+      vids(s).forEach(function (v) { v.muted = muted || v.dataset.silent === '1'; });
+    });
+  }
+
+  /* ---------- fullscreen ---------- */
+  function toggleFs() {
+    var d = document;
+    if (!d.fullscreenElement) {
+      var r = d.documentElement.requestFullscreen;
+      if (r) r.call(d.documentElement).catch(function () {});
+    } else if (d.exitFullscreen) {
+      d.exitFullscreen().catch(function () {});
+    }
+  }
+
+  // เบราว์เซอร์ยอมให้เข้าเต็มจอได้เฉพาะตอนมี gesture -> ขอตอนแตะครั้งแรก
+  if (KIOSK) {
+    addEventListener('pointerdown', function once() {
+      removeEventListener('pointerdown', once);
+      if (fsAsked || document.fullscreenElement) return;
+      fsAsked = true;
+      toggleFs();
+    });
+  }
+
+  /* ---------- wiring ---------- */
+  document.getElementById('btnPlay').addEventListener('click', startAuto);
+  document.getElementById('btnHome').addEventListener('click', goHome);
+  document.getElementById('btnPrev').addEventListener('click', function () { mode = 'manual'; btnAuto.classList.remove('hl'); killProg(); prev(); });
+  document.getElementById('btnNext').addEventListener('click', function () { mode = 'manual'; btnAuto.classList.remove('hl'); killProg(); next(); });
+  document.getElementById('btnFs').addEventListener('click', toggleFs);
+  btnAuto.addEventListener('click', toggleAuto);
+  btnSound.addEventListener('click', function () { setMuted(!muted); playCurrent(); });
+
+  [].slice.call(document.querySelectorAll('[data-goto]')).forEach(function (el) {
+    el.addEventListener('click', function () {
+      enterDeck(parseInt(el.dataset.goto, 10), 'manual');
+      btnAuto.classList.remove('hl');
+    });
+  });
+
+  addEventListener('keydown', function (e) {
+    var k = e.key;
+    if (k === 'ArrowRight' || k === 'PageDown') { e.preventDefault(); mode = (mode === 'home' ? 'manual' : mode); if (mode === 'auto') { mode = 'manual'; btnAuto.classList.remove('hl'); killProg(); } if (idx < 0) enterDeck(0, 'manual'); else next(); }
+    else if (k === 'ArrowLeft' || k === 'PageUp') { e.preventDefault(); if (mode === 'auto') { mode = 'manual'; btnAuto.classList.remove('hl'); killProg(); } if (idx < 0) enterDeck(slides.length - 1, 'manual'); else prev(); }
+    else if (k === 'Escape') { goHome(); }
+    else if (k === ' ') { e.preventDefault(); toggleAuto(); }
+    else if (k === 'f' || k === 'F') { toggleFs(); }
+    else if (k === 'm' || k === 'M') { setMuted(!muted); playCurrent(); }
+  });
+
+  /* ---------- go ---------- */
+  setMuted(true);
+  if (KIOSK) startAuto(); else goHome();
+})();
+
+</script>
+</body>
+</html>
