@@ -1,0 +1,42 @@
+# Deploy ผ่าน GitHub Actions แทน legacy Pages builder
+# เหตุผล: ไซต์นี้ ~450 MB (คลิปวิดีโอ 90+ ไฟล์) ตัว legacy builder ล้มซ้ำ ๆ
+# โดยไม่บอกสาเหตุ ("Page build failed.") ส่วนทางนี้รองรับไซต์ใหญ่ได้ตรง ๆ
+name: Deploy deck to Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+
+      # แยกไฟล์เว็บออกมาก่อน ไม่ให้ .git (~440 MB) ติดไปกับ artifact
+      - name: Stage site files
+        run: |
+          mkdir -p _site
+          rsync -a --exclude='.git' --exclude='.github' --exclude='_site' ./ _site/
+          echo "ขนาดไซต์: $(du -sh _site | cut -f1)"
+          echo "จำนวนไฟล์: $(find _site -type f | wc -l)"
+
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+      - id: deployment
+        uses: actions/deploy-pages@v4
