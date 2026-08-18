@@ -373,6 +373,54 @@ button{font-family:inherit;color:inherit;border:0;background:none;cursor:pointer
 }
 #hint.on{opacity:1;visibility:visible}
 
+/* ================= เมนูเลือกหน้าที่วนอัตโนมัติ ================= */
+#panel{
+  position:absolute;inset:0;z-index:40;display:grid;place-items:center;
+  background:rgba(10,14,31,.55);backdrop-filter:blur(6px);
+  opacity:0;visibility:hidden;transition:opacity .25s ease;
+}
+#panel.on{opacity:1;visibility:visible}
+.pn-box{
+  width:1280px;max-height:860px;display:flex;flex-direction:column;
+  background:var(--white);border-radius:26px;box-shadow:0 30px 80px rgba(0,0,0,.45);
+  padding:38px 44px 32px;
+}
+.pn-head{display:flex;align-items:flex-start;gap:24px;flex:none}
+.pn-head h3{font-size:42px;font-weight:800;color:var(--navy);line-height:1.15}
+.pn-head p{font-size:21px;color:var(--text-muted);font-weight:300;margin-top:8px;line-height:1.5}
+.pn-head .bbtn{margin-left:auto;flex:none}
+
+.pn-list{
+  flex:1;min-height:0;overflow-y:auto;margin:24px 0 20px;padding-right:10px;
+  display:grid;grid-template-columns:1fr 1fr;gap:12px 20px;align-content:start;
+  scrollbar-width:thin;scrollbar-color:#C9D2E0 transparent;
+}
+.pn-list::-webkit-scrollbar{width:10px}
+.pn-list::-webkit-scrollbar-thumb{background:#C9D2E0;border-radius:8px}
+
+.pn-row{
+  display:flex;align-items:center;gap:16px;padding:14px 20px;border-radius:14px;
+  background:#fff;border:1px solid var(--line);text-align:left;width:100%;
+  transition:border-color .15s ease,background .15s ease;
+}
+.pn-row:hover{border-color:var(--red);background:rgba(255,51,71,.05)}
+.pn-row .tick{
+  width:34px;height:34px;border-radius:9px;flex:none;display:grid;place-items:center;
+  border:2px solid #C3CDDD;color:transparent;font-size:22px;font-weight:800;
+  transition:background .15s ease,border-color .15s ease,color .15s ease;
+}
+.pn-row.on .tick{background:var(--red);border-color:var(--red);color:#fff}
+.pn-row .nm{font-size:24px;font-weight:500;color:var(--navy);flex:1;min-width:0;
+  overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pn-row.off .nm{color:var(--text-muted)}
+.pn-row .kind{font-size:17px;color:var(--text-muted);font-weight:300;flex:none}
+
+.pn-foot{display:flex;align-items:center;gap:14px;flex:none}
+.pn-stat{margin-left:auto;font-size:23px;color:var(--navy);font-weight:600}
+.pn-stat b{color:var(--red)}
+.chip.chip-cfg{color:var(--navy);border-color:var(--line)}
+.chip.chip-cfg:hover{color:var(--red);border-color:var(--red)}
+
 </style>
 </head>
 <body>
@@ -534,11 +582,12 @@ button{font-family:inherit;color:inherit;border:0;background:none;cursor:pointer
       <button class="chip" data-goto="7">ขั้นตอนงาน</button>
       <button class="chip" data-goto="17">แพ็กเกจ</button>
       <button class="chip" data-goto="18">ติดต่อ</button>
+      <button class="chip chip-cfg" id="btnPanelHome">&#9881; เลือกหน้าที่วนอัตโนมัติ</button>
       </div>
     </section>
 
     <section class="screen" id="deck">
-<div class="slide s-cover" data-dur="6000">
+<div data-sid="cover" data-label="หน้าปก" class="slide s-cover" data-dur="6000">
   
   <div class="veil"></div>
   <div class="mid">
@@ -548,7 +597,7 @@ button{font-family:inherit;color:inherit;border:0;background:none;cursor:pointer
   </div>
 </div>
 
-<div class="slide s-wall" data-dur="15000">
+<div data-sid="wall" data-label="Showreel Wall" class="slide s-wall" data-dur="15000">
   <div class="wh"><h2>ผลงานการผลิตและบริหารวิดีโอปั้นช่อง</h2><span class="eyebrow">SHORT-FORM VIDEO 15–60 วิ</span></div>
   <div class="wgrid" style="--cw:231px;--ch:411px;--cols:6">
       <div class="clip"><video src="assets/video/wall/m127-groove55-01.mp4" preload="metadata" loop playsinline data-silent="1" muted></video></div>
@@ -566,13 +615,13 @@ button{font-family:inherit;color:inherit;border:0;background:none;cursor:pointer
   </div>
 </div>
 
-<div class="slide s-msg" data-dur="8000" data-msg="services">
+<div data-sid="msg:services" data-label="เราทำอะไร" class="slide s-msg" data-dur="8000" data-msg="services">
   <div class="eyebrow">เราทำอะไร</div>
   <h2>ผลงานการผลิตและบริหาร<br><span>วิดีโอปั้นช่อง</span></h2>
   <div class="items" style="--n:2"><div class="item"><svg class="ico ico-item" aria-hidden="true"><use href="#icon-content-creative"/></svg><h3>Short-form Video 15–60 วิ</h3><p>วางกลยุทธ์คอนเทนต์ สร้างการรับรู้และภาพจำที่ชัดเจน ดึงดูดกลุ่มเป้าหมายเข้าหน้าช่อง</p></div><div class="item"><svg class="ico ico-item" aria-hidden="true"><use href="#icon-tiktok-ads"/></svg><h3>ครอบคลุมหลากหลายธุรกิจ</h3><p>Skincare · Health &amp; Beauty · Aesthetic Clinic · F&amp;B · Automobile · Lifestyle</p></div></div>
 </div>
 
-<div class="slide s-brand" data-dur="12000" data-brand="m077-smartclinic">
+<div data-sid="brand:m077-smartclinic" data-label="Smart Clinic" class="slide s-brand" data-dur="12000" data-brand="m077-smartclinic">
   <div class="bs-head">
     <div class="bs-logo"><img src="assets/logos/S'Mart%20Clinic.jpg" alt="Smart Clinic"></div>
     <div class="bs-id"><h2 class="xlong">S-Mart AWC Clinic (S-Mart Anti-Aging and Wellness Center)</h2><div class="cat">คลินิก</div></div>
@@ -586,7 +635,7 @@ button{font-family:inherit;color:inherit;border:0;background:none;cursor:pointer
   </div>
 </div>
 
-<div class="slide s-channel" data-dur="14000" data-channel="m077-smartclinic">
+<div data-sid="ch:m077-smartclinic" data-label="ผลงานช่อง หมอมาศ Anti Aging" class="slide s-channel" data-dur="14000" data-channel="m077-smartclinic">
   <div class="ch-head">
     
     <div class="ch-id">
@@ -615,7 +664,7 @@ button{font-family:inherit;color:inherit;border:0;background:none;cursor:pointer
   </div>
 </div>
 
-<div class="slide s-brand" data-dur="12000" data-brand="m100-barcode">
+<div data-sid="brand:m100-barcode" data-label="สถาบันบาร์โค้ดชีวิต" class="slide s-brand" data-dur="12000" data-brand="m100-barcode">
   <div class="bs-head">
     <div class="bs-logo"><img src="assets/logos/%E0%B8%AA%E0%B8%96%E0%B8%B2%E0%B8%9A%E0%B8%B1%E0%B8%99%E0%B8%9A%E0%B8%B2%E0%B8%A3%E0%B9%8C%E0%B9%82%E0%B8%84%E0%B9%89%E0%B8%94%E0%B8%8A%E0%B8%B5%E0%B8%A7%E0%B8%B4%E0%B8%95.jpg" alt="สถาบันบาร์โค้ดชีวิต"></div>
     <div class="bs-id"><h2 class="">สถาบันบาร์โค้ดชีวิต</h2><div class="cat">คอร์ส / ที่ปรึกษา</div></div>
@@ -629,7 +678,7 @@ button{font-family:inherit;color:inherit;border:0;background:none;cursor:pointer
   </div>
 </div>
 
-<div class="slide s-channel" data-dur="14000" data-channel="m100-barcode">
+<div data-sid="ch:m100-barcode" data-label="ผลงานช่อง ซินแสบาร์โค้ดชีวิต" class="slide s-channel" data-dur="14000" data-channel="m100-barcode">
   <div class="ch-head">
     
     <div class="ch-id">
@@ -658,13 +707,13 @@ button{font-family:inherit;color:inherit;border:0;background:none;cursor:pointer
   </div>
 </div>
 
-<div class="slide s-msg" data-dur="8000" data-msg="process">
+<div data-sid="msg:process" data-label="ขั้นตอนงาน" class="slide s-msg" data-dur="8000" data-msg="process">
   <div class="eyebrow">ขั้นตอนงาน</div>
   <h2>ตั้งแต่คิดแนวคิด<br><span>จนถึงตัดต่อ</span></h2>
   <div class="steps"><div class="step"><svg class="ico ico-step" aria-hidden="true"><use href="#icon-strategy-planning"/></svg><b>รับบรีฟ</b></div><div class="step"><svg class="ico ico-step" aria-hidden="true"><use href="#icon-strategy-planning"/></svg><b>วางกลยุทธ์คอนเทนต์</b></div><div class="step"><svg class="ico ico-step" aria-hidden="true"><use href="#icon-content-creative"/></svg><b>คิดแนวคิด</b></div><div class="step"><svg class="ico ico-step" aria-hidden="true"><use href="#icon-tiktok-ads"/></svg><b>ถ่ายทำ</b></div><div class="step"><svg class="ico ico-step" aria-hidden="true"><use href="#icon-content-creative"/></svg><b>ตัดต่อ</b></div><div class="step"><svg class="ico ico-step" aria-hidden="true"><use href="#icon-performance-report"/></svg><b>ลงช่องและวัดผล</b></div></div>
 </div>
 
-<div class="slide s-brand" data-dur="12000" data-brand="m121-tria">
+<div data-sid="brand:m121-tria" data-label="TRIA" class="slide s-brand" data-dur="12000" data-brand="m121-tria">
   <div class="bs-head">
     <div class="bs-logo"><img src="assets/logos/TRIA.png" alt="TRIA"></div>
     <div class="bs-id"><h2 class="long">TRIA MEDICAL WELLNESS CENTER</h2><div class="cat">สุขภาพ / เวลเนส</div></div>
@@ -677,7 +726,7 @@ button{font-family:inherit;color:inherit;border:0;background:none;cursor:pointer
   </div>
 </div>
 
-<div class="slide s-brand" data-dur="12000" data-brand="m145-morbow">
+<div data-sid="brand:m145-morbow" data-label="หมอโบว์" class="slide s-brand" data-dur="12000" data-brand="m145-morbow">
   <div class="bs-head">
     <div class="bs-logo"><img src="assets/logos/%E0%B8%AB%E0%B8%A1%E0%B8%AD%E0%B9%82%E0%B8%9A%E0%B8%A7%E0%B9%8C.jpg" alt="หมอโบว์"></div>
     <div class="bs-id"><h2 class="long">โบว์อยากใส่ใจ (@DrBeauing)</h2><div class="cat">คลินิก</div></div>
@@ -691,7 +740,7 @@ button{font-family:inherit;color:inherit;border:0;background:none;cursor:pointer
   </div>
 </div>
 
-<div class="slide s-brand" data-dur="12000" data-brand="m104-kozue">
+<div data-sid="brand:m104-kozue" data-label="Kozue Omakaze" class="slide s-brand" data-dur="12000" data-brand="m104-kozue">
   <div class="bs-head">
     <div class="bs-logo"><img src="assets/logos/KOZUE.jpg" alt="Kozue Omakaze"></div>
     <div class="bs-id"><h2 class="">Kozue Omakaze</h2><div class="cat">ร้านอาหารญี่ปุ่น</div></div>
@@ -704,7 +753,7 @@ button{font-family:inherit;color:inherit;border:0;background:none;cursor:pointer
   </div>
 </div>
 
-<div class="slide s-brand" data-dur="12000" data-brand="m127-groove55">
+<div data-sid="brand:m127-groove55" data-label="Terra Groove55" class="slide s-brand" data-dur="12000" data-brand="m127-groove55">
   <div class="bs-head">
     <div class="bs-logo"><img src="assets/logos/Terra.jpg" alt="Terra Groove55"></div>
     <div class="bs-id"><h2 class="long">Terra Thonlor10 , Groove55</h2><div class="cat">ร้านอาหาร</div></div>
@@ -717,7 +766,7 @@ button{font-family:inherit;color:inherit;border:0;background:none;cursor:pointer
   </div>
 </div>
 
-<div class="slide s-brand" data-dur="12000" data-brand="m066-bpk9">
+<div data-sid="brand:m066-bpk9" data-label="BPK9" class="slide s-brand" data-dur="12000" data-brand="m066-bpk9">
   <div class="bs-head">
     <div class="bs-logo"><span class="initial">B</span></div>
     <div class="bs-id"><h2 class="">BPK9</h2><div class="cat">โรงพยาบาล</div></div>
@@ -730,7 +779,7 @@ button{font-family:inherit;color:inherit;border:0;background:none;cursor:pointer
   </div>
 </div>
 
-<div class="slide s-brand" data-dur="12000" data-brand="m140-siamauto">
+<div data-sid="brand:m140-siamauto" data-label="Siam Auto Car" class="slide s-brand" data-dur="12000" data-brand="m140-siamauto">
   <div class="bs-head">
     <div class="bs-logo"><img src="assets/logos/Saim%20auto%20car.jpg" alt="Siam Auto Car"></div>
     <div class="bs-id"><h2 class="">Siam Auto Car</h2><div class="cat">ยานยนต์</div></div>
@@ -744,7 +793,7 @@ button{font-family:inherit;color:inherit;border:0;background:none;cursor:pointer
   </div>
 </div>
 
-<div class="slide s-brand" data-dur="12000" data-brand="m146-sharisma">
+<div data-sid="brand:m146-sharisma" data-label="Sharisma" class="slide s-brand" data-dur="12000" data-brand="m146-sharisma">
   <div class="bs-head">
     <div class="bs-logo"><span class="initial">S</span></div>
     <div class="bs-id"><h2 class="">Sharisma</h2><div class="cat">อาหารเสริม / เวลเนส</div></div>
@@ -758,7 +807,7 @@ button{font-family:inherit;color:inherit;border:0;background:none;cursor:pointer
   </div>
 </div>
 
-<div class="slide s-brand" data-dur="12000" data-brand="m108-shooshoke">
+<div data-sid="brand:m108-shooshoke" data-label="ShooShoke" class="slide s-brand" data-dur="12000" data-brand="m108-shooshoke">
   <div class="bs-head">
     <div class="bs-logo"><img src="assets/logos/Shooshoke.jpg" alt="ShooShoke"></div>
     <div class="bs-id"><h2 class="">ShooShoke</h2><div class="cat">เกษตรอินทรีย์</div></div>
@@ -771,13 +820,13 @@ button{font-family:inherit;color:inherit;border:0;background:none;cursor:pointer
   </div>
 </div>
 
-<div class="slide s-msg" data-dur="8000" data-msg="diff">
+<div data-sid="msg:diff" data-label="ทำไมต้องเรา" class="slide s-msg" data-dur="8000" data-msg="diff">
   <div class="eyebrow">ทำไมต้องเรา</div>
   <h2>ทีม In-House วางกลยุทธ์ปั้นช่อง<br><span>ผลิตคอนเทนต์วิดีโอครบวงจร</span></h2>
   <div class="items" style="--n:3"><div class="item"><svg class="ico ico-item" aria-hidden="true"><use href="#icon-strategy-planning"/></svg><h3>วางกลยุทธ์คอนเทนต์</h3><p>ปั้นช่องให้มีทิศทางและเติบโตอย่างต่อเนื่อง</p></div><div class="item"><svg class="ico ico-item" aria-hidden="true"><use href="#icon-ads-optimization"/></svg><h3>สร้างการรับรู้และภาพจำที่ชัดเจน</h3><p>ดึงดูดกลุ่มเป้าหมายเข้าหน้าช่อง</p></div><div class="item"><svg class="ico ico-item" aria-hidden="true"><use href="#icon-content-creative"/></svg><h3>คุยตรงกับทีมครีเอทีฟ</h3><p>ดูแลครบวงจร ตั้งแต่คิดแนวคิด ถ่ายทำ จนถึงตัดต่อ</p></div></div>
 </div>
 
-<div class="slide s-pack" data-dur="10000" data-key="packages">
+<div data-sid="packages" data-label="ค่าบริการ" class="slide s-pack" data-dur="10000" data-key="packages">
   <div class="eyebrow">ค่าบริการ · ราคาเริ่มต้น</div>
   <h2>เลือกเฉพาะที่ธุรกิจคุณต้องการได้</h2>
   <div class="pk">
@@ -806,7 +855,7 @@ button{font-family:inherit;color:inherit;border:0;background:none;cursor:pointer
   <div class="note">ราคาเริ่มต้น ยังไม่รวม VAT · ค่าครีเอเตอร์และค่าโปรดักชันนอกสถานที่คิดแยกตามงาน</div>
 </div>
 
-<div class="slide s-contact" data-dur="10000" data-key="contact">
+<div data-sid="contact" data-label="ติดต่อ" class="slide s-contact" data-dur="10000" data-key="contact">
   <div>
     <img class="ct-logo" src="assets/brand/logo-color.png" alt="ติดจรวด">
     <div class="eyebrow">เริ่มต้นแบบไม่มีความเสี่ยง</div>
@@ -818,7 +867,7 @@ button{font-family:inherit;color:inherit;border:0;background:none;cursor:pointer
   <div class="qr"><img src="assets/qr-line.png" alt="QR"></div>
 </div>
 
-<div class="slide s-brand" data-dur="12000" data-autoskip="1" data-brand="m030-mildglucan">
+<div data-sid="brand:m030-mildglucan" data-label="MildGlucan" class="slide s-brand" data-dur="12000" data-autoskip="1" data-brand="m030-mildglucan">
   <div class="bs-head">
     <div class="bs-logo"><span class="initial">M</span></div>
     <div class="bs-id"><h2 class="">MildGlucan</h2><div class="cat">อาหารเสริม</div></div>
@@ -831,7 +880,7 @@ button{font-family:inherit;color:inherit;border:0;background:none;cursor:pointer
   </div>
 </div>
 
-<div class="slide s-brand" data-dur="12000" data-autoskip="1" data-brand="m039-lilsheep">
+<div data-sid="brand:m039-lilsheep" data-label="Lilsheep" class="slide s-brand" data-dur="12000" data-autoskip="1" data-brand="m039-lilsheep">
   <div class="bs-head">
     <div class="bs-logo"><span class="initial">L</span></div>
     <div class="bs-id"><h2 class="">Lilsheep</h2><div class="cat">โปรตีน / อาหารเสริม</div></div>
@@ -844,7 +893,7 @@ button{font-family:inherit;color:inherit;border:0;background:none;cursor:pointer
   </div>
 </div>
 
-<div class="slide s-brand" data-dur="12000" data-autoskip="1" data-brand="m073-positif">
+<div data-sid="brand:m073-positif" data-label="Positif" class="slide s-brand" data-dur="12000" data-autoskip="1" data-brand="m073-positif">
   <div class="bs-head">
     <div class="bs-logo"><span class="initial">P</span></div>
     <div class="bs-id"><h2 class="">Positif</h2><div class="cat">อาหารเสริมความงาม</div></div>
@@ -857,7 +906,7 @@ button{font-family:inherit;color:inherit;border:0;background:none;cursor:pointer
   </div>
 </div>
 
-<div class="slide s-brand" data-dur="12000" data-autoskip="1" data-brand="m084-florenza">
+<div data-sid="brand:m084-florenza" data-label="Florenza Clinic" class="slide s-brand" data-dur="12000" data-autoskip="1" data-brand="m084-florenza">
   <div class="bs-head">
     <div class="bs-logo"><span class="initial">F</span></div>
     <div class="bs-id"><h2 class="">Florenza Clinic</h2><div class="cat">คลินิกความงาม</div></div>
@@ -870,7 +919,7 @@ button{font-family:inherit;color:inherit;border:0;background:none;cursor:pointer
   </div>
 </div>
 
-<div class="slide s-brand" data-dur="12000" data-autoskip="1" data-brand="m093-jigo">
+<div data-sid="brand:m093-jigo" data-label="Jigo Smoothie" class="slide s-brand" data-dur="12000" data-autoskip="1" data-brand="m093-jigo">
   <div class="bs-head">
     <div class="bs-logo"><img src="assets/logos/Jigo.jpg" alt="Jigo Smoothie"></div>
     <div class="bs-id"><h2 class="">Jigo Smoothie</h2><div class="cat">อาหาร / เครื่องดื่ม</div></div>
@@ -883,7 +932,7 @@ button{font-family:inherit;color:inherit;border:0;background:none;cursor:pointer
   </div>
 </div>
 
-<div class="slide s-brand" data-dur="12000" data-autoskip="1" data-brand="m123-mortian">
+<div data-sid="brand:m123-mortian" data-label="หมอเถียร" class="slide s-brand" data-dur="12000" data-autoskip="1" data-brand="m123-mortian">
   <div class="bs-head">
     <div class="bs-logo"><img src="assets/logos/%E0%B8%AB%E0%B8%A1%E0%B8%AD%E0%B9%80%E0%B8%96%E0%B8%B5%E0%B8%A2%E0%B8%A3.jpg" alt="หมอเถียร"></div>
     <div class="bs-id"><h2 class="">หมอเถียร</h2><div class="cat">แพทย์แผนจีน</div></div>
@@ -896,7 +945,7 @@ button{font-family:inherit;color:inherit;border:0;background:none;cursor:pointer
   </div>
 </div>
 
-<div class="slide s-brand" data-dur="12000" data-autoskip="1" data-brand="pn-autopart">
+<div data-sid="brand:pn-autopart" data-label="PN Auto Part" class="slide s-brand" data-dur="12000" data-autoskip="1" data-brand="pn-autopart">
   <div class="bs-head">
     <div class="bs-logo"><img src="assets/logos/PN%20auto%20part.jpg" alt="PN Auto Part"></div>
     <div class="bs-id"><h2 class="">PN Auto Part</h2><div class="cat">อะไหล่ยนต์</div></div>
@@ -910,6 +959,25 @@ button{font-family:inherit;color:inherit;border:0;background:none;cursor:pointer
 </div>
     </section>
 
+    <!-- เมนูเลือกหน้าที่จะวนใน Auto Play (ใช้หน้างานได้เลย ไม่ต้อง build ใหม่) -->
+    <div id="panel">
+      <div class="pn-box">
+        <div class="pn-head">
+          <div>
+            <h3>เลือกหน้าที่จะวนอัตโนมัติ</h3>
+            <p>ติ๊กออก = ข้ามหน้านั้นตอนเล่นอัตโนมัติ (ยังกดดูจากสารบัญได้ตามปกติ) &middot; จำค่าไว้ในเครื่องนี้</p>
+          </div>
+          <button class="bbtn" id="pnClose">ปิด</button>
+        </div>
+        <div class="pn-list" id="pnList"></div>
+        <div class="pn-foot">
+          <button class="chip" id="pnAll">เลือกทั้งหมด</button>
+          <button class="chip" id="pnNone">ไม่เลือกเลย</button>
+          <span class="pn-stat" id="pnStat"></span>
+        </div>
+      </div>
+    </div>
+
     <div id="hint">&#8592; &#8594; เลื่อนสไลด์ &middot; Esc สารบัญ &middot; Space เล่นอัตโนมัติ &middot; F เต็มจอ &middot; M เสียง</div>
 
     <div id="bar">
@@ -918,6 +986,7 @@ button{font-family:inherit;color:inherit;border:0;background:none;cursor:pointer
       <button class="bbtn" id="btnNext">&#8250;</button>
       <button class="bbtn" id="btnAuto">&#9654; อัตโนมัติ</button>
       <button class="bbtn" id="btnSound"><span>&#128263;</span></button>
+      <button class="bbtn" id="btnPanel" title="เลือกหน้าที่วนอัตโนมัติ">&#9881;</button>
       <button class="bbtn" id="btnFs">&#9974;</button>
     </div>
 
@@ -1031,17 +1100,17 @@ button{font-family:inherit;color:inherit;border:0;background:none;cursor:pointer
     var i = from;
     for (var n = 0; n < slides.length; n++) {
       i = (i + 1) % slides.length;
-      if (mode === 'auto' && slides[i].dataset.autoskip === '1') continue;
+      if (mode === 'auto' && isSkipped(slides[i])) continue;
       return i;
     }
-    return (from + 1) % slides.length;
+    return (from + 1) % slides.length;   // ซ่อนหมดทุกหน้า -> ยังเดินต่อ ไม่ค้าง
   }
 
   function prevIndex(from) {
     var i = from;
     for (var n = 0; n < slides.length; n++) {
       i = (i - 1 + slides.length) % slides.length;
-      if (mode === 'auto' && slides[i].dataset.autoskip === '1') continue;
+      if (mode === 'auto' && isSkipped(slides[i])) continue;
       return i;
     }
     return (from - 1 + slides.length) % slides.length;
@@ -1104,7 +1173,11 @@ button{font-family:inherit;color:inherit;border:0;background:none;cursor:pointer
     bumpIdle();
   }
 
-  function startAuto() { enterDeck(0, 'auto'); }
+  function startAuto() {
+    var first = 0;
+    for (var i = 0; i < slides.length; i++) { if (!isSkipped(slides[i])) { first = i; break; } }
+    enterDeck(first, 'auto');
+  }
 
   function toggleAuto() {
     if (mode === 'auto') {
@@ -1164,6 +1237,100 @@ button{font-family:inherit;color:inherit;border:0;background:none;cursor:pointer
       toggleFs();
     });
   }
+
+  /* ---------- เมนูเลือกหน้าที่วนอัตโนมัติ ----------
+     เก็บ "หน้าที่ถูกซ่อน" ไว้ใน localStorage อ้างด้วย data-sid ที่คงที่ข้าม build
+     -> ปรับหน้างานได้เลยโดยไม่ต้อง build ใหม่ และรีเฟรชแล้วค่าไม่หาย        */
+  var STORE = 'tjr-vdo-hidden';
+  var panel = document.getElementById('panel');
+  var pnList = document.getElementById('pnList');
+  var pnStat = document.getElementById('pnStat');
+  var hidden = new Set();
+
+  try {
+    var raw = localStorage.getItem(STORE);
+    if (raw) JSON.parse(raw).forEach(function (s) { hidden.add(s); });
+  } catch (e) {}
+
+  function saveHidden() {
+    // Set ไม่ใช่ array-like -> [].slice.call() คืน [] เสมอ ต้องใช้ Array.from
+    try { localStorage.setItem(STORE, JSON.stringify(Array.from(hidden))); } catch (e) {}
+  }
+
+  function sidOf(s) { return s.dataset.sid || ''; }
+
+  // หน้าที่ถูกข้ามตอน Auto Play = ที่ build ตั้งไว้ (data-autoskip) หรือที่ผู้ใช้ติ๊กออก
+  function isSkipped(s) {
+    return s.dataset.autoskip === '1' || hidden.has(sidOf(s));
+  }
+
+  function estMs(s) {
+    var base = parseInt(s.dataset.dur || '8000', 10);
+    var longest = 0;
+    vids(s).forEach(function (v) { if (isFinite(v.duration) && v.duration > longest) longest = v.duration; });
+    if (longest > 0) base = Math.max(base, Math.min(Math.round(longest * 1000) + 600, CFG.maxVideoMs || 45000));
+    return base;
+  }
+
+  function updateStat() {
+    var on = slides.filter(function (s) { return !isSkipped(s); });
+    var ms = on.reduce(function (a, s) { return a + estMs(s); }, 0);
+    var mm = Math.floor(ms / 60000), ss = Math.round(ms / 1000) % 60;
+    pnStat.innerHTML = 'วน <b>' + on.length + '</b> จาก ' + slides.length + ' หน้า &middot; ลูปราว <b>' +
+      mm + ':' + String(ss).padStart(2, '0') + '</b>';
+  }
+
+  var KIND = { 's-cover': 'ปก', 's-wall': 'โชว์รีล', 's-brand': 'แบรนด์', 's-channel': 'ช่อง',
+               's-msg': 'ข้อความ', 's-pack': 'ราคา', 's-contact': 'ติดต่อ' };
+
+  function buildPanel() {
+    pnList.innerHTML = '';
+    slides.forEach(function (s) {
+      var sid = sidOf(s);
+      var row = document.createElement('button');
+      row.className = 'pn-row';
+      var kind = (s.className.match(/s-[a-z]+/) || [''])[0];
+      row.innerHTML = '<i class="tick">&#10003;</i><span class="nm"></span><span class="kind">' +
+        (KIND[kind] || '') + '</span>';
+      row.querySelector('.nm').textContent = s.dataset.label || sid;
+      function paint() {
+        var on = !hidden.has(sid);
+        row.classList.toggle('on', on);
+        row.classList.toggle('off', !on);
+      }
+      row.addEventListener('click', function () {
+        if (hidden.has(sid)) hidden.delete(sid); else hidden.add(sid);
+        saveHidden(); paint(); updateStat();
+      });
+      paint();
+      pnList.appendChild(row);
+    });
+    updateStat();
+  }
+
+  function openPanel() {
+    clearTimeout(timer);          // หยุดเลื่อนสไลด์ระหว่างตั้งค่า
+    killProg();
+    buildPanel();
+    panel.classList.add('on');
+  }
+  function closePanel() {
+    panel.classList.remove('on');
+    if (mode === 'auto' && idx >= 0) arm();   // กลับไปวนต่อ
+    bumpIdle();
+  }
+
+  document.getElementById('btnPanel').addEventListener('click', openPanel);
+  document.getElementById('pnClose').addEventListener('click', closePanel);
+  panel.addEventListener('click', function (e) { if (e.target === panel) closePanel(); });
+  document.getElementById('pnAll').addEventListener('click', function () {
+    hidden.clear(); saveHidden(); buildPanel();
+  });
+  document.getElementById('pnNone').addEventListener('click', function () {
+    slides.forEach(function (s) { hidden.add(sidOf(s)); }); saveHidden(); buildPanel();
+  });
+  var btnPanelHome = document.getElementById('btnPanelHome');
+  if (btnPanelHome) btnPanelHome.addEventListener('click', openPanel);
 
   /* ---------- wiring ---------- */
   document.getElementById('btnPlay').addEventListener('click', startAuto);
