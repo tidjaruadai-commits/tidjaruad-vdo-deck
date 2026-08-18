@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex">
-<title>ติดจรวด — คลิปที่ขายได้</title>
+<title>ติดจรวด — ปั้นช่อง สร้างตัวตน</title>
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700;800&display=swap');
 
@@ -278,7 +278,11 @@ button{font-family:inherit;color:inherit;border:0;background:none;cursor:pointer
 .s-msg{padding:96px 120px;display:flex;flex-direction:column;justify-content:center}
 .s-msg h2{font-size:86px;font-weight:800;line-height:1.08;margin:18px 0 48px;color:var(--navy)}
 .s-msg h2 span{color:var(--red)}
-.s-msg .items{display:grid;grid-template-columns:1fr 1fr;gap:40px}
+.s-msg .items{display:grid;grid-template-columns:repeat(var(--n,2),1fr);gap:36px}
+/* 3 ข้อ -> การ์ดแคบลง ต้องย่อตัวหนังสือไม่ให้ล้น */
+.s-msg .items[style*="--n:3"] .item{padding:32px 30px}
+.s-msg .items[style*="--n:3"] .item h3{font-size:32px}
+.s-msg .items[style*="--n:3"] .item p{font-size:24px}
 .s-msg .item{
   padding:38px 42px;border-radius:18px;background:#fff;
   border:1px solid var(--line);box-shadow:var(--shadow);position:relative;overflow:hidden;
@@ -445,8 +449,8 @@ button{font-family:inherit;color:inherit;border:0;background:none;cursor:pointer
       <div class="hm-top">
         <img class="hm-logo" src="assets/brand/logo-color.png" alt="ติดจรวด">
         <div class="hm-title">
-          <h1>คลิปที่ขายได้ <em>ไม่ใช่แค่คลิปที่สวย</em></h1>
-          <p>ผลิตคลิปสั้น &amp; UGC โดยทีมที่ยิงแอดจริงทุกวัน</p>
+          <h1>ปั้นช่อง สร้างตัวตน <em>ดึงคนดู</em></h1>
+          <p>ด้วยคอนเทนต์วิดีโอที่สร้างการรับรู้จริง</p>
         </div>
         <button class="hm-play" id="btnPlay"><i class="tri"></i>เล่นอัตโนมัติ</button>
       </div>
@@ -539,13 +543,13 @@ button{font-family:inherit;color:inherit;border:0;background:none;cursor:pointer
   <div class="veil"></div>
   <div class="mid">
     <img class="co-logo" src="assets/brand/logo-white.png" alt="ติดจรวด">
-    <h1>คลิปที่ขายได้<br><em>ไม่ใช่แค่คลิปที่สวย</em></h1>
-    <p>ผลิตคลิปสั้น &amp; UGC โดยทีมที่ยิงแอดจริงทุกวัน</p>
+    <h1>ปั้นช่อง สร้างตัวตน<br><em>ดึงคนดู</em></h1>
+    <p>ด้วยคอนเทนต์วิดีโอที่สร้างการรับรู้จริง</p>
   </div>
 </div>
 
 <div class="slide s-wall" data-dur="15000">
-  <div class="wh"><h2>ผลงานบางส่วน</h2><span class="eyebrow">TIKTOK &middot; REELS &middot; UGC</span></div>
+  <div class="wh"><h2>ผลงานการผลิตและบริหารวิดีโอปั้นช่อง</h2><span class="eyebrow">SHORT-FORM VIDEO 15–60 วิ</span></div>
   <div class="wgrid" style="--cw:231px;--ch:411px;--cols:6">
       <div class="clip"><video src="assets/video/wall/m127-groove55-01.mp4" preload="metadata" loop playsinline data-silent="1" muted></video></div>
       <div class="clip"><video src="assets/video/wall/m127-groove55-02.mp4" preload="metadata" loop playsinline data-silent="1" muted></video></div>
@@ -564,8 +568,8 @@ button{font-family:inherit;color:inherit;border:0;background:none;cursor:pointer
 
 <div class="slide s-msg" data-dur="8000" data-msg="services">
   <div class="eyebrow">เราทำอะไร</div>
-  <h2>ผลิตคลิปให้แบรนด์<br><span>2 แบบ</span></h2>
-  <div class="items"><div class="item"><svg class="ico ico-item" aria-hidden="true"><use href="#icon-content-creative"/></svg><h3>คลิปสั้นสำหรับยิงแอด</h3><p>TikTok / Reels เน้น hook 3 วินาทีแรก ผลิตเป็นชุดต่อเดือน เอาไปยิงแอดต่อได้ทันที</p></div><div class="item"><svg class="ico ico-item" aria-hidden="true"><use href="#icon-tiktok-ads"/></svg><h3>UGC / รีวิวครีเอเตอร์</h3><p>คลิปคนจริงรีวิวสินค้า สไตล์ธรรมชาติ เลือกครีเอเตอร์ให้ตรงกลุ่มลูกค้าของแบรนด์</p></div></div>
+  <h2>ผลงานการผลิตและบริหาร<br><span>วิดีโอปั้นช่อง</span></h2>
+  <div class="items" style="--n:2"><div class="item"><svg class="ico ico-item" aria-hidden="true"><use href="#icon-content-creative"/></svg><h3>Short-form Video 15–60 วิ</h3><p>วางกลยุทธ์คอนเทนต์ สร้างการรับรู้และภาพจำที่ชัดเจน ดึงดูดกลุ่มเป้าหมายเข้าหน้าช่อง</p></div><div class="item"><svg class="ico ico-item" aria-hidden="true"><use href="#icon-tiktok-ads"/></svg><h3>ครอบคลุมหลากหลายธุรกิจ</h3><p>Skincare · Health &amp; Beauty · Aesthetic Clinic · F&amp;B · Automobile · Lifestyle</p></div></div>
 </div>
 
 <div class="slide s-brand" data-dur="12000" data-brand="m077-smartclinic">
@@ -656,8 +660,8 @@ button{font-family:inherit;color:inherit;border:0;background:none;cursor:pointer
 
 <div class="slide s-msg" data-dur="8000" data-msg="process">
   <div class="eyebrow">ขั้นตอนงาน</div>
-  <h2>ตั้งแต่บรีฟ<br><span>ถึงคลิปที่ชนะ</span></h2>
-  <div class="steps"><div class="step"><svg class="ico ico-step" aria-hidden="true"><use href="#icon-strategy-planning"/></svg><b>รับบรีฟ</b></div><div class="step"><svg class="ico ico-step" aria-hidden="true"><use href="#icon-content-creative"/></svg><b>วาง Hook / สคริปต์</b></div><div class="step"><svg class="ico ico-step" aria-hidden="true"><use href="#icon-tiktok-ads"/></svg><b>ถ่ายทำ</b></div><div class="step"><svg class="ico ico-step" aria-hidden="true"><use href="#icon-content-creative"/></svg><b>ตัดต่อ</b></div><div class="step"><svg class="ico ico-step" aria-hidden="true"><use href="#icon-ads-optimization"/></svg><b>ยิงทดสอบ</b></div><div class="step"><svg class="ico ico-step" aria-hidden="true"><use href="#icon-sales-growth"/></svg><b>คัดตัวชนะไปสเกล</b></div></div>
+  <h2>ตั้งแต่คิดแนวคิด<br><span>จนถึงตัดต่อ</span></h2>
+  <div class="steps"><div class="step"><svg class="ico ico-step" aria-hidden="true"><use href="#icon-strategy-planning"/></svg><b>รับบรีฟ</b></div><div class="step"><svg class="ico ico-step" aria-hidden="true"><use href="#icon-strategy-planning"/></svg><b>วางกลยุทธ์คอนเทนต์</b></div><div class="step"><svg class="ico ico-step" aria-hidden="true"><use href="#icon-content-creative"/></svg><b>คิดแนวคิด</b></div><div class="step"><svg class="ico ico-step" aria-hidden="true"><use href="#icon-tiktok-ads"/></svg><b>ถ่ายทำ</b></div><div class="step"><svg class="ico ico-step" aria-hidden="true"><use href="#icon-content-creative"/></svg><b>ตัดต่อ</b></div><div class="step"><svg class="ico ico-step" aria-hidden="true"><use href="#icon-performance-report"/></svg><b>ลงช่องและวัดผล</b></div></div>
 </div>
 
 <div class="slide s-brand" data-dur="12000" data-brand="m121-tria">
@@ -769,8 +773,8 @@ button{font-family:inherit;color:inherit;border:0;background:none;cursor:pointer
 
 <div class="slide s-msg" data-dur="8000" data-msg="diff">
   <div class="eyebrow">ทำไมต้องเรา</div>
-  <h2>เราเป็นเอเจนซี่ยิงแอด<br><span>ที่ผลิตคลิปเอง</span></h2>
-  <div class="items"><div class="item"><svg class="ico ico-item" aria-hidden="true"><use href="#icon-ads-optimization"/></svg><h3>ทำคลิปจากดาต้าจริง ไม่ใช่เดา</h3><p>เรารู้ว่า hook แบบไหน CTR ดี เพราะเรายิงแอดให้ลูกค้าทุกวัน เอาผลจริงมาออกแบบคลิปตัวถัดไป</p></div><div class="item"><svg class="ico ico-item" aria-hidden="true"><use href="#icon-performance-report"/></svg><h3>วัดผลได้ ไม่ใช่แค่ส่งไฟล์จบ</h3><p>คลิปทุกตัวถูกเอาไปทดสอบจริง แล้วคัดตัวที่ทำผลได้ดีที่สุดมาสเกลต่อ</p></div></div>
+  <h2>ทีม In-House วางกลยุทธ์ปั้นช่อง<br><span>ผลิตคอนเทนต์วิดีโอครบวงจร</span></h2>
+  <div class="items" style="--n:3"><div class="item"><svg class="ico ico-item" aria-hidden="true"><use href="#icon-strategy-planning"/></svg><h3>วางกลยุทธ์คอนเทนต์</h3><p>ปั้นช่องให้มีทิศทางและเติบโตอย่างต่อเนื่อง</p></div><div class="item"><svg class="ico ico-item" aria-hidden="true"><use href="#icon-ads-optimization"/></svg><h3>สร้างการรับรู้และภาพจำที่ชัดเจน</h3><p>ดึงดูดกลุ่มเป้าหมายเข้าหน้าช่อง</p></div><div class="item"><svg class="ico ico-item" aria-hidden="true"><use href="#icon-content-creative"/></svg><h3>คุยตรงกับทีมครีเอทีฟ</h3><p>ดูแลครบวงจร ตั้งแต่คิดแนวคิด ถ่ายทำ จนถึงตัดต่อ</p></div></div>
 </div>
 
 <div class="slide s-pack" data-dur="10000" data-key="packages">
@@ -806,10 +810,10 @@ button{font-family:inherit;color:inherit;border:0;background:none;cursor:pointer
   <div>
     <img class="ct-logo" src="assets/brand/logo-color.png" alt="ติดจรวด">
     <div class="eyebrow">เริ่มต้นแบบไม่มีความเสี่ยง</div>
-    <h2>รับ Audit คลิปฟรี<br><span>มูลค่า 3,000 บาท</span></h2>
+    <h2>รับ Audit ทิศทางคอนเทนต์<br><span>&amp; แนวทางปั้นช่องฟรี</span></h2>
     <div class="lines"><div><span>Line / TikTok</span><b>@tidjaruad</b></div><div><span>โทรศัพท์</span><b>062-294-5324</b></div><div><span>เว็บไซต์</span><b>www.tidjaruad.co.th</b></div><div><span>อีเมล</span><b>service@tidjaruad.co.th</b></div></div>
     <div class="ct-co"><b>บริษัท ติดจรวด จำกัด</b><span>Performance Marketing Agency · Friendly Growth Partner</span></div>
-    <div class="note">วิเคราะห์คลิปปัจจุบัน หาจุดรั่ว + โอกาสโต · ตอบกลับภายใน 2 ชั่วโมง · ไม่มีข้อผูกมัด</div>
+    <div class="note">มูลค่า 3,000 บาท · ไม่มีข้อผูกมัด · ตอบกลับภายใน 2 ชั่วโมง</div>
   </div>
   <div class="qr"><img src="assets/qr-line.png" alt="QR"></div>
 </div>
