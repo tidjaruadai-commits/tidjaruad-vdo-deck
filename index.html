@@ -56,6 +56,8 @@ button{font-family:inherit;color:inherit;border:0;background:none;cursor:pointer
 #home{display:flex;flex-direction:column;padding:52px 72px 40px;background:var(--white)}
 
 .hm-top{display:flex;align-items:flex-end;gap:44px}
+/* โลโก้ทางการบนหัวสารบัญ — สูง 72px กว้างตามสัดส่วนจริง (2870x925) */
+.hm-logo{height:72px;width:auto;flex:none;display:block;align-self:center}
 .hm-brand{display:flex;align-items:center;gap:16px;flex:none;padding-bottom:8px}
 .hm-brand .dot{width:14px;height:14px;border-radius:50%;background:var(--red)}
 .hm-brand span{font-size:30px;font-weight:800;color:var(--navy);letter-spacing:.01em}
@@ -438,7 +440,7 @@ button{font-family:inherit;color:inherit;border:0;background:none;cursor:pointer
     <!-- class="on" ตั้งแต่แรก เพื่อให้เห็นสารบัญแม้ในตัวพรีวิวที่ไม่รัน JS -->
     <section class="screen on" id="home">
       <div class="hm-top">
-        <div class="hm-brand"><i class="dot"></i><span>ติดจรวด</span></div>
+        <img class="hm-logo" src="assets/brand/logo-color.png" alt="ติดจรวด">
         <div class="hm-title">
           <h1>คลิปที่ขายได้ <em>ไม่ใช่แค่คลิปที่สวย</em></h1>
           <p>ผลิตคลิปสั้น &amp; UGC โดยทีมที่ยิงแอดจริงทุกวัน</p>
